@@ -51,6 +51,8 @@
     <Compile Include="Delegates\Delegates.cs" />
     <Compile Include="Exceptions\CreatureAlreadyExists.cs" />
     <Compile Include="Exceptions\CreatureNotFound.cs" />
+    <Compile Include="Exceptions\ItemAlreadyExists.cs" />
+    <Compile Include="Exceptions\ItemNotFound.cs" />
     <Compile Include="IDatabase.cs" />
     <Compile Include="MySQL\Database.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -166,13 +166,6 @@
       <FileName>ReptileClass.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TDK.APaF.Model.SpecialClass">
-    <Position X="18.25" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SpecialClass.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="TDK.APaF.Model.SwimmingPositionClass">
     <Position X="18.25" Y="3.5" Width="2" />
     <TypeIdentifier>

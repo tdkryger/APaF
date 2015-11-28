@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APaF", "APaF\APaF.csproj", "{BDE009CC-FD80-4168-A2C6-085A13214B0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDK.APaF.AqualogImport", "TDK.APaF.AqualogImport\TDK.APaF.AqualogImport.csproj", "{B9939274-7C2D-472C-A996-8A68E00C687A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDK.APaF.Database", "TDK.APaF.Database\TDK.APaF.Database.csproj", "{F50C5689-2CF3-4D23-AF59-019AA35FEDD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDK.APaF.FishbaseImport", "TDK.APaF.FishbaseImport\TDK.APaF.FishbaseImport.csproj", "{E32B5E8A-77C4-43D8-8369-51BF1DB1104C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDK.APaF.Model", "TDK.APaF.Model\TDK.APaF.Model.csproj", "{47D1B74D-DB20-434F-A5E3-12FBF5C36C6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDK.APaF.Test", "TDK.APaF.Test\TDK.APaF.Test.csproj", "{BEE9DB1B-7028-4D0F-8A0C-89325F706920}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDE009CC-FD80-4168-A2C6-085A13214B0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE009CC-FD80-4168-A2C6-085A13214B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE009CC-FD80-4168-A2C6-085A13214B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE009CC-FD80-4168-A2C6-085A13214B0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9939274-7C2D-472C-A996-8A68E00C687A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9939274-7C2D-472C-A996-8A68E00C687A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9939274-7C2D-472C-A996-8A68E00C687A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9939274-7C2D-472C-A996-8A68E00C687A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F50C5689-2CF3-4D23-AF59-019AA35FEDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F50C5689-2CF3-4D23-AF59-019AA35FEDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F50C5689-2CF3-4D23-AF59-019AA35FEDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F50C5689-2CF3-4D23-AF59-019AA35FEDD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E32B5E8A-77C4-43D8-8369-51BF1DB1104C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E32B5E8A-77C4-43D8-8369-51BF1DB1104C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E32B5E8A-77C4-43D8-8369-51BF1DB1104C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E32B5E8A-77C4-43D8-8369-51BF1DB1104C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47D1B74D-DB20-434F-A5E3-12FBF5C36C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47D1B74D-DB20-434F-A5E3-12FBF5C36C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47D1B74D-DB20-434F-A5E3-12FBF5C36C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47D1B74D-DB20-434F-A5E3-12FBF5C36C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEE9DB1B-7028-4D0F-8A0C-89325F706920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEE9DB1B-7028-4D0F-8A0C-89325F706920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEE9DB1B-7028-4D0F-8A0C-89325F706920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEE9DB1B-7028-4D0F-8A0C-89325F706920}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
