@@ -1,0 +1,497 @@
+DROP DATABASE IF EXISTS apaf2;
+
+CREATE DATABASE IF NOT EXISTS apaf2 CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+GRANT ALL ON `apaf2`.* to 'anuser'@'localhost' identified by 'mWZwbVCruMsh';
+
+USE apaf2;
+
+CREATE TABLE dbVersion
+(
+	versionNumber int(32) not null
+);
+INSERT INTO dbVersion (versionNumber) VALUES (2);
+
+CREATE TABLE dateTimeInfo
+(
+	id INT(32) unsigned not null auto_increment,
+    dateAndTime datetime not null,
+    user varchar(255),
+    
+    primary key (id)
+);
+
+create table family
+(
+	id int(32) unsigned not null auto_increment,
+    family varchar(100) not null,
+    subFamilyId int(32) unsigned default null,
+    
+    primary key (id)
+);
+
+create table latinName
+(
+	id INT(32) unsigned not null auto_increment,
+    genus varchar(512) not null,
+    species varchar(512) not null,
+    
+    primary key (id)
+);
+
+DELIMITER //
+ 
+DROP FUNCTION IF EXISTS F_GetLatinNameId //
+CREATE FUNCTION F_GetLatinNameId(inGenus varchar(512), inSpecies varchar(512)) RETURNS int(32)
+BEGIN
+  DECLARE idFound INT;
+
+    SELECT id INTO idFound FROM latinName WHERE genus=inGenus AND species=inSpecies;
+  RETURN idFound;
+END;//
+
+DROP procedure if exists P_GetLatinNameList //
+create procedure P_GetLatinNameList(inGenus varchar(512), inSpecies varchar(512), uniqueId varchar(512))
+BEGIN
+/* Returns a list of ID's from createTable where the latin name is in either name or synonyms 
+	
+    Unique string:
+		SELECT LEFT(UUID(), 8); -- Returns 8 random characters. 
+			See https://dev.mysql.com/doc/refman/5.7/en/miscellaneous-functions.html#function_uuid
+    
+    temporary tables:
+		On Disk:
+        http://stackoverflow.com/questions/5859391/create-a-temporary-table-in-a-select-statement-without-a-separate-create-table
+		In memory:
+		http://blog.cnizz.com/2010/11/24/mysql-temporary-tables-example-optimizing-applications-with-temp-tables/
+
+*/	
+
+END;//
+
+
+DELIMITER ;
+
+
+CREATE TABLE region
+(
+	id INT(32) unsigned not null auto_increment,
+    danish varchar(255),
+    english varchar(255),
+    german varchar(255),
+    
+    primary key (id)
+);
+
+create table subRegion
+(
+	parentId int(32) unsigned not null,
+    subId int(32) unsigned not null,
+    
+    foreign key (parentId) references region(id),
+    foreign key (subId) references region(id),
+    
+    primary key(parentId, subId)
+);
+
+DELIMITER //
+ 
+DROP FUNCTION IF EXISTS F_GetRegionId //
+CREATE FUNCTION F_GetRegionId(region varchar(255)) RETURNS int(32)
+BEGIN
+	/*
+	
+
+  DECLARE idFound INT;
+
+    SELECT id INTO idFound FROM latinName WHERE genus=inGenus AND species=inSpecies;
+  RETURN idFound;
+  */
+  return 0;
+END;//
+
+DELIMITER ;
+
+CREATE TABLE `groupType` 
+(
+  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(20),
+  `danishname` varchar(150),
+  `englishname` varchar(150),
+  `germanname` varchar(150),
+
+  plants tinyint(1) NOT NULL DEFAULT 0,
+  fish tinyint(1) NOT NULL DEFAULT 0,
+  gastropoda tinyint(1) NOT NULL DEFAULT 0,
+  crustacean tinyint(1) NOT NULL DEFAULT 0,
+  
+  PRIMARY KEY (`id`)
+);
+
+-- Needs to be cleaned up
+INSERT INTO `groupType`(id,`code`,`danishname`,`englishname`,`germanname`,plants,fish,gastropoda,crustacean) VALUES
+(1,'?','Ukendt','Unknown','Unbekannt',1,1,1,1),
+(2,'AA','Tetras AFRICA','Tetras AFRICA','Salmler Afrika',0,1,0,0),
+(3,'ASD','Tetras Central- + South America Dragon Fin Etc.','Tetras Central- + South America Dragon Fin Etc.','Salmler Lateinamerica Drachenflosser Ect.',0,1,0,0),
+(4,'ASG','Tetras Central- + South America Medium To Large','Tetras Central- + South America Medium To Large','Salmler Lateinamerica Mittlere - Grobe',0,1,0,0),
+(5,'ASK','Tetras Central- + South America Smaller Ones','Tetras Central- + South America Smaller Ones','Salmler Lateinamerica Kleinere Arten',0,1,0,0),
+(6,'ASL','Ziersalmler','Ziersalmler','Salmler Lateinamerica Bleistiftfische',0,1,0,0),
+(7,'ASO','Tetras Central- + South America Ground Tetra, Sandsucker','Tetras Central- + South America Ground Tetra, Sandsucker','Salmler Lateinamerica Bodensalmler',0,1,0,0),
+(8,'ASP','Tetras Central- + South America Piranhas + Pacus','Tetras Central- + South America Piranhas + Pacus','Salmler Lateinamerica Piranhas + Pacus',0,1,0,0),
+(9,'ASR','Tetras Central- + South America Predatories','Tetras Central- + South America Predatories','Salmler Lateinamerica Raubsalmler',0,1,0,0),
+(10,'ASS','Tetras Central- + South America Metynnis','Tetras Central- + South America Metynnis','Salmler Lateinamerica Scheibensalmler Etc.',0,1,0,0),
+(11,'ATA','Sardines','Sardines','Sardinen/Heringsfische AFRIKA',0,1,0,0),
+(12,'ATE','Sardines','Sardines','Sardinen/Heringsfische EUROPA+NORDAMERICA',0,1,0,0),
+(13,'ATS','Sardines','Sardines','Sardinen/Heringsfische LATEINAMERICA',0,1,0,0),
+(14,'ATX','Sardines: Herringfishes: Pilchards ASIA + AUSTRALIA','Sardines: Herringfishes: Pilchards ASIA + AUSTRALIA','Sardinen/Heringsfische ASIA + AUSTRALIA',0,1,0,0),
+(15,'BA','Barbs AFRICA (Id. Labeos Etc.)','Barbs AFRICA (Id. Labeos Etc.)','Barben AFRIKA (Ikls. Labeos Etc.)',0,1,0,0),
+(16,'BE','Barbs EUROPE','Barbs EUROPE','Barben EUROPA',0,1,0,0),
+(17,'BN','Barbs NORTH AMERICA','Barbs NORTH AMERICA','Barben NORDAMERICA',0,1,0,0),
+(18,'BX','Barbs ASIA + AUSTRALIA (Icl. Labeos Etc.)','Barbs ASIA + AUSTRALIA (Icl. Labeos Etc.)','Barben ASIEN + AUSTRALIEN (Ikls. Labeos Etc)',0,1,0,0),
+(19,'BXB','Barbs ASIA Danios, Minnows Etc.','Barbs ASIA Danios, Minnows Etc.','Barblinge (Danios Etc.)',0,1,0,0),
+(20,'BXR','Barbs ASIA Rasboras Etc.','Barbs ASIA Rasboras Etc.','Barblinge (Rasboras, Microrasboras Etc.)',0,1,0,0),
+(21,'BXX','Galaxias + Kneria (Worldwide)','Galaxias + Kneria (Worldwide)','Galaxias + Kneria (Weltweit)',0,1,0,0),
+(22,'CA','Cichlids AFRICA (Rivers + West Africa)','Cichlids AFRICA (Rivers + West Africa)','Cichliden AFRIKA (Fl?Sse + West-Africa)',0,1,0,0),
+(23,'CAM','Cichlids AFRICA (Lake MALAWI)','Cichlids AFRICA (Lake MALAWI)','Cichliden AFRIKA (MALAWI-SEE)',0,1,0,0),
+(24,'CAT','Cichlids AFRICA (Lake TANGANJIKA)','Cichlids AFRICA (Lake TANGANJIKA)','Cichliden AFRIKA (TANGANJIKA-SEE)',0,1,0,0),
+(25,'CAV','Cichlids AFRICA (Lake VIKTORIA)','Cichlids AFRICA (Lake VIKTORIA)','Cichliden AFRIKA (VIKTORIA-SEE)',0,1,0,0),
+(26,'CSD','Cichlids CENTRAL- + SOUTH AMERICA Dwarf-Cichlids','Cichlids CENTRAL- + SOUTH AMERICA Dwarf-Cichlids','Cichliden LATEINAMERICA Zwerg-Cichliden',0,1,0,0),
+(27,'CSG','Cichlids CENTRAL- + SOUTH AMERICA Medium To Large','Cichlids CENTRAL- + SOUTH AMERICA Medium To Large','Cichliden LATEINAMERICA Mittlere - Grosse',0,1,0,0),
+(28,'CSS','Cichlids SOUTH AMERICA Angelfish','Cichlids SOUTH AMERICA Angelfish','Cichliden S?DAMERICA Scalare',0,1,0,0),
+(29,'CTW','Cichlids SOUTH AMERICA Discus Wild','Cichlids SOUTH AMERICA Discus Wild','Cichliden S?DAMERICA Discus Wild',0,1,0,0),
+(30,'CTZ','Cichlids SOUTH AMERICA Discus Bred-Varianten','Cichlids SOUTH AMERICA Discus Bred-Varianten','Cichliden S?DAMERICA Discus Zucht-Varianten',0,1,0,0),
+(31,'CX','Cichlids ASIA + AUSTRALIA','Cichlids ASIA + AUSTRALIA','Cichliden ASIEN + AUSTRALIEN',0,1,0,0),
+(32,'EA','Eels AFRICA','Eels AFRICA','Aale AFRIKA',0,1,0,0),
+(33,'EAP','Eels AFRICA Polypterus','Eels AFRICA Polypterus','Aale AFRIKA Polypterus',0,1,0,0),
+(34,'EAS','Eels AFRICA Spiny Eels','Eels AFRICA Spiny Eels','Aale AFRIKA Stachelaale',0,1,0,0),
+(35,'EAX','Eels ASIA + AUSTRALIA Spiny Eels','Eels ASIA + AUSTRALIA Spiny Eels','Aale ASIEN + AUSTRALIEN Stachelaale',0,1,0,0),
+(36,'EEN','Eels EUROPE + NORTH AMERICA','Eels EUROPE + NORTH AMERICA','Aale EUROPA + NORDAMERICA',0,1,0,0),
+(37,'ES','Eels CENTRAL- + SOUTH AMERICA','Eels CENTRAL- + SOUTH AMERICA','Aale LATEINAMERICA',0,1,0,0),
+(38,'EX','Eels ASIA + AUSTRALIA','Eels ASIA + AUSTRALIA','Eels/Aale ASIA + AUSTRALIA',0,1,0,0),
+(39,'EYL','Lungfishes (Worldwide)','Lungfishes (Worldwide)','Lungenfische (Weltweit)',0,1,0,0),
+(40,'FA','Flounders','Flounders','Flundern AFRIKA',0,1,0,0),
+(41,'FE','Flounders','Flounders','Flundern EUROPA',0,1,0,0),
+(42,'FN','Flounders','Flounders','Flundern NORDAMERICA',0,1,0,0),
+(43,'FS','Flounders','Flounders','Flundern LATEINAMERICA',0,1,0,0),
+(44,'FX','Flounders','Flounders','Flundern ASIEN + AUSTRALIEN',0,1,0,0),
+(45,'GB','Leaf Fishes AFRICA + SOUTH AMERICA','Leaf Fishes AFRICA + SOUTH AMERICA','Blattfische AFRIKA + S?DAMERICA',0,1,0,0),
+(46,'GC','Snakeheads, Channa AFRICA + ASIA','Snakeheads, Channa AFRICA + ASIA','Schlangenkopffische, Channa AFRIKA + ASIEN',0,1,0,0),
+(47,'GGA','Labyrinthfishes AFRICA Bush Fishes','Labyrinthfishes AFRICA Bush Fishes','Labyrinthfische AFRIKA Buschfische',0,1,0,0),
+(48,'GGX','Labyrinthfishes ASIA Gouramis, Bettas, Colisa Etc.','Labyrinthfishes ASIA Gouramis, Bettas, Colisa Etc.','Labyrinthfische ASIEN Guramis,Bettas,Colisa Etc.',0,1,0,0),
+(49,'KA','Killifishes, Lampeyes Etc. AFRICA','Killifishes, Lampeyes Etc. AFRICA','Killi-Fische, Leuchtaugenfische Etc. AFRICA',0,1,0,0),
+(50,'KE','Killifishes EUROPE','Killifishes EUROPE','Killi-Fische EUROPA',0,1,0,0),
+(51,'KN','Killifishes, Springfishes, Pupfishes, Minnows Etc. NORTH AMERICA','Killifishes, Springfishes, Pupfishes, Minnows Etc. NORTH AMERICA','Killi-Fische NORDAMERICA',0,1,0,0),
+(52,'KS','Killifishes, Fanfishes Etc. CENTRAL- + SOUTH AMERICA','Killifishes, Fanfishes Etc. CENTRAL- + SOUTH AMERICA','Killi-Fische, Bachlinge Etc. LATEIN-AMERICA',0,1,0,0),
+(53,'KX','Killifishes, Panchax, Ricefishes ASIA + AUSTRALIA','Killifishes, Panchax, Ricefishes ASIA + AUSTRALIA','Killi-Fische,Hechtlinge,Reisf. ASIEN + AUSTRALIEN',0,1,0,0),
+(54,'LH','Halfbeaks (Worldwide)','Halfbeaks (Worldwide)','Halbschnabelhechte (Weltweit)',0,1,0,0),
+(55,'LS','Livebearers (Guppys, Platys, Swordtails, Mollys Etc.)','Livebearers (Guppys, Platys, Swordtails, Mollys Etc.)','Lebendgebarende Zahnkarpfen Etc.',0,1,0,0),
+(56,'MO','Elephantfishes, Nilepikes (Mormyriden Etc.) AFRICA','Elephantfishes, Nilepikes (Mormyriden Etc.) AFRICA','Elefantenfische, Nilhechte (Mormyriden Etc.)',0,1,0,0),
+(57,'OA','Gobys, Gudgeons, Blennis Etc. AFRICA','Gobys, Gudgeons, Blennis Etc. AFRICA','Grundeln AFRIKA',0,1,0,0),
+(58,'OE','Gobys, Gudgeons, Blennis Etc. EUROPE','Gobys, Gudgeons, Blennis Etc. EUROPE','Grundeln EUROPA',0,1,0,0),
+(59,'ON','Gobys, Gudgeons, Blennis Etc. NORTH AMERICA','Gobys, Gudgeons, Blennis Etc. NORTH AMERICA','Grundeln NORD-AMERIKA',0,1,0,0),
+(60,'OS','Gobys, Gudgeons, Blennis Etc. CENTRA- + SOUTH AMERICA','Gobys, Gudgeons, Blennis Etc. CENTRA- + SOUTH AMERICA','Grundeln LATEIN-AMERIKA',0,1,0,0),
+(61,'OX','Gobys, Gudgeons, Blennis Etc. ASIA + AUSTRALIA','Gobys, Gudgeons, Blennis Etc. ASIA + AUSTRALIA','Grundeln ASIEN + AUSTRALIEN',0,1,0,0),
+(62,'OYA','Mudskipper AFRIKA','Mudskipper AFRIKA','Schlammspringer AFRIKA',0,1,0,0),
+(63,'OYX','Mudskipper ASIA','Mudskipper ASIA','Schlammspringer ASIEN',0,1,0,0),
+(64,'PA','Perches AFRICA','Perches AFRICA','Barsche AFRIKA',0,1,0,0),
+(65,'PEN','Perches, Sunfishes EUROPE + NORTH AMERICA','Perches, Sunfishes EUROPE + NORTH AMERICA','Barsche, Sonnenbarsche EUROPA+NORD-AMERIKA',0,1,0,0),
+(66,'PND','Perches, Darters NORTH AMERICA','Perches, Darters NORTH AMERICA','Barsche NORD-AMERIKA Darters',0,1,0,0),
+(67,'PX','Perches ASIA + AUSTRALIA','Perches ASIA + AUSTRALIA','Barsche ASIEN + AUSTRALIEN',0,1,0,0),
+(68,'RAN','Rainbowfishes AFRICA(Madagascar) + NORTH AMERICA','Rainbowfishes AFRICA(Madagascar) + NORTH AMERICA','Regenbogenfische AFRIKA (Madagascar) + NORDAM.',0,1,0,0),
+(69,'RXM','Rainbowfishes ASIA + AUSTRALIA','Rainbowfishes ASIA + AUSTRALIA','Regenbogenfische ASIEN + AUSTRALIEN',0,1,0,0),
+(70,'RXP','Rainbowfishes ASIA + AUSTRALIA Popondetta, Blue Eyes Etc.','Rainbowfishes ASIA + AUSTRALIA Popondetta, Blue Eyes Etc.','Regenbogenfische ASIEN + AUSTRALIEN',0,1,0,0),
+(71,'RXQ','Hardyheaders, Silversides Etc. (Worldwide)','Hardyheaders, Silversides Etc. (Worldwide)','Ahrenfische (Weltweit)',0,1,0,0),
+(72,'SBA','Brackish Water Fishes AFRICA','Brackish Water Fishes AFRICA','Brackwasser-Fische AFRIKA',0,1,0,0),
+(73,'SBE','Brackish Water Fishes EUROPE','Brackish Water Fishes EUROPE','Brackwasser-Fische EUROPA',0,1,0,0),
+(74,'SBN','Brackish Water Fishes NORTH AMERICA','Brackish Water Fishes NORTH AMERICA','Brackwasser-Fische NORD-AMERIKA',0,1,0,0),
+(75,'SBS','Brackish Water Fishes CENTRAL- + SOUTH AMERICA','Brackish Water Fishes CENTRAL- + SOUTH AMERICA','Brackwasser-Fische LATEIN-AMERIKA',0,1,0,0),
+(76,'SBX','Brackish Water Fishes ASIA + AUSTRALIA','Brackish Water Fishes ASIA + AUSTRALIA','Brackwasser-Fische ASIEN + AUSTRALIEN',0,1,0,0),
+(77,'TB','Bitterlinge Etc. (Worldwide)','Bitterlinge Etc. (Worldwide)','Bitterlinge Etc. (Weltweit)',0,1,0,0),
+(78,'TE','Pondfishes EUROPE','Pondfishes EUROPE','Teichfische EUROPA',0,1,0,0),
+(79,'TN','Pondfishes NORTH AMERICA','Pondfishes NORTH AMERICA','Teichfische NORD-AMERIKA',0,1,0,0),
+(80,'TNN','Pondfishes Nineeyes','Pondfishes Nineeyes','Teichfische Neunaugen',0,1,0,0),
+(81,'TNS','Pondfishes Sturgeons, Gars, Bills Etc.','Pondfishes Sturgeons, Gars, Bills Etc.','Teichfische Store, Lepisosteus, Etc.',0,1,0,0),
+(82,'TX','Pondfishes ASIA + AUSTRALIA + CHINA','Pondfishes ASIA + AUSTRALIA + CHINA','Teichfische ASIEN + AUSTRALIEN + CHINA',0,1,0,0),
+(83,'TXG','Schleierschwanze Etc.','Schleierschwanze Etc.','Teichfische Goldfische',0,1,0,0),
+(84,'TXK','Pondfishes KOI, NISHIKIGOI','Pondfishes KOI, NISHIKIGOI','Teichfische KOI',0,1,0,0),
+(85,'UA','Loaches Etc. AFRICA','Loaches Etc. AFRICA','Schmerlen Etc. AFRIKA',0,1,0,0),
+(86,'UE','Loaches Etc. EUROPE','Loaches Etc. EUROPE','Schmerlen Etc. EUROPA',0,1,0,0),
+(87,'UN','Loaches Etc. NORTH AMERICA','Loaches Etc. NORTH AMERICA','Schmerlen Etc. NORD-AMERIKA',0,1,0,0),
+(88,'US','Loaches Etc. CENTRAL- + SOUTH AMERICA','Loaches Etc. CENTRAL- + SOUTH AMERICA','Schmerlen Etc. LATEIN-AMERIKA',0,1,0,0),
+(89,'UX','Loaches Etc. ASIA + AUSTRALIA','Loaches Etc. ASIA + AUSTRALIA','Schmerlen Etc. ASIEN + AUSTRALIEN',0,1,0,0),
+(90,'WA','Catfishes AFRICA','Catfishes AFRICA','Welse AFRIKA Synodontis, Chiloglanis Etc.',0,1,0,0),
+(91,'WAS','Catfishes AFRICA Catlets, Synodontis, Chiloglanis Etc.','Catfishes AFRICA Catlets, Synodontis, Chiloglanis Etc.','Welse AFRIKA Synodontis, Chiloglanis Etc.',0,1,0,0),
+(92,'XNA','Pipefish, Needlefish AFRICA','Pipefish, Needlefish AFRICA','Nadeln AFRIKA',0,1,0,0),
+(93,'XNS','Pipefish, Needlefish CENTRAL- + SOUTH AMERICA','Pipefish, Needlefish CENTRAL- + SOUTH AMERICA','Nadeln LATEIN-AMERIKA',0,1,0,0),
+(94,'XNX','Pipefish, Needlefish ASIA + AUSTRALIA','Pipefish, Needlefish ASIA + AUSTRALIA','Nadeln ASIEN + AUSTRALIEN',0,1,0,0),
+(95,'XOA','Arowanas (+Butterfly0,1,0,0) AFRICA','Arowanas (+Butterfly0,1,0,0) AFRICA','Knochenz?Ngler (+Schmetterlingsfisch) AFRIKA',0,1,0,0),
+(96,'XOS','Arowanas, Arapaima CENTRAL- + SOUTH AMERICA','Arowanas, Arapaima CENTRAL- + SOUTH AMERICA','Knochenzungler (+ Arapaima) LATEIN-AMERIKA',0,1,0,0),
+(97,'XOX','Arowanas, Barramundi ASIA + AUSTRALIA','Arowanas, Barramundi ASIA + AUSTRALIA','Knochenzungler ASIEN + AUSTRALIEN',0,1,0,0),
+(98,'XRA','Stingrays AFRICA','Stingrays AFRICA','Rochen AFRIKA',0,1,0,0),
+(99,'XRE','Stingrays EUROPE','Stingrays EUROPE','Rochen EUROPA',0,1,0,0),
+(100,'XRN','Stingrays NORTH AMERICA','Stingrays NORTH AMERICA','Rochen NORD-AMERIKA',0,1,0,0),
+(101,'XRS','Stingrays CENTRAL- + SOUTH AMERICA','Stingrays CENTRAL- + SOUTH AMERICA','Rochen LATEIN-AMERIKA',0,1,0,0),
+(102,'XRX','Stingrays ASIA + AUSTRALIA','Stingrays ASIA + AUSTRALIA','Rochen ASIEN + AUSTRALIEN',0,1,0,0),
+(103,'XYA','Shrimps, Crabs, Prawns, Crayfishes, AFRICA','Shrimps, Crabs, Prawns, Crayfishes, AFRICA','Garnelen,Krebse,Krabben AFRIKA',0,1,0,0),
+(104,'XYE','Shrimps, Crabs, Prawns, Crayfishes, EUROPE','Shrimps, Crabs, Prawns, Crayfishes, EUROPE','Garnelen,Krebse,Krabben EUROPA',0,1,0,0),
+(105,'XYN','Shrimps, Crabs, Prawns, Crayfishes, NORTH AMERICA','Shrimps, Crabs, Prawns, Crayfishes, NORTH AMERICA','Garnelen,Krebse,Krabben NORD-AMERIKA',0,1,0,0),
+(106,'XYS','Shrimps, Crabs, Prawns, Crayfishes, CENTRAL + SOUTH AMERICA','Shrimps, Crabs, Prawns, Crayfishes, CENTRAL + SOUTH AMERICA','Garnelen,Krebse,Krabben LATEIN-AMERIKA',0,1,0,0),
+(107,'XYX','Shrimps, Crabs, Prawns, Crayfishes, ASIA + AUSTRALIA','Shrimps, Crabs, Prawns, Crayfishes, ASIA + AUSTRALIA','Garnelen,Krebse,Krabben ASIEN + AUSTRALIEN',0,1,0,0),
+(108,'YFA','Frogs, Toads, Newts Etc. AFRICA','Frogs, Toads, Newts Etc. AFRICA','Frosche,Molche,Lurche Etc. AFRIKA',0,1,0,0),
+(109,'YFE','Frogs, Toads, Newts Etc. EUROPE','Frogs, Toads, Newts Etc. EUROPE','Frosche,Molche,Lurche Etc. EUROPA',0,1,0,0),
+(110,'YEN','Frogs, Toads, Newts Etc. NORTH AMERICA','Frogs, Toads, Newts Etc. NORTH AMERICA','Frosche,Molche,Lurche Etc. NORD-AMERIKA',0,1,0,0),
+(111,'YFS','Frogs, Toads, Newts, Axelotl Etc. CENTRAL + SOUTH AMERICA','Frogs, Toads, Newts, Axelotl Etc. CENTRAL + SOUTH AMERICA','Frosche,Molche,Lurche Etc. LATEIN-AMERIKA',0,1,0,0),
+(112,'YFX','Frogs, Toads, Newts Etc. ASIA + AUSTRALIA','Frogs, Toads, Newts Etc. ASIA + AUSTRALIA','Frosche,Molche,Lurche Etc. ASIEN + AUSTRALIEN',0,1,0,0),
+(113,'YRA','Reptiles, Snakes Etc. AFRICA','Reptiles, Snakes Etc. AFRICA','Reptilien Etc. AFRIKA',0,1,0,0),
+(114,'YRE','Reptiles, Snakes Etc. EUROPE','Reptiles, Snakes Etc. EUROPE','Reptilien Etc. EUROPA',0,1,0,0),
+(115,'YRN','Reptiles, Snakes Etc. NORTH AMERICA','Reptiles, Snakes Etc. NORTH AMERICA','Reptilien Etc. NORD-AMERIKA',0,1,0,0),
+(116,'YRS','Reptiles, Snakes Etc. CENTRAL- + SOUTH AMERICA','Reptiles, Snakes Etc. CENTRAL- + SOUTH AMERICA','Reptilien Etc. LATEIN-AMERIKA',0,1,0,0),
+(117,'YRX','Reptiles, Snakes Etc. ASIA + AUSTRALIA','Reptiles, Snakes Etc. ASIA + AUSTRALIA','Reptilien Etc. ASIEN + AUSTRALIEN',0,1,0,0),
+(118,'YSA','Snails, Clams, Mussels Etc. AFRICA','Snails, Clams, Mussels Etc. AFRICA','Schnecken, Muscheln Etc. AFRIKA',0,1,0,0),
+(119,'YSE','Snails, Clams, Mussels Etc. EUROPE','Snails, Clams, Mussels Etc. EUROPE','Schnecken, Muscheln Etc.EUROPA',0,1,0,0),
+(120,'YSN','Snails, Clams, Mussels Etc. NORTH AMERICA','Snails, Clams, Mussels Etc. NORTH AMERICA','Schnecken, Muscheln Etc. NORD-AMERIKA',0,1,0,0),
+(121,'YSS','Snails, Clams, Mussels Etc. CENTRAL- + SOUTH AMERICA','Snails, Clams, Mussels Etc. CENTRAL- + SOUTH AMERICA','Schnecken, Muscheln Etc. LATEIN-AMERIKA',0,1,0,0),
+(122,'YSX','Snails, Clams, Mussels Etc. ASIA + AUSTRALIA','Snails, Clams, Mussels Etc. ASIA + AUSTRALIA','Schnecken, Muscheln Etc. ASIEN + AUSTRALIEN',0,1,0,0),
+(123,'YTA','Turtles AFRICA','Turtles AFRICA','Schildkr?Ten AFRIKA',0,1,0,0),
+(124,'YTE','Turtles EUROPE','Turtles EUROPE','Schildkr?Ten EUROPA',0,1,0,0),
+(125,'YTN','Turtles NORTH AMERICA','Turtles NORTH AMERICA','Schildkr?Ten NORD-AMERIKA',0,1,0,0),
+(126,'YTS','Turtles CENTRAL- + SOUTH AMERICA','Turtles CENTRAL- + SOUTH AMERICA','Schildkr?Ten LATEIN-AMERIKA',0,1,0,0),
+(127,'YTX','Turtles ASIA + AUSTRALIA','Turtles ASIA + AUSTRALIA','Schildkr?Ten ASIEN + AUSTRALIEN',0,1,0,0),
+(128,'YU','Insects Etc. (Worldwide)','Insects Etc. (Worldwide)','Insekten Etc. (Weltweit)',0,1,0,0),
+(129,'CS','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(130,'DC1.','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(131,'DD00','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(132,'DD01','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(133,'DD02','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(134,'DD03','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(135,'DD04','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(136,'DD05','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(137,'DD06','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(138,'DD07','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(139,'DD08','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(140,'DD09','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(141,'DD10','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(142,'DD11','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(143,'DD12','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(144,'DD13','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(145,'DD14','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(146,'DD15','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(147,'DD16','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(148,'DD17','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(149,'DD18','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(150,'DD19','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(151,'DD20','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(152,'DD21','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(153,'DD22','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(154,'DD23','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(155,'DD24','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(156,'DD25','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(157,'DD26','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(158,'DD27','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(159,'DD28','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(160,'DD29','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(161,'DD30','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(162,'DD31','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(163,'DD32','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(164,'PNS','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(165,'PS','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(166,'WE','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(167,'WN','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(168,'WS','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(169,'WSC','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(170,'WSH','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(171,'WX','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(172,'WXF','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(173,'XKA','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(174,'XKN','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(175,'XKS','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(176,'XKX','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(177,'XMA','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(178,'XMS','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(179,'XMX','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(180,'XNE','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(181,'XRXQ','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(182,'XRXQQ','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(183,'YFN','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(184,'YRXQ','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(185,'YRXQQ','Ukendt','Unknown','Unbekannt',0,1,0,0),
+(186,'AWP','Vandplante','Waterplant','Wasserpflanz',1,0,0,0),
+(187,'BPP','Havedams plante','Pondplant','Teichpflanz',1,0,0,0),
+(188,'CTP','Terrarie plante','Terrariumplant','Terrariumpflanz',1,0,0,0),
+(189,'ALP','Landplante','Landplant','Landpflanz',1,0,0,0);
+
+create table specials
+(
+  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(20),
+  `danishname` varchar(150),
+  `englishname` varchar(150),
+  `germanname` varchar(150),
+ 
+  PRIMARY KEY (`id`)
+);
+
+create table swimmingPosition
+(
+  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(20),
+  `danishname` varchar(150),
+  `englishname` varchar(150),
+  `germanname` varchar(150),
+ 
+  PRIMARY KEY (`id`)
+);
+
+create table growthSpeed
+(
+  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(20),
+  `danishname` varchar(150),
+  `englishname` varchar(150),
+  `germanname` varchar(150),
+ 
+  PRIMARY KEY (`id`)
+);
+
+create table foodType
+(
+  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(20),
+  `danishname` varchar(150),
+  `englishname` varchar(150),
+  `germanname` varchar(150),
+ 
+  PRIMARY KEY (`id`)
+);
+
+create table bottomType
+(
+  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
+  `danishname` varchar(150),
+  `englishname` varchar(150),
+  `germanname` varchar(150),
+ 
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE creaturesAndPlants
+(
+-- BasicThingy
+	id INT(32) unsigned not null auto_increment,
+    creatuteType int(11) not null default 0 comment '0:Unknown, 1:Fish, 2:Plants, 3:Shripms, 4:Snails, 5:Reptiles', 
+    aqualogCode varchar(20),
+    createId int(32) unsigned not null,
+    dataSource int(8) unsigned not null default 0,
+    familyId int(32) unsigned not null,
+    minHardness decimal(5,2) not null default 0,
+    maxHardness decimal(5,2) not null default 0,
+    minLight int(8) unsigned not null default 0,
+    maxLight int(8) unsigned not null default 0,
+    minPh decimal(5,2) not null default 0,
+    maxPh decimal(5,2) not null default 0,
+    regionId int(32) unsigned not null,
+    scientificNameId int(32) unsigned not null,
+    minTemperature decimal(5,2) not null default 0,
+    maxTemperature decimal(5,2) not null default 0,
+    danishTradenames text,
+    englishTradenames text,
+    germanTradenames text,
+    groupTypeId int(32) unsigned not null,
+    -- referenceBooks text,
+    -- otherLiterature text,
+    protected INT(32) unsigned default 0,
+    waterType int(10) unsigned NOT NULL DEFAULT '0' COMMENT '0:Fish;1:Freshwater;2:Saltwater;3:Brackish',
+	currentVersion decimal(5,2) not null default 0,
+    
+-- Plants    	
+	bottomTypeId int(32) unsigned not null default 0,
+    flowering varchar(75),
+    growthSpeedId int(32) unsigned not null default 0,
+    hardy tinyint(1) unsigned not null default 0,
+    minHeight decimal(5,2),
+    maxHeight decimal(5,2),
+    minWidth decimal(5,2),
+    maxWidth decimal(5,2),
+    waterDepth varchar(100),
+    zone varchar(100),    
+    
+-- Fish    
+    fishBaseId varchar(30),
+    minSize decimal(10,2),
+    maxSize decimal(10,2),
+    -- specialId int(32) unsigned not null default 0,
+    swimmingPositionId int(32) unsigned not null default 0,
+    tankWidth varchar(200), 
+    -- foodTypeId int(32) unsigned not null default 0, -- Used by Fish, Crustacean, Gastropda & Reptiles--
+    
+-- Crustacean
+
+-- Gastropda    
+
+-- Reptiles
+
+-- Foreign Keys
+
+	foreign key (bottomTypeId) references bottomType(id),
+	foreign key (growthSpeedId) references growthSpeed(id),
+    foreign key (specialId) references specials(id),
+    foreign key (swimmingPositionId) references swimmingPosition(id),
+    foreign key (scientificNameId) references latinName(id),
+    foreign key (regionId) references region(id),
+    FOREIGN KEY (createId) REFERENCES dateTimeInfo (id),
+    foreign key (familyId) references family(id),
+    foreign key (groupTypeId) references groupType(id),
+    
+-- Indexes    
+    index idx_CreatureType (creatuteType) using HASH,
+    index idx_Region (regionId) using HASH,
+    index idx_Family (familyId) using HASH,
+    
+-- Primary key    
+    primary key(id)
+);
+
+create table synonyms
+(
+	creaturesAndPlantsId int(32) unsigned not null,
+    scientificNameId  int(32) unsigned not null,
+    
+    foreign key (creaturesAndPlantsId) references creaturesAndPlants(id),
+    foreign key (scientificNameId) references latinName(id),
+    primary key(creaturesAndPlantsId, scientificNameId)
+);
+
+create table modifications
+(
+	creatureAndPlantsId int(32) unsigned not null,
+    dateTimeInfoId int(32) unsigned not null,
+    
+    foreign key (dateTimeInfoId) references dateTimeInfo (id),
+    foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
+    
+    primary key (creatureAndPlantsId, dateTimeInfoId)
+);
+
+create table picture
+(
+	id INT(32) unsigned not null auto_increment,
+    pictureData blob not null,
+    copyRightText varchar(500) not null default 'Public',
+    danish varchar(500),
+    english varchar(500),
+    german varchar(500),
+    
+	primary key(id)
+);
+
+
+create table pictureList
+(
+	creatureAndPlantsId int(32) unsigned not null,
+    pictureId int(32) unsigned not null,
+    
+    foreign key (pictureId) references picture (id),
+    foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
+    
+    primary key (creatureAndPlantsId, pictureId)
+);

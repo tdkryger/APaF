@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="TDK.APaF.Model.BottomTypeClass">
+    <Position X="10.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BottomTypeClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.ClassificationClass">
+    <Position X="11" Y="9.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ClassificationClass.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TDK.APaF.Model.CodeTextClass">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAEAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CodeTextClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.Creatures">
+    <Position X="0.5" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAEAAoAAAAgAAAAFAAgAAAAAAAgQAAAAQAAAEBAI=</HashCode>
+      <FileName>Creatures.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.CrustaceanClass">
+    <Position X="4.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CrustaceanClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.DateTimeInfoClass">
+    <Position X="10" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAgAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>DateTimeInfoClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.DecimalClass">
+    <Position X="2.5" Y="12.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgEAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DecimalClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.FamilyClass">
+    <Position X="10.25" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAgAAEAAAAAAAAAAAAAAAAAABAAAAABAA=</HashCode>
+      <FileName>FamilyClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.FamilyListClass">
+    <Position X="12.25" Y="12" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FamilyListClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.FishClass">
+    <Position X="4.5" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAEAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FishClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.FoodTypeClass">
+    <Position X="18.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FoodTypeClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.GastropodaClass">
+    <Position X="4.5" Y="8" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GastropodaClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.GroupClass">
+    <Position X="18.25" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAEAAAAAAAAAAAACQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GroupClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.GrowthSpeedClass">
+    <Position X="18.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GrowthSpeedClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.LatinNameClass">
+    <Position X="6.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAgAAEAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>LatinNameClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.LightClass">
+    <Position X="13.5" Y="9.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAEAAAAEAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>LightClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.OrderClass">
+    <Position X="8.5" Y="9.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAgAAAAAAAAAQAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>OrderClass.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TDK.APaF.Model.Picture">
+    <Position X="7.25" Y="3" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="TDK.APaF.Model.Picture.ExifErrorDelegate">
+        <TypeIdentifier>
+          <NewMemberFileName>Picture.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AQCAAAQAAAAAgAAQAAAAAAAAAAACAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Picture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.PictureList">
+    <Position X="14.75" Y="12" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>PictureList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.PlantClass">
+    <Position X="0.5" Y="8.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAABABAAAAAAAABAAAkAAAAAAAAAAAABAAQAAAAA=</HashCode>
+      <FileName>PlantClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.RegionClass">
+    <Position X="13" Y="3.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RegionClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.ReptileClass">
+    <Position X="4.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ReptileClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.SpecialClass">
+    <Position X="18.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpecialClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.SwimmingPositionClass">
+    <Position X="18.25" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SwimmingPositionClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.TextClass">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAEAAAAAAAABAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>TextClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.Animal">
+    <Position X="4.5" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAACAAAAAAAABAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Animal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.Decoration">
+    <Position X="18.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Decoration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.Lists.FoodTypeList">
+    <Position X="6.75" Y="12" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Lists\FoodTypeList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.Lists.DecorationList">
+    <Position X="9.5" Y="12" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Lists\DecorationList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.Behavior">
+    <Position X="18.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Behavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.Lists.BehaviorList">
+    <Position X="17" Y="12" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Lists\BehaviorList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.Exceptions.ModelException">
+    <Position X="20.5" Y="10" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\ModelException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.CreatureIdentification">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgoABAAAAAAAAAAAQAAAgABAAAAAAAAAA=</HashCode>
+      <FileName>CreatureIdentification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.VersionInfo">
+    <Position X="12.5" Y="6.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>VersionInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.Lists.BottomList">
+    <Position X="6.75" Y="13.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Lists\BottomList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.Lists.GrowthSpeedList">
+    <Position X="9.5" Y="13.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Lists\GrowthSpeedList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.Lists.BookList">
+    <Position X="12.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Lists\BookList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.Book">
+    <Position X="0.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAEAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Model.Lists.SwimmingPositionList">
+    <Position X="14.25" Y="13.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Lists\SwimmingPositionList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="EnumDataSource">
+    <Position X="21" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAEAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>ENums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EnumDefaultText">
+    <Position X="21" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAABAAAAAAAAAAAACAAABA=</HashCode>
+      <FileName>ENums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EnumLight">
+    <Position X="21" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>ENums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EnumWaterTypes">
+    <Position X="21" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAACEAAABA=</HashCode>
+      <FileName>ENums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="CreatureTypes">
+    <Position X="21" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAEAAAAAAEAAAAACQAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>ENums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

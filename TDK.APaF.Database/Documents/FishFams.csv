@@ -1,0 +1,909 @@
+"Class","Order","Family","Subfamily",Available,Valid,Last Ten Years (2006-2015)
+Myxini,,,,,,
+ ,Myxiniformes,,,,,
+ , ,Myxinidae,,96,81,13
+ , , ,Myxininae,32,26,0
+ , , ,Eptatretinae,64,55,13
+Petromyzonti,,,,,,
+ ,Petromyzontiformes,,,,,
+ , ,Petromyzontidae,,101,41,5
+ , ,Geotriidae,,15,1,0
+ , ,Mordaciidae,,5,3,0
+Cladistii,,,,,,
+ ,Polypteriformes,,,,,
+ , ,Polypteridae,,24,12,1
+Elasmobranchii,,,,,,
+ ,Hexanchiformes,,,,,
+ , ,Hexanchidae,,30,4,0
+ , ,Chlamydoselachidae,,2,2,1
+ ,Heterodontiformes,,,,,
+ , ,Heterodontidae,,19,9,0
+ ,Orectolobiformes,,,,,
+ , ,Rhincodontidae,,5,1,0
+ , ,Parascylliidae,,10,8,1
+ , ,Brachaeluridae,,4,2,0
+ , ,Orectolobidae,,18,12,5
+ , ,Hemiscylliidae,,33,17,4
+ , ,Stegostomatidae,,14,2,0
+ , ,Ginglymostomatidae,,16,4,1
+ ,Lamniformes,,,,,
+ , ,Odontaspididae,,13,3,0
+ , ,Mitsukurinidae,,4,1,0
+ , ,Pseudocarchariidae,,3,1,0
+ , ,Lamnidae,,40,5,0
+ , ,Megachasmidae,,1,1,0
+ , ,Cetorhinidae,,16,1,0
+ , ,Alopiidae,,15,3,0
+ ,Carcharhiniformes,,,,,
+ , ,Pentanchidae,,106,87,16
+ , ,Scyliorhinidae,,95,67,21
+ , ,Proscylliidae,,8,7,0
+ , ,Pseudotriakidae,,5,4,2
+ , ,Leptochariidae,,2,1,0
+ , ,Triakidae,,86,47,6
+ , , ,Triakinae,59,35,5
+ , , ,Galeorhininae,26,12,1
+ , ,Hemigaleidae,,17,8,0
+ , ,Carcharhinidae,,195,59,3
+ , ,Sphyrnidae,,24,10,1
+ ,Squaliformes,,,,,
+ , ,Dalatiidae,,30,9,0
+ , ,Etmopteridae,,56,46,4
+ , ,Somniosidae,,35,17,0
+ , ,Oxynotidae,,10,5,0
+ , ,Centrophoridae,,45,15,2
+ , ,Squalidae,,53,29,13
+ , ,Echinorhinidae,,5,2,0
+ ,Pristiophoriformes,,,,,
+ , ,Pristiophoridae,,11,8,3
+ ,Squatiniformes,,,,,
+ , ,Squatinidae,,33,21,6
+ ,Pristiformes,,,,,
+ , ,Pristidae,,25,7,0
+ ,Torpediniformes,,,,,
+ , ,Narkidae,,17,12,1
+ , ,Narcinidae,,48,31,3
+ , ,Hypnidae,,2,1,0
+ , ,Torpedinidae,,51,24,2
+ ,Rajiformes,,,,,
+ , ,Rhinobatidae,,97,63,8
+ , , ,Rhinobatinae,75,48,2
+ , , ,Rhynchobatinae,10,7,3
+ , , ,Rhininae,3,2,1
+ , , ,Platyrhininae,8,6,2
+ , ,Arhynchobatidae,,130,108,22
+ , ,Crurirajidae,,9,8,1
+ , ,Rajidae,,297,172,27
+ , ,Anacanthobatidae,,14,12,3
+ ,Myliobatiformes,,,,,
+ , ,Plesiobatidae,,2,1,0
+ , ,Hexatrygonidae,,5,1,0
+ , ,Dasyatidae,,161,91,16
+ , ,Gymnuridae,,25,14,0
+ , ,Myliobatidae,,127,46,3
+ , , ,Myliobatinae,52,25,3
+ , , ,Rhinopterinae,15,8,0
+ , , ,Mobulinae,56,13,0
+ , ,Urolophidae,,38,30,3
+ , ,Potamotrygonidae,,49,28,10
+ , ,Urotrygonidae,,23,18,1
+Holocephali,,,,,,
+ ,Chimaeriformes,,,,,
+ , ,Callorhinchidae,,17,3,0
+ , ,Chimaeridae,,61,41,14
+ , ,Rhinochimaeridae,,12,9,0
+Actinopteri,,,,,,
+ ,Acipenseriformes,,,,,
+ , ,Acipenseridae,,156,26,0
+ , ,Polyodontidae,,10,2,0
+ ,Lepisosteiformes,,,,,
+ , ,Lepisosteidae,,60,7,0
+ ,Amiiformes,,,,,
+ , ,Amiidae,,13,1,0
+ ,Osteoglossiformes,,,,,
+ , ,Osteoglossidae,,13,6,1
+ , ,Arapaimidae,,12,6,1
+ , ,Pantodontidae,,3,1,0
+ , ,Hiodontidae,,10,2,0
+ , ,Notopteridae,,22,10,0
+ , ,Mormyridae,,319,216,24
+ , ,Gymnarchidae,,1,1,0
+ ,Elopiformes,,,,,
+ , ,Elopidae,,16,7,1
+ , ,Megalopidae,,15,2,0
+ ,Albuliformes,,,,,
+ , ,Albulidae,,31,13,3
+ , , ,Albulinae,28,11,3
+ , , ,Pterothrissinae,3,2,0
+ ,Notacanthiformes,,,,,
+ , ,Halosauridae,,26,16,0
+ , ,Notacanthidae,,35,11,0
+ ,Anguilliformes,,,,,
+ , ,Protanguillidae,,1,1,1
+ , ,Anguillidae,,134,18,2
+ , ,Heterenchelyidae,,10,8,0
+ , ,Moringuidae,,46,15,0
+ , ,Chlopsidae,,26,22,0
+ , ,Myrocongridae,,5,5,1
+ , ,Muraenidae,,516,197,13
+ , , ,Uropterygiinae,60,35,4
+ , , ,Muraeninae,450,162,9
+ , ,Synaphobranchidae,,64,39,2
+ , , ,Ilyophinae,32,26,0
+ , , ,Synaphobranchinae,28,12,2
+ , , ,Simenchelyinae,4,1,0
+ , ,Ophichthidae,,574,329,40
+ , , ,Myrophinae,104,65,12
+ , , ,Ophichthinae,464,264,28
+ , ,Colocongridae,,10,10,0
+ , ,Congridae,,340,197,7
+ , , ,Congrinae,194,113,6
+ , , ,Bathymyrinae,91,50,0
+ , , ,Heterocongrinae,42,34,1
+ , ,Muraenesocidae,,40,15,0
+ , ,Derichthyidae,,7,3,0
+ , ,Nemichthyidae,,31,9,0
+ , ,Serrivomeridae,,22,10,0
+ , ,Nettastomatidae,,53,43,0
+ ,Saccopharyngiformes,,,,,
+ , ,Cyematidae,,3,2,0
+ , ,Saccopharyngidae,,16,10,0
+ , ,Eurypharyngidae,,6,1,0
+ , ,Monognathidae,,15,15,0
+ ,Clupeiformes,,,,,
+ , ,Denticipitidae,,2,1,0
+ , ,Clupeidae,,511,194,1
+ , ,Dussumieriidae,,16,9,3
+ , ,Engraulidae,,313,148,4
+ , ,Chirocentridae,,8,2,0
+ , ,Pristigasteridae,,91,38,0
+ , ,Sundasalangidae,,7,7,0
+ ,Gonorynchiformes,,,,,
+ , ,Chanidae,,19,1,0
+ , ,Gonorynchidae,,8,5,0
+ , ,Kneriidae,,31,30,0
+ , ,Phractolaemidae,,3,1,0
+ ,Cypriniformes,,,,,
+ , ,Cyprinidae,,5704,3009,338
+ , , ,Acheilognathinae,119,75,10
+ , , ,Cultrinae,0,0,0
+ , , ,Cyprininae,2025,1153,99
+ , , ,Barbinae,12,8,0
+ , , ,Labeoninae,703,417,67
+ , , ,Squaliobarbinae,0,0,0
+ , , ,Tincinae,13,1,0
+ , , ,Xenocypridinae,320,154,13
+ , , ,Gobioninae,340,204,13
+ , , ,Leuciscinae,1340,570,45
+ , , ,Danioninae,511,330,64
+ , , ,ex-danioninae,0,0,0
+ , , ,No subfamily,167,14,0
+ , , ,Alburninae,141,73,24
+ , , ,Leptobarbinae,5,5,0
+ , , ,Oxygastrinae,1,1,0
+ , ,Psilorhynchidae,,29,26,19
+ , ,Cobitidae,,399,249,54
+ , , ,Botiinae,94,56,4
+ , , ,Cobitinae,305,193,50
+ , ,Balitoridae,,295,231,45
+ , ,Nemacheilidae,,803,651,160
+ , ,Serpenticobitidae,,3,3,0
+ , ,Vaillantellidae,,4,3,0
+ , ,Ellopostomatidae,,2,2,0
+ , ,Barbuccidae,,2,2,1
+ , ,Gyrinocheilidae,,5,3,0
+ , ,Catostomidae,,202,83,1
+ ,Characiformes,,,,,
+ , ,Citharinidae,,13,8,0
+ , ,Distichodontidae,,137,101,8
+ , ,Alestidae,,182,115,6
+ , ,Hepsetidae,,8,5,3
+ , ,Hemiodontidae,,45,31,2
+ , ,Parodontidae,,45,32,5
+ , ,Curimatidae,,169,105,7
+ , ,Prochilodontidae,,50,21,0
+ , ,Anostomidae,,188,147,19
+ , ,Chilodontidae,,10,8,1
+ , ,Erythrinidae,,33,16,2
+ , ,Lebiasinidae,,92,75,13
+ , , ,Lebiasininae,29,29,9
+ , , ,Pyrrhulininae,63,46,4
+ , ,Gasteropelecidae,,21,9,0
+ , ,Ctenoluciidae,,13,7,0
+ , ,Acestrorhynchidae,,33,26,0
+ , , ,Acestrorhynchinae,21,14,0
+ , , ,Roestinae,6,6,0
+ , , ,Heterocharacinae,6,6,0
+ , ,Cynodontidae,,10,8,0
+ , , ,Cynodontinae,10,8,0
+ , ,Serrasalmidae,,161,88,6
+ , ,Characidae,,1341,1097,224
+ , , ,Stethaprioninae,26,19,2
+ , , ,Aphyocharacinae,42,25,2
+ , , ,Characinae,118,89,21
+ , , ,Tetragonopterinae,18,12,7
+ , , ,Rhoadsiinae,8,7,1
+ , , ,Cheirodontinae,80,65,12
+ , , ,Jupiaba clade,29,27,5
+ , , ,Pristellinae,340,307,72
+ , , ,Astyanax clade,202,154,35
+ , , ,Acestrorhamphinae,31,25,4
+ , , ,Nematobrycon clade,0,0,0
+ , , ,Gymnocharacinae,10,7,0
+ , , ,Aphyoditeinae,19,18,0
+ , , ,Stevardiinae,361,318,59
+ , , ,Pseudochalceinae,8,6,1
+ , ,Bryconidae,,86,49,2
+ , , ,Bryconinae,75,45,1
+ , , ,Salmininae,11,4,1
+ , ,Triportheidae,,34,21,0
+ , , ,Triportheinae,28,16,0
+ , , ,Agoniatinae,3,2,0
+ , , ,Clupeacharacinae,1,1,0
+ , ,Iguanodectidae,,33,30,1
+ , , ,Iguanodectinae,13,11,0
+ , , ,Bryconops clade,20,19,1
+ , ,Chalceidae,,9,5,0
+ , ,Crenuchidae,,99,90,13
+ , , ,Crenuchinae,3,3,0
+ , , ,Characidiinae,96,87,13
+ ,Siluriformes,,,,,
+ , ,Diplomystidae,,12,6,0
+ , ,Lacantuniidae,,1,1,0
+ , ,Ictaluridae,,137,51,1
+ , ,Horabagridae,,15,9,2
+ , ,Bagridae,,324,207,30
+ , ,Cranoglanididae,,7,3,0
+ , ,Austroglanididae,,3,3,0
+ , ,Siluridae,,173,99,9
+ , ,Kryptoglanidae,,1,1,1
+ , ,Schilbeidae,,117,61,3
+ , ,Pangasiidae,,52,28,0
+ , ,Amblycipitidae,,42,37,9
+ , ,Amphiliidae,,118,99,29
+ , , ,Amphiliinae,51,38,11
+ , , ,Leptoglaninae,28,28,9
+ , , ,Doumeinae,39,33,9
+ , ,Akysidae,,66,57,9
+ , ,Sisoridae,,258,218,70
+ , , ,Sisorinae,42,30,6
+ , , ,Glyptosterninae,216,188,64
+ , ,Erethistidae,,50,44,23
+ , ,Clariidae,,223,120,11
+ , ,Heteropneustidae,,9,4,1
+ , ,Claroteidae,,131,92,5
+ , , ,Claroteinae,5,4,0
+ , , ,Auchenoglanidinae,0,0,0
+ , ,Chacidae,,7,4,1
+ , ,Olyridae,,8,5,2
+ , ,Malapteruridae,,27,19,0
+ , ,Ariidae,,343,145,9
+ , , ,Galeichthyinae,8,4,1
+ , , ,Ariinae,319,137,8
+ , , ,Bagreinae,16,4,0
+ , ,Anchariidae,,6,6,1
+ , ,Plotosidae,,82,41,5
+ , ,Mochokidae,,266,209,17
+ , , ,Chiloglanidinae,67,62,5
+ , , ,Mochokinae,199,147,12
+ , ,Doradidae,,150,93,15
+ , , ,Wertheimerinae,3,3,0
+ , , ,Astrodoradinae,16,12,1
+ , , ,Doradinae,94,62,10
+ , ,Auchenipteridae,,173,118,21
+ , , ,Centromochlinae,46,45,13
+ , , ,Auchenipterinae,123,73,8
+ , ,Pimelodidae,,194,109,19
+ , ,Pseudopimelodidae,,46,40,11
+ , ,Heptapteridae,,297,208,15
+ , ,Cetopsidae,,50,42,1
+ , , ,Cetopsinae,44,38,1
+ , , ,Helogeninae,6,4,0
+ , ,Aspredinidae,,69,42,5
+ , ,Nematogenyidae,,3,1,0
+ , ,Trichomycteridae,,324,284,71
+ , , ,Sarcoglanidinae,11,11,3
+ , , ,Trichomycterinae,229,204,60
+ , , ,Copionodontinae,5,5,1
+ , , ,Trichogeninae,2,2,1
+ , , ,Vandelliinae,20,9,0
+ , , ,Stegophilinae,31,28,1
+ , , ,Tridentinae,7,7,0
+ , , ,Glanapteryginae,18,18,5
+ , ,Callichthyidae,,277,205,12
+ , , ,Callichthyinae,50,17,1
+ , , ,Corydoradinae,227,188,11
+ , ,Loricariidae,,1052,915,209
+ , , ,Lithogeninae,3,3,1
+ , , ,Neoplecostominae,57,54,19
+ , , ,Hypoptopomatinae,159,147,60
+ , , ,Loricariinae,286,239,39
+ , , ,Hypostominae,240,202,34
+ , , ,Ancistrinae,298,262,54
+ , , ,Delturinae,8,7,1
+ , ,Scoloplacidae,,6,6,2
+ , ,Astroblepidae,,73,71,16
+ ,Gymnotiformes,,,,,
+ , ,Sternopygidae,,53,42,16
+ , ,Apteronotidae,,100,94,45
+ , ,Rhamphichthyidae,,22,16,2
+ , ,Hypopomidae,,35,31,15
+ , ,Gymnotidae,,47,40,7
+ ,Esociformes,,,,,
+ , ,Esocidae,,39,7,3
+ , ,Umbridae,,17,7,0
+ ,Osmeriformes,,,,,
+ , ,Argentinidae,,37,28,2
+ , ,Microstomatidae,,29,22,2
+ , ,Bathylagidae,,36,24,2
+ , ,Opisthoproctidae,,20,19,6
+ , ,Alepocephalidae,,137,96,2
+ , ,Platytroctidae,,49,40,0
+ , ,Leptochilichthyidae,,4,3,0
+ , ,Lepidogalaxiidae,,1,1,0
+ , ,Osmeridae,,46,14,0
+ , ,Plecoglossidae,,3,1,0
+ , ,Salangidae,,28,18,0
+ , ,Retropinnidae,,18,6,0
+ , , ,Retropinninae,15,4,0
+ , , ,Prototroctinae,3,2,0
+ , ,Galaxiidae,,136,66,13
+ , , ,Aplochitoninae,6,4,0
+ , , ,Galaxiinae,130,62,13
+ ,Salmoniformes,,,,,
+ , ,Salmonidae,,762,226,16
+ , , ,Coregoninae,305,86,0
+ , , ,Thymallinae,41,15,3
+ , , ,Salmoninae,413,125,13
+ ,Stomiiformes,,,,,
+ , ,Gonostomatidae,,52,33,0
+ , ,Sternoptychidae,,98,76,2
+ , , ,Maurolicinae,37,32,1
+ , , ,Sternoptychinae,61,44,1
+ , ,Phosichthyidae,,31,24,0
+ , ,Stomiidae,,423,301,15
+ , , ,Chauliodontinae,17,9,0
+ , , ,Stomiinae,30,11,0
+ , , ,Astronesthinae,84,60,1
+ , , ,Melanostomiinae,262,204,10
+ , , ,Malacosteinae,19,14,4
+ , , ,Idiacanthinae,11,3,0
+ ,Ateleopodiformes,,,,,
+ , ,Ateleopodidae,,17,13,1
+ ,Aulopiformes,,,,,
+ , ,Aulopidae,,19,12,3
+ , ,Chlorophthalmidae,,23,20,2
+ , ,Paraulopidae,,15,14,3
+ , ,Ipnopidae,,46,33,0
+ , ,Bathysauroididae,,1,1,0
+ , ,Scopelarchidae,,25,18,0
+ , ,Notosudidae,,17,17,0
+ , ,Giganturidae,,6,2,0
+ , ,Synodontidae,,143,74,15
+ , , ,Synodontinae,100,49,13
+ , , ,Harpadontinae,43,25,2
+ , ,Bathysauridae,,5,2,0
+ , ,Paralepididae,,91,59,0
+ , ,Anotopteridae,,5,3,0
+ , ,Evermannellidae,,14,8,0
+ , ,Omosudidae,,4,1,0
+ , ,Alepisauridae,,10,2,0
+ , ,Pseudotrichonotidae,,2,2,0
+ ,Myctophiformes,,,,,
+ , ,Neoscopelidae,,10,6,0
+ , ,Myctophidae,,395,251,0
+ ,Lampriformes,,,,,
+ , ,Lampridae,,9,2,0
+ , ,Veliferidae,,4,2,0
+ , ,Lophotidae,,11,5,0
+ , ,Radiicephalidae,,1,1,0
+ , ,Trachipteridae,,54,11,0
+ , ,Regalecidae,,24,3,0
+ , ,Stylephoridae,,1,1,0
+ ,Polymixiiformes,,,,,
+ , ,Polymixiidae,,14,10,0
+ ,Percopsiformes,,,,,
+ , ,Percopsidae,,5,2,0
+ , ,Aphredoderidae,,5,1,0
+ , ,Amblyopsidae,,12,9,1
+ ,Gadiformes,,,,,
+ , ,Muraenolepididae,,9,8,4
+ , ,Bregmacerotidae,,18,14,0
+ , ,Euclichthyidae,,1,1,0
+ , ,Macrouridae,,489,408,18
+ , , ,Bathygadinae,30,27,0
+ , , ,Macrouroidinae,3,2,0
+ , , ,Trachyrincinae,8,7,0
+ , , ,Macrourinae,447,372,18
+ , ,Moridae,,156,107,0
+ , ,Melanonidae,,5,2,0
+ , ,Gadidae,,116,23,0
+ , ,Lotidae,,87,22,0
+ , ,Phycidae,,43,11,0
+ , ,Merlucciidae,,52,21,1
+ , , ,Merlucciinae,50,20,1
+ , , ,Steindachneriinae,1,1,0
+ ,Ophidiiformes,,,,,
+ , ,Ophidiidae,,318,264,21
+ , , ,Brotulinae,17,6,0
+ , , ,Brotulotaeniinae,4,4,0
+ , , ,Ophidiinae,84,65,8
+ , , ,Neobythitinae,212,188,13
+ , ,Carapidae,,74,35,2
+ , , ,Carapinae,67,29,1
+ , , ,Pyramodontinae,6,5,0
+ , , ,Tetragondacninae,1,1,1
+ , ,Bythitidae,,224,209,62
+ , , ,Bythitinae,106,95,21
+ , , ,Brosmophycinae,118,114,41
+ , ,Aphyonidae,,26,24,2
+ , ,Parabrotulidae,,4,3,0
+ ,Batrachoidiformes,,,,,
+ , ,Batrachoididae,,131,84,4
+ , , ,Porichthyinae,18,15,0
+ , , ,Thalassophryninae,16,11,0
+ , , ,Batrachoidinae,34,24,0
+ , , ,Halophryninae,56,34,4
+ ,Lophiiformes,,,,,
+ , ,Lophiidae,,59,29,4
+ , ,Antennariidae,,173,51,5
+ , ,Tetrabrachiidae,,2,2,1
+ , ,Lophichthyidae,,1,1,0
+ , ,Brachionichthyidae,,16,14,10
+ , ,Chaunacidae,,27,25,10
+ , ,Ogcocephalidae,,106,75,10
+ , ,Caulophrynidae,,10,5,0
+ , ,Neoceratiidae,,1,1,0
+ , ,Melanocetidae,,25,6,0
+ , ,Himantolophidae,,29,22,2
+ , ,Diceratiidae,,7,6,0
+ , ,Oneirodidae,,125,68,6
+ , ,Thaumatichthyidae,,9,8,0
+ , ,Centrophrynidae,,1,1,0
+ , ,Ceratiidae,,21,4,0
+ , ,Gigantactinidae,,28,23,0
+ , ,Linophrynidae,,48,27,0
+ ,Gobiesociformes,,,,,
+ , ,Gobiesocidae,,266,167,16
+ , , ,Gobiesocinae,252,156,14
+ , , ,Cheilobranchinae,14,11,2
+ ,Atheriniformes,,,,,
+ , ,Atherinidae,,141,75,6
+ , , ,Atherinomorinae,58,33,4
+ , , ,Craterocephalinae,32,27,1
+ , , ,Atherininae,50,14,0
+ , , ,Bleheratherininae,1,1,1
+ , ,Bedotiidae,,16,16,2
+ , ,Melanotaeniidae,,128,103,31
+ , ,Pseudomugilidae,,21,18,0
+ , ,Atherinopsidae,,188,109,0
+ , , ,Atherinopsinae,76,29,0
+ , , ,Menidiinae,112,80,0
+ , ,Notocheiridae,,2,1,0
+ , ,Isonidae,,5,5,0
+ , ,Telmatherinidae,,18,18,1
+ , ,Dentatherinidae,,1,1,0
+ , ,Phallostethidae,,26,23,2
+ ,Cyprinodontiformes,,,,,
+ , ,Aplocheilidae,,31,14,4
+ , ,Nothobranchiidae,,386,271,51
+ , ,Rivulidae,,458,415,132
+ , ,Profundulidae,,12,8,2
+ , ,Fundulidae,,103,41,1
+ , ,Valenciidae,,3,3,1
+ , ,Goodeidae,,72,48,1
+ , , ,Empetrichthyinae,10,4,0
+ , , ,Goodeinae,62,44,1
+ , ,Poeciliidae,,509,360,41
+ , , ,Poeciliinae,394,276,36
+ , , ,Procatopodinae,79,62,5
+ , , ,Aplocheilichthyinae,36,22,0
+ , ,Cyprinodontidae,,219,134,16
+ , , ,Cubanichthyinae,2,2,0
+ , , ,Cyprinodontinae,217,132,16
+ , ,Anablepidae,,27,18,2
+ , , ,Anablepinae,26,17,2
+ , , ,Oxyzygonectinae,1,1,0
+ ,Beloniformes,,,,,
+ , ,Scomberesocidae,,21,5,0
+ , ,Belonidae,,156,41,2
+ , ,Hemiramphidae,,132,61,1
+ , ,Zenarchopteridae,,86,61,6
+ , ,Exocoetidae,,169,66,3
+ , ,Adrianichthyidae,,41,37,9
+ , , ,Oryziinae,37,33,9
+ , , ,Adrianichthyinae,4,4,0
+ ,Stephanoberyciformes,,,,,
+ , ,Stephanoberycidae,,5,4,0
+ , ,Hispidoberycidae,,1,1,0
+ , ,Melamphaidae,,76,65,15
+ , ,Gibberichthyidae,,3,2,0
+ ,Beryciformes,,,,,
+ , ,Monocentridae,,7,4,0
+ , ,Trachichthyidae,,60,48,4
+ , ,Anomalopidae,,10,9,1
+ , ,Diretmidae,,5,4,0
+ , ,Anoplogastridae,,4,2,0
+ , ,Berycidae,,16,10,0
+ , ,Holocentridae,,221,85,1
+ , , ,Holocentrinae,131,41,1
+ , , ,Myripristinae,89,44,0
+ ,Cetomimiformes,,,,,
+ , ,Rondeletiidae,,2,2,0
+ , ,Barbourisiidae,,1,1,0
+ , ,Cetomimidae,,32,30,0
+ ,Zeiformes,,,,,
+ , ,Cyttidae,,6,3,0
+ , ,Oreosomatidae,,17,10,0
+ , , ,Pseudocyttinae,2,1,0
+ , , ,Oreosomatinae,15,9,0
+ , ,Parazenidae,,6,4,0
+ , , ,Parazeninae,1,1,0
+ , , ,Cyttopsinae,5,3,0
+ , ,Zeniontidae,,9,7,0
+ , ,Grammicolepididae,,8,3,0
+ , , ,Macrurocyttinae,1,1,0
+ , , ,Grammicolepidinae,7,2,0
+ , ,Zeidae,,14,6,1
+ ,Incertae sedis,,,,,
+ , ,Elassomatidae,,8,7,1
+ ,Gasterosteiformes,,,,,
+ , ,Hypoptychidae,,4,2,0
+ , ,Gasterosteidae,,99,19,1
+ , ,Aulorhynchidae,,2,1,0
+ , ,Indostomidae,,3,3,0
+ , ,Pegasidae,,14,5,0
+ ,Syngnathiformes,,,,,
+ , ,Aulostomidae,,9,3,0
+ , ,Fistulariidae,,14,4,0
+ , ,Centriscidae,,41,12,0
+ , , ,Macroramphosinae,28,8,0
+ , , ,Centriscinae,13,4,0
+ , ,Solenostomidae,,11,6,0
+ , ,Syngnathidae,,666,341,13
+ , , ,Syngnathinae,544,268,6
+ , , ,Hippocampinae,122,73,7
+ ,Synbranchiformes,,,,,
+ , ,Synbranchidae,,62,24,1
+ , ,Mastacembelidae,,139,85,14
+ , ,Chaudhuriidae,,10,10,1
+ ,Scorpaeniformes,,,,,
+ , ,Sebastidae,,212,134,5
+ , , ,Sebastinae,200,124,1
+ , , ,Sebastolobinae,12,10,4
+ , ,Setarchidae,,15,6,0
+ , ,Neosebastidae,,20,18,1
+ , ,Scorpaenidae,,377,225,20
+ , , ,Scorpaeninae,319,194,14
+ , , ,Caracanthinae,9,4,0
+ , , ,Pteroinae,48,27,6
+ , ,Apistidae,,12,3,0
+ , ,Tetrarogidae,,77,40,0
+ , ,Synanceiidae,,72,35,0
+ , , ,Minoinae,21,12,0
+ , , ,Choridactylinae,23,13,0
+ , , ,Synanceiinae,28,10,0
+ , ,Eschmeyeridae,,1,1,0
+ , ,Perryenidae,,1,1,0
+ , ,Aploactinidae,,57,49,6
+ , ,Pataecidae,,6,3,0
+ , ,Gnathanacanthidae,,4,1,0
+ , ,Congiopodidae,,18,7,0
+ , ,Dactylopteridae,,26,7,0
+ , ,Plectrogeniidae,,2,2,0
+ , ,Parabembridae,,2,2,0
+ , ,Bembridae,,9,9,0
+ , ,Triglidae,,225,126,4
+ , ,Peristediidae,,73,45,4
+ , ,Hoplichthyidae,,17,17,3
+ , ,Platycephalidae,,153,85,15
+ , ,Anoplopomatidae,,5,2,0
+ , ,Hexagrammidae,,33,12,0
+ , , ,Hexagramminae,25,6,0
+ , , ,Pleurogramminae,3,2,0
+ , , ,Ophiodontinae,2,1,0
+ , , ,Oxylebiinae,1,1,0
+ , , ,Zaniolepidinae,2,2,0
+ , ,Normanichthyidae,,1,1,0
+ , ,Rhamphocottidae,,1,1,0
+ , ,Ereuniidae,,3,3,0
+ , ,Bathylutichthyidae,,2,2,1
+ , ,Cottidae,,480,264,13
+ , ,Cottocomephoridae,,2,0,0
+ , ,Comephoridae,,2,2,0
+ , ,Abyssocottidae,,29,24,0
+ , ,Hemitripteridae,,22,8,0
+ , ,Psychrolutidae,,55,38,2
+ , ,Agonidae,,88,46,0
+ , , ,Agoninae,34,15,0
+ , , ,Anoplagoninae,10,4,0
+ , , ,Bathyagoninae,9,9,0
+ , , ,Brachyopsinae,18,9,0
+ , , ,Hypsagoninae,15,7,0
+ , , ,Bothragoninae,2,2,0
+ , ,Cyclopteridae,,50,29,2
+ , ,Liparidae,,481,424,74
+ ,Perciformes,,,,,
+ , ,Centropomidae,,33,12,0
+ , ,Ambassidae,,102,50,4
+ , ,Percichthyidae,,96,37,2
+ , ,Perciliidae,,3,2,0
+ , ,Howellidae,,9,9,0
+ , ,Lateolabracidae,,6,3,0
+ , ,Latidae,,27,13,2
+ , ,Acropomatidae,,38,32,1
+ , ,Moronidae,,34,6,0
+ , ,Polyprionidae,,18,4,0
+ , ,Dinopercidae,,4,2,0
+ , ,Serranidae,,1120,547,40
+ , , ,Serraninae,166,88,9
+ , , ,Anthiadinae,297,219,25
+ , , ,Epinephelinae,575,203,4
+ , , ,Liopropomatinae,0,0,0
+ , , ,Grammistinae,67,35,2
+ , ,Ostracoberycidae,,4,3,0
+ , ,Symphysanodontidae,,15,12,3
+ , ,Centrogenyidae,,3,1,0
+ , ,Pseudochromidae,,191,152,16
+ , , ,Pseudochrominae,126,96,15
+ , , ,Pseudoplesiopinae,28,27,1
+ , , ,Anisochrominae,3,3,0
+ , , ,Congrogadinae,32,24,0
+ , , ,Assiculinae,1,1,0
+ , , ,Assiculoidinae,1,1,0
+ , ,Grammatidae,,14,13,1
+ , ,Callanthiidae,,17,14,1
+ , ,Plesiopidae,,72,50,1
+ , , ,Plesiopinae,48,34,0
+ , , ,Acanthoclininae,24,16,1
+ , ,Opistognathidae,,105,83,14
+ , ,Terapontidae,,115,53,0
+ , ,Banjosidae,,2,1,0
+ , ,Kuhliidae,,37,12,0
+ , ,Centrarchidae,,153,38,4
+ , ,Percidae,,376,235,27
+ , , ,Percinae,36,11,2
+ , , ,Luciopercinae,25,10,0
+ , , ,Etheostomatinae,311,214,25
+ , ,Priacanthidae,,50,19,0
+ , ,Apogonidae,,512,356,32
+ , , ,Apogoninae,487,333,31
+ , , ,Pseudamiinae,21,20,1
+ , , ,Amioidinae,3,2,0
+ , , ,Paxtoninae,1,1,0
+ , ,Epigonidae,,50,43,11
+ , ,Dinolestidae,,4,1,0
+ , ,Sillaginidae,,46,34,3
+ , ,Malacanthidae,,68,45,4
+ , , ,Malacanthinae,28,16,2
+ , , ,Latilinae,40,29,2
+ , ,Lactariidae,,3,1,0
+ , ,Scombropidae,,5,3,0
+ , ,Pomatomidae,,13,1,0
+ , ,Rachycentridae,,14,1,0
+ , ,Echeneidae,,68,8,0
+ , ,Carangidae,,665,151,3
+ , ,Nematistiidae,,2,1,0
+ , ,Coryphaenidae,,46,2,0
+ , ,Menidae,,2,1,0
+ , ,Leiognathidae,,97,50,8
+ , , ,Leiognathinae,28,13,1
+ , , ,Gazzinae,65,37,7
+ , ,Bramidae,,51,20,0
+ , ,Caristiidae,,20,19,14
+ , ,Arripidae,,9,4,0
+ , ,Emmelichthyidae,,19,18,1
+ , ,Lutjanidae,,374,109,4
+ , ,Caesionidae,,41,23,3
+ , ,Lobotidae,,9,2,0
+ , ,Datnioididae,,8,5,0
+ , ,Hapalogenyidae,,12,8,3
+ , ,Gerreidae,,109,55,7
+ , ,Haemulidae,,373,135,1
+ , , ,Haemulinae,234,92,0
+ , , ,Plectorhinchinae,129,43,1
+ , ,Sparidae,,398,143,15
+ , ,Centracanthidae,,42,9,0
+ , ,Lethrinidae,,138,43,3
+ , ,Nemipteridae,,165,69,4
+ , ,Sciaenidae,,558,292,2
+ , ,Polynemidae,,95,42,2
+ , ,Mullidae,,199,88,21
+ , ,Pempheridae,,57,39,10
+ , ,Glaucosomatidae,,7,4,0
+ , ,Leptobramidae,,3,1,0
+ , ,Bathyclupeidae,,9,9,2
+ , ,Toxotidae,,13,8,0
+ , ,Dichistiidae,,5,2,0
+ , ,Kyphosidae,,129,52,2
+ , , ,Girellinae,42,19,0
+ , , ,Kyphosinae,53,17,2
+ , , ,Scorpidinae,18,11,0
+ , , ,Microcanthinae,14,5,0
+ , ,Parascorpididae,,2,1,0
+ , ,Drepaneidae,,9,3,0
+ , ,Monodactylidae,,15,6,0
+ , ,Chaetodontidae,,305,132,1
+ , ,Pomacanthidae,,178,88,3
+ , ,Enoplosidae,,5,1,0
+ , ,Pentacerotidae,,20,13,0
+ , , ,Histiopterinae,10,7,0
+ , , ,Pentacerotinae,10,6,0
+ , ,Polycentridae,,9,5,1
+ , ,Nandidae,,10,6,4
+ , ,Badidae,,33,29,13
+ , ,Pristolepididae,,10,6,2
+ , ,Oplegnathidae,,12,7,0
+ , ,Cirrhitidae,,65,35,1
+ , ,Chironemidae,,9,6,0
+ , ,Aplodactylidae,,13,5,0
+ , ,Cheilodactylidae,,51,27,0
+ , ,Latridae,,22,7,0
+ , ,Cepolidae,,45,25,2
+ , ,Mugilidae,,303,74,2
+ , ,Cichlidae,,2211,1683,206
+ , , ,Etroplinae,20,16,3
+ , , ,Ptychochrominae,19,15,6
+ , , ,Pseudocrenilabrinae,1391,1103,76
+ , , ,Cichlinae,778,548,120
+ , ,Embiotocidae,,54,23,1
+ , ,Pomacentridae,,773,396,25
+ , ,Labridae,,1481,529,46
+ , ,Odacidae,,33,12,0
+ , ,Scaridae,,414,99,3
+ , , ,Scarinae,314,74,1
+ , , ,Sparisomatinae,94,25,2
+ , ,Bathymasteridae,,7,7,0
+ , ,Zoarcidae,,409,304,35
+ , , ,Gymnelinae,63,44,6
+ , , ,Lycodinae,313,241,25
+ , , ,Lycozoarcinae,2,1,0
+ , , ,Zoarcinae,15,6,1
+ , , ,Neozoarcinae,13,12,3
+ , ,Stichaeidae,,115,70,4
+ , , ,Stichaeinae,21,14,1
+ , , ,Opisthocentrinae,21,12,0
+ , , ,Lumpeninae,26,11,1
+ , , ,Chirolophinae,17,12,0
+ , , ,Xiphisterinae,27,19,2
+ , , ,Azygopterinae,2,2,0
+ , ,Cryptacanthodidae,,9,4,0
+ , ,Pholidae,,40,16,0
+ , ,Anarhichadidae,,22,5,0
+ , ,Ptilichthyidae,,1,1,0
+ , ,Zaproridae,,1,1,0
+ , ,Scytalinidae,,1,1,0
+ , ,Bovichtidae,,18,11,0
+ , ,Pseudaphritidae,,4,1,0
+ , ,Eleginopsidae,,5,1,0
+ , ,Nototheniidae,,96,59,1
+ , , ,Pleuragrammatinae,8,6,0
+ , , ,Nototheniinae,67,36,0
+ , , ,Trematominae,21,17,1
+ , ,Harpagiferidae,,12,12,1
+ , ,Artedidraconidae,,42,37,12
+ , ,Bathydraconidae,,19,17,0
+ , , ,Bathydraconinae,15,14,0
+ , , ,Gymnodraconinae,4,3,0
+ , ,Channichthyidae,,30,26,2
+ , ,Chiasmodontidae,,43,32,18
+ , ,Champsodontidae,,16,13,0
+ , ,Trichodontidae,,6,2,0
+ , ,Ammodytidae,,45,33,9
+ , ,Trachinidae,,20,9,0
+ , ,Uranoscopidae,,77,53,2
+ , ,Trichonotidae,,12,10,1
+ , ,Creediidae,,22,18,2
+ , ,Leptoscopidae,,11,5,0
+ , ,Percophidae,,60,51,4
+ , , ,Percophinae,1,1,0
+ , , ,Bembropinae,30,24,0
+ , , ,Hemerocoetinae,29,26,4
+ , ,Pinguipedidae,,136,88,31
+ , ,Cheimarrichthyidae,,1,1,0
+ , ,Pholidichthyidae,,3,2,0
+ , ,Tripterygiidae,,219,177,18
+ , , ,Notoclininae,3,3,0
+ , , ,Tripterygiinae,215,174,18
+ , ,Labrisomidae,,184,128,11
+ , ,Clinidae,,169,87,3
+ , ,Chaenopsidae,,103,90,6
+ , ,Dactyloscopidae,,58,48,0
+ , ,Blenniidae,,849,405,11
+ , , ,Blenniinae,197,96,5
+ , , ,Salariinae,617,309,6
+ , ,Icosteidae,,3,1,0
+ , ,Callionymidae,,288,193,9
+ , ,Draconettidae,,18,14,1
+ , ,Rhyacichthyidae,,7,3,0
+ , ,Odontobutidae,,32,23,1
+ , ,Eleotridae,,348,173,17
+ , , ,Butinae,87,44,2
+ , , ,Eleotrinae,243,124,12
+ , , ,Milyeringinae,6,5,3
+ , ,Thalasseleotrididae,,3,3,0
+ , ,Gobiidae,,2730,1775,301
+ , , ,Sicydiinae,160,121,25
+ , , ,Gobionellinae,669,417,45
+ , , ,Oxudercinae,119,42,2
+ , , ,Amblyopinae,69,32,2
+ , , ,Gobiinae,1684,1162,227
+ , ,Kraemeriidae,,12,8,0
+ , ,Microdesmidae,,105,89,11
+ , , ,Microdesminae,36,33,1
+ , , ,Ptereleotrinae,68,56,10
+ , ,Xenisthmidae,,17,14,2
+ , ,Schindleriidae,,3,3,0
+ , ,Kurtidae,,8,2,0
+ , ,Ephippidae,,44,15,0
+ , ,Scatophagidae,,17,4,0
+ , ,Siganidae,,86,31,1
+ , ,Luvaridae,,11,1,0
+ , ,Zanclidae,,7,1,0
+ , ,Acanthuridae,,256,84,1
+ , ,Scombrolabracidae,,1,1,0
+ , ,Sphyraenidae,,74,27,2
+ , ,Gempylidae,,65,26,1
+ , ,Trichiuridae,,84,47,2
+ , , ,Aphanopodinae,24,18,0
+ , , ,Lepidopodinae,32,12,1
+ , , ,Trichiurinae,28,17,1
+ , ,Scombridae,,193,53,0
+ , , ,Gasterochismatinae,4,1,0
+ , , ,Scombrinae,189,52,0
+ , ,Xiphiidae,,10,1,0
+ , ,Istiophoridae,,63,9,0
+ , ,Amarsipidae,,1,1,0
+ , ,Centrolophidae,,74,31,1
+ , ,Nomeidae,,60,17,0
+ , ,Ariommatidae,,16,8,0
+ , ,Tetragonuridae,,4,3,0
+ , ,Stromateidae,,57,17,1
+ , ,Anabantidae,,69,31,0
+ , ,Osphronemidae,,180,130,18
+ , , ,Macropodusinae,129,105,17
+ , , ,Luciocephalinae,35,19,1
+ , , ,Osphroneminae,9,4,0
+ , , ,Belontiinae,5,2,0
+ , ,Helostomatidae,,2,1,0
+ , ,Channidae,,100,35,7
+ , ,Caproidae,,26,18,3
+ ,Pleuronectiformes,,,,,
+ , ,Psettodidae,,7,3,0
+ , ,Citharidae,,10,6,0
+ , ,Scophthalmidae,,39,9,0
+ , ,Paralichthyidae,,190,109,1
+ , ,Bothidae,,262,169,1
+ , ,Achiropsettidae,,9,4,0
+ , ,Pleuronectidae,,225,105,4
+ , , ,Poecilopsettinae,26,21,3
+ , , ,Rhombosoleinae,34,20,0
+ , , ,Pleuronectinae,136,63,1
+ , , ,Paralichthodinae,1,1,0
+ , ,Samaridae,,33,28,4
+ , ,Achiridae,,66,36,2
+ , ,Soleidae,,281,179,31
+ , ,Cynoglossidae,,246,145,8
+ , , ,Symphurinae,96,79,6
+ , , ,Cynoglossinae,150,66,2
+ ,Tetraodontiformes,,,,,
+ , ,Triacanthodidae,,30,23,1
+ , ,Triacanthidae,,17,7,0
+ , ,Balistidae,,187,42,1
+ , ,Monacanthidae,,293,110,2
+ , ,Aracanidae,,26,13,0
+ , ,Ostraciidae,,81,27,0
+ , ,Triodontidae,,2,1,0
+ , ,Tetraodontidae,,378,194,5
+ , ,Diodontidae,,83,18,0
+ , ,Molidae,,51,4,0
+Coelacanthi,,,,,,
+ ,Coelacanthiformes,,,,,
+ , ,Latimeriidae,,3,2,0
+Dipneusti,,,,,,
+ ,Ceratodontiformes,,,,,
+ , ,Neoceratodontidae,,3,1,0
+ ,Lepidosireniformes,,,,,
+ , ,Lepidosirenidae,,4,1,0
+ , ,Protopteridae,,9,4,0
+Totals,,,,58571,33663,3951
