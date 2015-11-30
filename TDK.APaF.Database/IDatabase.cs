@@ -304,9 +304,21 @@ namespace TDK.APaF.Database
         #endregion
 
         #region Region CRUD
+        Model.RegionClass CreateRegion(Model.RegionClass item);
+        Model.RegionClass ReadRegion(int dbId);
+        List<Model.RegionClass> ReadRegion();
+        List<Model.RegionClass> ReadRegion(Model.CreatureIdentification creature);
+        bool UpdateRegion(Model.RegionClass item);
+        bool DeleteRegion(Model.RegionClass item);
         #endregion
 
         #region Group CRUD
+        Model.GroupClass CreateGroup(Model.GroupClass item);
+        Model.GroupClass ReadGroup(int dbId);
+        List<Model.GroupClass> ReadGroup();
+        List<Model.GroupClass> ReadGroup(Model.CreatureIdentification creature);
+        bool UpdateGroup(Model.GroupClass item);
+        bool DeleteGroup(Model.GroupClass item);
         #endregion
 
         #region Order CRUD
