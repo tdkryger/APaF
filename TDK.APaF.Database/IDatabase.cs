@@ -339,6 +339,10 @@ namespace TDK.APaF.Database
         bool DeleteClassification(Model.ClassificationClass item);
         #endregion
 
+        #region DateTimeInfo CRUD
+        //TODO: DateTimeInfo CRUD
+        #endregion
+
         #endregion
     }
 }

@@ -11,7 +11,20 @@ namespace TDK.APaF.Model.Lists
     /// </summary>
     public class BehaviorList : List<Behavior>
     {
-
+        #region Public methods
+        /// <summary>
+        /// Adds the item to the list, if it is not already in the list
+        /// </summary>
+        /// <param name="item"></param>
+        public new void Add(Behavior item)
+        {
+            foreach (Behavior b in this)
+            {
+                if (b.Equals(item) == false)
+                    base.Add(item);
+            }
+        }
+        #endregion
 
         #region Static Methods
         /// <summary>
@@ -25,7 +38,7 @@ namespace TDK.APaF.Model.Lists
             bl.Add(new Behavior()
             {
                 Code = "S",
-                English="Shoaling"
+                English = "Shoaling"
             });
 
             bl.Add(new Behavior()

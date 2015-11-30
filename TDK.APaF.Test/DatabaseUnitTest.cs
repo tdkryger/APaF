@@ -30,5 +30,33 @@ namespace UnitTestProject
                 Assert.IsTrue(conn.State == System.Data.ConnectionState.Open);
             }
         }
+
+        [TestMethod, TestCategory("Database"), Priority(1)]
+        public void CreateAFish()
+        {
+            TDK.APaF.Database.MySQL.Database myDB = new TDK.APaF.Database.MySQL.Database(
+                new TDK.APaF.Database.DatabaseConfig("localhost", "apaf2", "anuser", "mWZwbVCruMsh"));
+            TDK.APaF.Model.Lists.BehaviorList behList = TDK.APaF.Model.Lists.BehaviorList.CreateDefaultList();
+
+            TDK.APaF.Model.FishClass fish = new TDK.APaF.Model.FishClass()
+            {
+                ID = -1,
+                AquaLogCode = "Test 1",
+                Created = new TDK.APaF.Model.DateTimeInfoClass()
+                {
+                    DateTime = DateTime.Now,
+                    ID = -1,
+                    User = "Thomas"
+                },
+                CurrentVersion = 1.0M,
+                DataSource = EnumDataSource.Aqualog,
+                
+                
+            };
+            fish.Behavior.Add(behList[0]);
+            fish.Behavior.Add(behList[1]);
+
+            Assert.AreNotEqual(-1, fish.ID);
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace TDK.APaF.Model
         public string Code { get; set; }
         #endregion
 
-        #region Constructors1
+        #region Constructors
         /// <summary>
         /// Construcotor
         /// </summary>
@@ -39,6 +39,19 @@ namespace TDK.APaF.Model
         public override string ToString()
         {
             return base.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is CodeTextClass)
+            {
+                if ((obj as CodeTextClass).Code == this.Code)
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return base.Equals(obj);
         }
         #endregion
     }

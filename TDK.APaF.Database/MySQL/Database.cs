@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TDK.APaF.Database.SearchPatterns;
 using TDK.APaF.Model;
 using TDK.APaF.Model.Lists;
@@ -74,25 +71,7 @@ namespace TDK.APaF.Database.MySQL
         /// <exception cref="Exceptions.CreatureAlreadyExists">If crustacean already exists</exception>
         public CrustaceanClass CreateCrustacean(CrustaceanClass item)
         {
-            using (MySqlConnection conn = getAConnection())
-            {
-                if (conn.State != System.Data.ConnectionState.Open)
-                {
-                    MySqlCommand cmd = new MySqlCommand(InsertCreatures, conn);
-                    setValuesFromCrustacean(cmd, item);
-
-                    int insertId = 0;
-                    try
-                    {
-                        insertId = (int)cmd.ExecuteScalar();
-                        item.ID = insertId;
-                    }
-                    catch (SqlException ex)
-                    {
-                        handleDBError(new Delegates.DatabaseArgs(ex));
-                    }
-                }
-            }
+            item.ID = createCreature(item);
             return item;
         }
 
@@ -104,27 +83,7 @@ namespace TDK.APaF.Database.MySQL
         /// <exception cref="Exceptions.CreatureAlreadyExists">Thrown if item already exists</exception>
         public FishClass CreateFish(FishClass item)
         {
-            // Some of this code will be somewhat reusage between the different classes.
-            // Only the Parameters.AddWithValue will be different depending on the class..
-            using (MySqlConnection conn = getAConnection())
-            {
-                if (conn.State != System.Data.ConnectionState.Open)
-                {
-                    MySqlCommand cmd = new MySqlCommand(InsertCreatures, conn);
-                    setValuesOnFishcmd(cmd, item);
-
-                    int insertId = 0;
-                    try
-                    {
-                        insertId = (int)cmd.ExecuteScalar();
-                        item.ID = insertId;
-                    }
-                    catch (SqlException ex)
-                    {
-                        handleDBError(new Delegates.DatabaseArgs(ex));
-                    }
-                }
-            }
+            item.ID = createCreature(item);
             return item;
         }
         /// <summary>
@@ -233,25 +192,7 @@ namespace TDK.APaF.Database.MySQL
         /// <exception cref="Exceptions.CreatureAlreadyExists">Thrown if the reptile already exists</exception>
         public ReptileClass CreateReptile(ReptileClass item)
         {
-            using (MySqlConnection conn = getAConnection())
-            {
-                if (conn.State != System.Data.ConnectionState.Open)
-                {
-                    MySqlCommand cmd = new MySqlCommand(InsertCreatures, conn);
-                    setValuesFromReptile(cmd, item);
-
-                    int insertId = 0;
-                    try
-                    {
-                        insertId = (int)cmd.ExecuteScalar();
-                        item.ID = insertId;
-                    }
-                    catch (SqlException ex)
-                    {
-                        handleDBError(new Delegates.DatabaseArgs(ex));
-                    }
-                }
-            }
+            item.ID = createCreature(item);
             return item;
         }
 
@@ -298,9 +239,16 @@ namespace TDK.APaF.Database.MySQL
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Create a Gastropoda in the database
+        /// </summary>
+        /// <param name="item">The Gastropoda to create</param>
+        /// <returns>The Gastropoda with updated database id</returns>
+        /// <exception cref="Exceptions.CreatureAlreadyExists">Thrown if gastropoda already exists</exception>
         public GastropodaClass CreateGastropoda(GastropodaClass item)
         {
-            throw new NotImplementedException();
+            item.ID= createCreature(item);
+            return item;
         }
 
         public GastropodaClass ReadGastropoda(int id)
@@ -325,7 +273,8 @@ namespace TDK.APaF.Database.MySQL
 
         public PlantClass CreatePlant(PlantClass item)
         {
-            throw new NotImplementedException();
+            item.ID = createCreature(item);
+            return item;
         }
 
         public PlantClass ReadPlant(int id)
