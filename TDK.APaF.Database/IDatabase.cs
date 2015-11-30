@@ -322,9 +322,21 @@ namespace TDK.APaF.Database
         #endregion
 
         #region Order CRUD
+        Model.OrderClass CreateOrder(Model.OrderClass item);
+        Model.OrderClass ReadOrder(int dbId);
+        List<Model.OrderClass> ReadOrder();
+        List<Model.OrderClass> ReadOrder(Model.CreatureIdentification creature);
+        bool UpdateOrder(Model.OrderClass item);
+        bool DeleteOrder(Model.OrderClass item);
         #endregion
 
         #region Classification CRUD
+        Model.ClassificationClass CreateClassification(Model.ClassificationClass item);
+        Model.ClassificationClass ReadClassification(int dbId);
+        List<Model.ClassificationClass> ReadClassification();
+        List<Model.ClassificationClass> ReadClassification(Model.CreatureIdentification creature);
+        bool UpdateClassification(Model.ClassificationClass item);
+        bool DeleteClassification(Model.ClassificationClass item);
         #endregion
 
         #endregion

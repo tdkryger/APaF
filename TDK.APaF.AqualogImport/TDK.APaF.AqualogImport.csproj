@@ -61,7 +61,7 @@
       <Project>{f50c5689-2cf3-4d23-af59-019aa35fedd6}</Project>
       <Name>TDK.APaF.Database</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TDK.APaF.Model\TDK.APaF.Model\TDK.APaF.Model.csproj">
+    <ProjectReference Include="..\TDK.APaF.Model\TDK.APaF.Model.csproj">
       <Project>{47d1b74d-db20-434f-a5e3-12fbf5c36c6f}</Project>
       <Name>TDK.APaF.Model</Name>
     </ProjectReference>
