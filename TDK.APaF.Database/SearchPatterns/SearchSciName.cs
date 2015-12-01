@@ -7,26 +7,15 @@ using System.Threading.Tasks;
 namespace TDK.APaF.Database.SearchPatterns
 {
     /// <summary>
-    /// Basic search class
+    /// Search for scientific name
     /// </summary>
-    public class BasicSearch
+    public class SearchSciName: BasicSearch
     {
         #region Properties
         /// <summary>
         /// Latin Name
         /// </summary>
-        int DatabaseId { get; set; }
-        #endregion
-
-        #region Constructor
-        /// <summary>
-        /// Basic constructor.
-        /// Initialize DatabaseId to int.MinValue
-        /// </summary>
-        public BasicSearch()
-        {
-            DatabaseId = int.MinValue;
-        }
+        Model.LatinNameClass LatinName { get; set; }
         #endregion
 
         #region Public methods
@@ -34,11 +23,10 @@ namespace TDK.APaF.Database.SearchPatterns
         /// Returns a string of fields and values for searching
         /// </summary>
         /// <returns>String for where part of sql</returns>
-        public virtual string GetWhereClause()
+        public override string GetWhereClause()
         {
-            return string.Format("WHERE id={0};", DatabaseId);
+            return string.Format(" WHERE scientificNameId={0};", LatinName.ID);
         }
         #endregion
-
     }
 }

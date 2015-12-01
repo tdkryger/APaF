@@ -21,7 +21,11 @@ namespace TDK.APaF.Database.MySQL
         private const string DBConnectString = "Server={0};Database={1};Uid={2};Pwd={3};ConvertZeroDateTime=True;"
             + "tablecache=true;DefaultTableCacheAge=30;UseCompression=True;Pooling=True;";
         //private const string DBConnectString = "Server={0};Database={1};Uid={2};Pwd={3};";
-        private const string InsertCreatures = "INSERT INTO `creaturesandplants`"
+        private const string DELETE_CREATURE = "UPDATE `creaturesandplants` SET deleted=1 WHERE id=@id";
+        private const string UNDELETE_CREATURE = "UPDATE `creaturesandplants` SET deleted=0 WHERE id=@id";
+        private const string UPDATE_CREATURE = "UPDATE `creaturesandplants` SET `creatuteType`=@creatuteType,`currentVersion`=@currentVersion,`danishTradenames`=@danishTradenames,`englishTradenames`=@englishTradenames,`germanTradenames`=@germanTradenames,`danishDescription`=@danishDescription,`englishDescription`=@englishDescription,`germanDescription`=@germanDescription,`scientificNameId`=@scientificNameId,`aqualogCode`=@aqualogCode,`createdId`=@createdId,`dataSource`=@dataSource,`familyId`=@familyId,`minHardness`=@minHardness,`maxHardness`=@maxHardness,`minLight`=@minLight,`maxLight`=@maxLight,`minPh`=@minPh,`maxPh`=@maxPh,`regionId`=@regionId,`minTemperature`=@minTemperature,`maxTemperature`=@maxTemperature,`groupTypeId`=@groupTypeId,`protected`=@protected,`waterType`=@waterType,`bottomTypeId`=@bottomTypeId,`flowering`=@flowering,`growthSpeedId`=@growthSpeedId,`hardy`=@hardy,`minHeight`=@minHeight,`maxHeight`=@maxHeight,`minWidth`=@minWidth,`maxWidth`=@maxWidth,`waterDepth`=@waterDepth,`zone`=@zone,`fishBaseId`=@fishBaseId,`minSize`=@minSize,`maxSize`=@maxSize,`swimmingPositionId`=@swimmingPositionId,`tankWidth`=@tankWidth WHERE `id`=@id;";
+        private const string SELECT_CREATURE = "SELECT `id`,`creatuteType`,`currentVersion`,`danishTradenames`,`englishTradenames`,`germanTradenames`,`danishDescription`,`englishDescription`,`germanDescription`,`scientificNameId`,`aqualogCode`,`createdId`,`dataSource`,`familyId`,`minHardness`,`maxHardness`,`minLight`,`maxLight`,`minPh`,`maxPh`,`regionId`,`minTemperature`,`maxTemperature`,`groupTypeId`,`protected`,`waterType`,`bottomTypeId`,`flowering`,`growthSpeedId`,`hardy`,`minHeight`,`maxHeight`,`minWidth`,`maxWidth`,`waterDepth`,`zone`,`fishBaseId`,`minSize`,`maxSize`,`swimmingPositionId`,`tankWidth` FROM `V_creaturesAndPlants` "; //TODO: select creature sql
+        private const string INSERT_CREATURE = "INSERT INTO `creaturesandplants`"
             + "(`creatuteType`,`aqualogCode`,`createId`,`dataSource`,`familyId`,`minHardness`,`maxHardness`,`minLight`,`maxLight`,`minPh`,`maxPh`,`regionId`,"
             + "`scientificNameId`,`minTemperature`,`maxTemperature`,`danishTradenames`,`englishTradenames`,`germanTradenames`,`groupTypeId`,`protected`,`waterType`,"
             + "`bottomTypeId`,`flowering`,`growthSpeedId`,`hardy`,`minHeight`,`maxHeight`,`minWidth`,`maxWidth`,`waterDepth`,`zone`,`fishBaseId`,`minSize`,`maxSize`,"
@@ -64,6 +68,38 @@ namespace TDK.APaF.Database.MySQL
 
         #region Public methods from IDatabase
         /// <summary>
+        /// Undeletes a creature from the database. Only use in admin mode
+        /// </summary>
+        /// <param name="itemId">The database id for the creature</param>
+        /// <returns>True if successfull, false otherwise</returns>
+        public bool UndeleteCreature(int itemId)
+        {
+            using (MySqlConnection conn = getAConnection())
+            {
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    MySqlCommand cmd = new MySqlCommand(UNDELETE_CREATURE, conn);
+                    cmd.Parameters.AddWithValue("id", itemId);
+                    try
+                    {
+                        cmd.ExecuteScalar();
+                        return true;
+                    }
+                    catch (SqlException ex)
+                    {
+                        handleDBError(new Delegates.DatabaseArgs(ex));
+                        return false;
+                    }
+                }
+                else
+                {
+                    handleDBError(new Delegates.DatabaseArgs("Connection not open"));
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Creates a Crustacean in the database
         /// </summary>
         /// <param name="item">The item to save</param>
@@ -94,7 +130,7 @@ namespace TDK.APaF.Database.MySQL
         /// <exception cref="Exceptions.CreatureNotFound">Thrown if Crustacean is not found</exception>
         public bool DeleteCrustacean(CrustaceanClass item)
         {
-            throw new NotImplementedException();
+            return deleteCreature(item);
         }
         /// <summary>
         /// Delete the fish in the database
@@ -104,7 +140,7 @@ namespace TDK.APaF.Database.MySQL
         /// <exception cref="Exceptions.CreatureNotFound">Thrown if fish is not found</exception>
         public bool DeleteFish(FishClass item)
         {
-            throw new NotImplementedException();
+            return deleteCreature(item);
         }
         /// <summary>
         /// Reads a list of creature items from database
@@ -236,7 +272,7 @@ namespace TDK.APaF.Database.MySQL
         /// <exception cref="Exceptions.CreatureNotFound">Thrown if Reptile not found</exception>
         public bool DeleteReptile(ReptileClass item)
         {
-            throw new NotImplementedException();
+            return deleteCreature(item);
         }
 
         /// <summary>
@@ -247,7 +283,7 @@ namespace TDK.APaF.Database.MySQL
         /// <exception cref="Exceptions.CreatureAlreadyExists">Thrown if gastropoda already exists</exception>
         public GastropodaClass CreateGastropoda(GastropodaClass item)
         {
-            item.ID= createCreature(item);
+            item.ID = createCreature(item);
             return item;
         }
 
@@ -268,7 +304,7 @@ namespace TDK.APaF.Database.MySQL
 
         public bool DeleteGastropoda(GastropodaClass item)
         {
-            throw new NotImplementedException();
+            return deleteCreature(item);
         }
 
         public PlantClass CreatePlant(PlantClass item)
@@ -294,7 +330,7 @@ namespace TDK.APaF.Database.MySQL
 
         public bool DeletePlant(PlantClass item)
         {
-            throw new NotImplementedException();
+            return deleteCreature(item);
         }
 
         public Behavior CreateBehavior(Behavior item)
@@ -689,14 +725,43 @@ namespace TDK.APaF.Database.MySQL
                 setValuesFromPlant(cmd, (PlantClass)item);
         }
 
+
+
         private void setValuesFromCreatureIdentification(MySqlCommand cmd, CreatureIdentification item)
         {
             cmd.Parameters.AddWithValue("creatuteType", (int)item.CreatureType);
+            cmd.Parameters.AddWithValue("danishTradenames", item.Tradenames.Danish);
+            cmd.Parameters.AddWithValue("englishTradenames", item.Tradenames.English);
+            cmd.Parameters.AddWithValue("germanTradenames", item.Tradenames.German);
+            cmd.Parameters.AddWithValue("scientificNameId", item.ScientificName.ID);
+            //TODO: Handle foreign keys
+            //TODO: Handle item.Modifications
         }
 
         private void setValuesFromCreature(MySqlCommand cmd, Creatures item)
         {
+            cmd.Parameters.AddWithValue("aqualogCode", item.AquaLogCode);
+            cmd.Parameters.AddWithValue("createdId", item.Created.ID);
+            cmd.Parameters.AddWithValue("dataSource", (int)item.DataSource);
+            cmd.Parameters.AddWithValue("familyId", item.Family.ID);
+            cmd.Parameters.AddWithValue("minHardness", item.Hardness.MinValue);
+            cmd.Parameters.AddWithValue("maxHardness", item.Hardness.MaxValue);
+            cmd.Parameters.AddWithValue("minLight", (int)item.Light.MinLight);
+            cmd.Parameters.AddWithValue("maxLight", (int)item.Light.MaxLight);
+            cmd.Parameters.AddWithValue("minPh", item.PH.MinValue);
+            cmd.Parameters.AddWithValue("maxPh", item.PH.MaxValue);
+            cmd.Parameters.AddWithValue("regionId", item.Region.ID);
+            cmd.Parameters.AddWithValue("minTemperature", item.Temperature.MinValue);
+            cmd.Parameters.AddWithValue("maxTemperature", item.Temperature.MaxValue);
+            cmd.Parameters.AddWithValue("groupTypeId", item.Group.ID);
+            cmd.Parameters.AddWithValue("protected", item.Protected.ID);
+            cmd.Parameters.AddWithValue("waterType", (int)item.WaterType);
 
+            //TODO: Handle lists
+            //item.Synonyms
+            //item.Pictures
+            //item.ReferenceBooks
+            //item.OtherLiterature
         }
 
         private void setValuesFromAnimal(MySqlCommand cmd, Animal item)
@@ -714,6 +779,16 @@ namespace TDK.APaF.Database.MySQL
             setValuesFromCreatureIdentification(cmd, item);
             setValuesFromCreature(cmd, item);
 
+            cmd.Parameters.AddWithValue("bottomTypeId", item.BottomType.ID);
+            cmd.Parameters.AddWithValue("flowering", item.Flowering);
+            cmd.Parameters.AddWithValue("growthSpeedId", item.GrowthSpeed.ID);
+            cmd.Parameters.AddWithValue("hardy", ((item.Hardy) ? 1 : 0));
+            cmd.Parameters.AddWithValue("minHeight", item.Height.MinValue); 
+            cmd.Parameters.AddWithValue("maxHeight", item.Height.MaxValue);
+            cmd.Parameters.AddWithValue("minWidth", item.Width.MinValue);
+            cmd.Parameters.AddWithValue("maxWidth", item.Width.MaxValue);
+            cmd.Parameters.AddWithValue("waterDepth", item.WaterDepth);
+            cmd.Parameters.AddWithValue("zone", item.Zone.ID);
         }
 
         private void setValuesFromGastropoda(MySqlCommand cmd, GastropodaClass item)
@@ -743,43 +818,10 @@ namespace TDK.APaF.Database.MySQL
             setValuesFromCreature(cmd, item);
             setValuesFromAnimal(cmd, item);
 
-
-            cmd.Parameters.AddWithValue("aqualogCode", item.AquaLogCode);
-            cmd.Parameters.AddWithValue("createId", item.Created.ID);
-            cmd.Parameters.AddWithValue("dataSource", (int)item.DataSource);
-            cmd.Parameters.AddWithValue("familyId", item.Family.ID);
-            cmd.Parameters.AddWithValue("minHardness", item.Hardness.MinValue);
-            cmd.Parameters.AddWithValue("maxHardness", item.Hardness.MaxValue);
-            cmd.Parameters.AddWithValue("minLight", (int)item.Light.MinLight);
-            cmd.Parameters.AddWithValue("maxLight", (int)item.Light.MaxLight);
-            cmd.Parameters.AddWithValue("minPh", item.PH.MinValue);
-            cmd.Parameters.AddWithValue("maxPh", item.PH.MaxValue);
-            cmd.Parameters.AddWithValue("regionId", item.Region.ID);
-            cmd.Parameters.AddWithValue("scientificNameId", item.ScientificName.ID);
-            cmd.Parameters.AddWithValue("minTemperature", item.Temperature.MinValue);
-            cmd.Parameters.AddWithValue("maxTemperature", item.Temperature.MaxValue);
-            cmd.Parameters.AddWithValue("danishTradenames", item.Tradenames.Danish);
-            cmd.Parameters.AddWithValue("englishTradenames", item.Tradenames.English);
-            cmd.Parameters.AddWithValue("germanTradenames", item.Tradenames.German);
-            cmd.Parameters.AddWithValue("groupTypeId", item.Group.ID);
-            cmd.Parameters.AddWithValue("protected", item.Protected.ID);
-            cmd.Parameters.AddWithValue("waterType", (int)item.WaterType);
-            cmd.Parameters.AddWithValue("bottomTypeId", 0); //TODO: Not valid
-            cmd.Parameters.AddWithValue("flowering", "");//TODO: Not valid
-            cmd.Parameters.AddWithValue("growthSpeedId", "");//TODO: Not valid
-            cmd.Parameters.AddWithValue("hardy", "");//TODO: Not valid
-            cmd.Parameters.AddWithValue("minHeight", "");//TODO: Not valid
-            cmd.Parameters.AddWithValue("maxHeight", "");//TODO: Not valid
-            cmd.Parameters.AddWithValue("minWidth", "");//TODO: Not valid
-            cmd.Parameters.AddWithValue("maxWidth", "");//TODO: Not valid
-            cmd.Parameters.AddWithValue("waterDepth", "");//TODO: Not valid
-            cmd.Parameters.AddWithValue("zone", "");//TODO: Not valid
             cmd.Parameters.AddWithValue("fishBaseId", item.FishBaseId);
-         
-            //cmd.Parameters.AddWithValue("specialId", "");
             cmd.Parameters.AddWithValue("swimmingPositionId", item.SwimmingPosition.ID);
             cmd.Parameters.AddWithValue("tankWidth", item.TankWidth);
-            //cmd.Parameters.AddWithValue("foodTypeId", item.f); Changed to a list
+
         }
 
         private MySqlConnection getAConnection()
@@ -797,19 +839,23 @@ namespace TDK.APaF.Database.MySQL
             }
             catch (SqlException ex)
             {
-                if (OnDatabaseError != null)
-                    OnDatabaseError(this, new Delegates.DatabaseArgs(ex));
-                /*
+                Delegates.DatabaseArgs dbArgs = null;
                 switch (ex.Number)
                 {
                     case 4060: // Invalid Database 
+                        dbArgs = new Delegates.DatabaseArgs(ex, "Invalid Database");
                         break;
                     case 18456: // Login Failed 
+                        dbArgs = new Delegates.DatabaseArgs(ex, "Login failed");
                         break;
                     default:
+                        dbArgs = new Delegates.DatabaseArgs(ex);
                         break;
                 }
-                */
+                if (dbArgs == null)
+                    dbArgs = new Delegates.DatabaseArgs(ex);
+                if (OnDatabaseError != null)
+                    OnDatabaseError(this, dbArgs);
             }
             return conn;
         }
@@ -821,7 +867,9 @@ namespace TDK.APaF.Database.MySQL
             {
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
-                    MySqlCommand cmd = new MySqlCommand(InsertCreatures, conn);
+                    //TODO: Foreign keys and lists 
+
+                    MySqlCommand cmd = new MySqlCommand(INSERT_CREATURE, conn);
                     setValues(cmd, item);
                     try
                     {
@@ -832,11 +880,149 @@ namespace TDK.APaF.Database.MySQL
                         handleDBError(new Delegates.DatabaseArgs(ex));
                     }
                 }
+                else
+                {
+                    handleDBError(new Delegates.DatabaseArgs("Connection not open"));
+                }
             }
             return insertId;
         }
 
+        private bool deleteCreature(CreatureIdentification item)
+        {
+            using (MySqlConnection conn = getAConnection())
+            {
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    MySqlCommand cmd = new MySqlCommand(DELETE_CREATURE, conn);
+                    cmd.Parameters.AddWithValue("id", item.ID);
+                    try
+                    {
+                        cmd.ExecuteScalar();
+                        return true;
+                    }
+                    catch (SqlException ex)
+                    {
+                        handleDBError(new Delegates.DatabaseArgs(ex));
+                        return false;
+                    }
+                }
+                else
+                {
+                    handleDBError(new Delegates.DatabaseArgs("Connection not open"));
+                }
+            }
+            return false;
+        }
 
+        private bool updateCreature(CreatureIdentification item)
+        {
+            using (MySqlConnection conn = getAConnection())
+            {
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    doVersionControl(item);
+                    MySqlCommand cmd = new MySqlCommand(UPDATE_CREATURE, conn);
+                    setValues(cmd, item);
+                    try
+                    {
+                        cmd.ExecuteScalar();
+                        return true;
+                    }
+                    catch (SqlException ex)
+                    {
+                        handleDBError(new Delegates.DatabaseArgs(ex));
+                        return false;
+                    }
+                }
+                else
+                {
+                    handleDBError(new Delegates.DatabaseArgs("Connection not open"));
+                }
+            }
+            return false;
+        }
+
+        private CreatureIdentification selectCreature(int itemId, CreatureTypes creatureType)
+        {
+            CreatureIdentification item = null;
+
+            switch (creatureType)
+            {
+                case CreatureTypes.Crustacean:
+                    item = new Model.CrustaceanClass();
+                    break;
+                case CreatureTypes.Fish:
+                    item = new Model.FishClass();
+                    break;
+                case CreatureTypes.Gastropoda:
+                    item = new Model.GastropodaClass();
+                    break;
+                case CreatureTypes.Plant:
+                    item = new Model.PlantClass();
+                    break;
+                case CreatureTypes.Reptile:
+                    item = new Model.ReptileClass();
+                    break;
+            }
+            if (item != null)
+            {
+                using (MySqlConnection conn = getAConnection())
+                {
+                    if (conn.State != System.Data.ConnectionState.Open)
+                    {
+                        MySqlCommand cmd = new MySqlCommand(SELECT_CREATURE, conn);
+                        cmd.Parameters.AddWithValue("id", itemId);
+                        try
+                        {
+                            using (MySqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.SingleRow))
+                            {
+                                if (reader.Read())
+                                {
+                                    //TODO: Set commen fields
+                                    switch (creatureType)
+                                    {
+                                        case CreatureTypes.Crustacean:
+                                            //TODO: Set special Crustacean fields
+                                            break;
+                                        case CreatureTypes.Fish:
+                                            //TODO: Set special Crustacean fields
+                                            break;
+                                        case CreatureTypes.Gastropoda:
+                                            //TODO: Set special Crustacean fields
+                                            break;
+                                        case CreatureTypes.Plant:
+                                            //TODO: Set special Crustacean fields
+                                            break;
+                                        case CreatureTypes.Reptile:
+                                            //TODO: Set special Crustacean fields
+                                            break;
+                                    }
+                                }
+                            }
+                        }
+                        catch (SqlException ex)
+                        {
+                            handleDBError(new Delegates.DatabaseArgs(ex));
+                        }
+                    }
+                    else
+                    {
+                        handleDBError(new Delegates.DatabaseArgs("Connection not open"));
+                    }
+                }
+            }
+            else
+            {
+                handleDBError(new Delegates.DatabaseArgs("creature type is unknown"));
+            }
+            return item;
+        }
+
+        private void doVersionControl(CreatureIdentification item)
+        {
+            //TODO: Handle version control. Table: creaturesAndPlants_Versions
+        }
 
         #endregion
     }

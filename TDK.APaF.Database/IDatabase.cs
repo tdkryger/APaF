@@ -35,7 +35,7 @@ namespace TDK.APaF.Database
         /// <returns>A list of Creatures. Empty list if no Creatures was found</returns>
         List<Model.Creatures> Read(SearchPatterns.BasicSearch search);
         #endregion
-        
+
         #region Crustacean CRUD
         /// <summary>
         /// Creates a Crustacean in the database
@@ -343,6 +343,20 @@ namespace TDK.APaF.Database
         //TODO: DateTimeInfo CRUD
         #endregion
 
+        #region PlantZone CRUD
+        //TODO: PlantZone CRUD
+        #endregion
+
+        #endregion
+
+        #region Support Functions
+        /// <summary>
+        /// Undeletes a creature. Admin only
+        /// </summary>
+        /// <param name="itemId">The database id of the creature</param>
+        /// <returns>True if successfull, false if not</returns>
+        /// <exception cref="Exceptions.CreatureNotFound">Thrown if creature is not found</exception>
+        bool UndeleteCreature(int itemId);
         #endregion
     }
 }

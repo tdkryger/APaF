@@ -31,11 +31,11 @@ namespace TDK.APaF.Model
         /// Planting zone
         /// TODO: Change to 
         /// </summary>
-        public CodeTextClass Zone { get; set; }
+        public PlantZone Zone { get; set; }
         /// <summary>
         /// Flowering month
         /// </summary>
-        public int Flowering { get; set; }
+        public string Flowering { get; set; }
         /// <summary>
         /// Suggested water depth
         /// </summary>

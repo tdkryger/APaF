@@ -17,6 +17,10 @@ namespace TDK.APaF.Database.Delegates
         /// The exception. Null if no exception
         /// </summary>
         public SqlException InnerException { get; protected set; }
+        /// <summary>
+        /// Message. Empty if no message
+        /// </summary>
+        public string Message { get; protected set; }
         #endregion
 
         #region Constructors
@@ -27,6 +31,28 @@ namespace TDK.APaF.Database.Delegates
         public DatabaseArgs(SqlException ex)
         {
             InnerException = ex;
+            Message = string.Empty;
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="message">The message</param>
+        public DatabaseArgs(string message)
+        {
+            InnerException = null;
+            Message = message;
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="ex">SQL Exception. Null if no exception</param>
+        /// <param name="message">The message</param>
+        public DatabaseArgs(SqlException ex, string message)
+        {
+            InnerException = ex;
+            Message = message;
         }
         #endregion
     }

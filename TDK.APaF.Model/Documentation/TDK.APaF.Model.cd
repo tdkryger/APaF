@@ -18,7 +18,7 @@
   <Class Name="TDK.APaF.Model.CodeTextClass">
     <Position X="15.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAEAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAAEgAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CodeTextClass.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -218,7 +218,7 @@
   <Class Name="TDK.APaF.Model.Lists.BehaviorList">
     <Position X="17" Y="12" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Lists\BehaviorList.cs</FileName>
     </TypeIdentifier>
   </Class>
