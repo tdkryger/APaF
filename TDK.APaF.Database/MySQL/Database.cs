@@ -34,6 +34,7 @@ namespace TDK.APaF.Database.MySQL
             + "@minTemperature, @maxTemperature, @danishTradenames, @englishTradenames, @germanTradenames, @groupTypeId, S@protected,"
             + "@waterType, @bottomTypeId, @flowering, @growthSpeedId, @hardy, @minHeight, @maxHeight, @minWidth, @maxWidth, @waterDepth, @zone, @fishBaseId, @minSize,"
             + "@maxSize, @swimmingPositionId, @tankWidth);SELECT last_insert_id();";
+        private const string INSERT_VERSION_CREATURE = "INSERT INTO `creaturesandplants_versions` (`orgId`,`deleted`,`creatuteType`,`currentVersion`,`danishTradenames`,`englishTradenames`,`germanTradenames`,`danishDescription`,`englishDescription`,`germanDescription`,`scientificNameId`,`aqualogCode`,`createdId`,`dataSource`,`familyId`,`minHardness`,`maxHardness`,`minLight`,`maxLight`,`minPh`,`maxPh`,`regionId`,`minTemperature`,`maxTemperature`,`groupTypeId`,`protected`,`waterType`,`bottomTypeId`,`flowering`,`growthSpeedId`,`hardy`,`minHeight`,`maxHeight`,`minWidth`,`maxWidth`,`waterDepth`,`zone`,`minSize`,`maxSize`,`fishBaseId`,`swimmingPositionId`,`tankWidth`) VALUES (@orgId,@deleted,@creatuteType,@currentVersion,@danishTradenames,@englishTradenames,@germanTradenames,@danishDescription,@englishDescription,@germanDescription,@scientificNameId,@aqualogCode,@createdId,@dataSource,@familyId,@minHardness,@maxHardness,@minLight,@maxLight,@minPh,@maxPh,@regionId,@minTemperature,@maxTemperature,@groupTypeId,@protected,@waterType,@bottomTypeId,@flowering,@growthSpeedId,@hardy,@minHeight,@maxHeight,@minWidth,@maxWidth,@waterDepth,@zone,@minSize,@maxSize,@fishBaseId,@swimmingPositionId,@tankWidth);";
         #endregion
 
         #region Events
@@ -97,6 +98,16 @@ namespace TDK.APaF.Database.MySQL
                 }
             }
             return false;
+        }
+
+        /// <summary>
+        /// Returns a list of older version. Admin only
+        /// </summary>
+        /// <param name="itemId">The orginal database id of the item</param>
+        /// <returns>A list</returns>
+        public List<Model.CreatureIdentification> GetOldVersion(int itemId)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -783,7 +794,7 @@ namespace TDK.APaF.Database.MySQL
             cmd.Parameters.AddWithValue("flowering", item.Flowering);
             cmd.Parameters.AddWithValue("growthSpeedId", item.GrowthSpeed.ID);
             cmd.Parameters.AddWithValue("hardy", ((item.Hardy) ? 1 : 0));
-            cmd.Parameters.AddWithValue("minHeight", item.Height.MinValue); 
+            cmd.Parameters.AddWithValue("minHeight", item.Height.MinValue);
             cmd.Parameters.AddWithValue("maxHeight", item.Height.MaxValue);
             cmd.Parameters.AddWithValue("minWidth", item.Width.MinValue);
             cmd.Parameters.AddWithValue("maxWidth", item.Width.MaxValue);
@@ -1019,9 +1030,35 @@ namespace TDK.APaF.Database.MySQL
             return item;
         }
 
-        private void doVersionControl(CreatureIdentification item)
+        private void doVersionControl(CreatureIdentification newItem)
         {
-            //TODO: Handle version control. Table: creaturesAndPlants_Versions
+            CreatureIdentification oldItem = selectCreature(newItem.ID, newItem.CreatureType);
+            if (oldItem != null)
+            {
+                using (MySqlConnection conn = getAConnection())
+                {
+                    if (conn.State != System.Data.ConnectionState.Open)
+                    {
+                        using (MySqlCommand cmdInsert = new MySqlCommand(INSERT_VERSION_CREATURE, conn))
+                        {
+                            setValues(cmdInsert, oldItem);
+                            cmdInsert.Parameters.AddWithValue("orgId", newItem.ID);
+                            try
+                            {
+                                cmdInsert.ExecuteScalar();
+                            }
+                            catch (SqlException ex)
+                            {
+                                handleDBError(new Delegates.DatabaseArgs(ex));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        handleDBError(new Delegates.DatabaseArgs("Connection not open"));
+                    }
+                }
+            }
         }
 
         #endregion

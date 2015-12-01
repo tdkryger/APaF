@@ -458,14 +458,11 @@ CREATE TABLE creaturesAndPlants
 CREATE VIEW V_creaturesAndPlants AS 
 	SELECT * FROM creaturesAndPlants WHERE deleted=0;
     
-/*
+
 CREATE TABLE creaturesAndPlants_Versions
 (
 -- Version info
 	id INT(32) unsigned not null auto_increment,
-    changeDateAndTime DateTime not null,
-    version decimal(5,2) not null,
-    user VARCHAR(255) not null,
     
 -- CreatureIdentification
 	orgId INT(32) unsigned not null,
@@ -482,7 +479,8 @@ CREATE TABLE creaturesAndPlants_Versions
 
 -- Creatures
     aqualogCode varchar(20),
-    createdId int(32) unsigned not null,
+    createdDateTime datetime not null,
+    createdUser VARCHAR(255) not null,
     dataSource int(8) unsigned not null default 0,
     familyId int(32) unsigned not null,
     minHardness decimal(5,2) not null default 0,
@@ -532,7 +530,6 @@ CREATE TABLE creaturesAndPlants_Versions
     foreign key (swimmingPositionId) references swimmingPosition(id),
     foreign key (scientificNameId) references latinName(id),
     foreign key (regionId) references region(id),
-    FOREIGN KEY (createdId) REFERENCES dateTimeInfo (id),
     foreign key (familyId) references family(id),
     foreign key (groupTypeId) references groupType(id),
     
@@ -545,7 +542,7 @@ CREATE TABLE creaturesAndPlants_Versions
 -- Primary key    
     primary key(id)
 );
-*/
+
 
 
 /*    

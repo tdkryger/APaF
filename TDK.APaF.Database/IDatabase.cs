@@ -357,6 +357,13 @@ namespace TDK.APaF.Database
         /// <returns>True if successfull, false if not</returns>
         /// <exception cref="Exceptions.CreatureNotFound">Thrown if creature is not found</exception>
         bool UndeleteCreature(int itemId);
+
+        /// <summary>
+        /// Returns a list of older version. Admin only
+        /// </summary>
+        /// <param name="itemId">The orginal database id of the item</param>
+        /// <returns>A list</returns>
+        List<Model.CreatureIdentification> GetOldVersion(int itemId);
         #endregion
     }
 }
