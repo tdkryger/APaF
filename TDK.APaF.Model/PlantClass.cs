@@ -57,5 +57,17 @@ namespace TDK.APaF.Model
         }
         #endregion
 
+        #region Public methods
+        /// <summary>
+        /// Checks if the required properties on the object is filled
+        /// </summary>
+        /// <returns>True if valid, false otherwise</returns>
+        public override bool Valid()
+        {
+            throw new NotImplementedException();
+            //TODO: Implement PlantClass.Valid()
+        }
+        #endregion
+
     }
 }

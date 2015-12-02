@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace TDK.APaF.Model
 {
     /// <summary>
-    /// Basic Creature identification
+    /// Basic Creature identification.
     /// </summary>
-    public abstract class CreatureIdentification
+    public class CreatureIdentification
     {
         #region Properties
         /// <summary>
@@ -36,6 +36,32 @@ namespace TDK.APaF.Model
         /// Version Information 
         /// </summary>
         public decimal CurrentVersion { get; set; }
+        #endregion
+
+        #region Constructor
+        /// <summary>
+        /// Basic constructor
+        /// </summary>
+        public CreatureIdentification()
+        {
+            CreatureType = CreatureTypes.Unknwon;
+            ScientificName = null;
+            CurrentVersion = 0;
+        }
+        #endregion
+
+        #region public methods
+        /// <summary>
+        /// Checks if the required properties on the object is filled
+        /// </summary>
+        /// <returns>True if valid, false otherwise</returns>
+        public virtual bool Valid()
+        {
+            if (CreatureType != CreatureTypes.Unknwon && ScientificName != null)
+                return true;
+            else
+                return false;
+        }
         #endregion
     }
 }

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace TDK.APaF.Model
 {
-    //TODO: Handle multiple previous versions. 
-    //Think it should be done in DB with triggers. Otherwise see https://en.wikipedia.org/wiki/Memento_pattern and http://dofactory.com/net/memento-design-pattern
+    /*  
+        Handle multiple previous versions. 
+        Think it should be done in DB with triggers. Otherwise see https://en.wikipedia.org/wiki/Memento_pattern and http://dofactory.com/net/memento-design-pattern
+        Done in TDK.APaF.Database.MySQL.Database 
+    */
 
     /// <summary>
     /// Abstract class for all types of creatures and plants
@@ -82,8 +85,6 @@ namespace TDK.APaF.Model
 
         #endregion
 
-
-
         #region Constructors
         /// <summary>
         /// Constructor
@@ -100,7 +101,14 @@ namespace TDK.APaF.Model
         #endregion
 
         #region Public methods
-
+        /// <summary>
+        /// Checks if the required properties on the object is filled
+        /// </summary>
+        /// <returns>True if valid, false otherwise</returns>
+        public override bool Valid()
+        {
+            return base.Valid();
+        }
         #endregion
     }
 }
