@@ -17,6 +17,10 @@ namespace TDK.APaF.Database.MySQL
         private DatabaseConfig _config;
         #endregion
 
+        #region enums
+        private enum BookListTypes { ReferenceBook = 0, OtherLiterature = 1 };
+        #endregion
+
         #region Consts
         private const string DBConnectString = "Server={0};Database={1};Uid={2};Pwd={3};ConvertZeroDateTime=True;"
             + "tablecache=true;DefaultTableCacheAge=30;UseCompression=True;Pooling=True;";
@@ -704,20 +708,156 @@ namespace TDK.APaF.Database.MySQL
             throw new NotImplementedException();
         }
 
+        public LatinNameClass CreateLatinName(LatinNameClass item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LatinNameClass ReadLatinName(int dbId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<LatinNameClass> ReadLatinName()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<LatinNameClass> ReadLatinName(CreatureIdentification creature)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateLatinName(LatinNameClass item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteLatinName(LatinNameClass item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PlantZone CreatePlantZone(PlantZone item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PlantZone ReadPlantZone(int dbId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<PlantZone> ReadPlantZone()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdatePlantZone(PlantZone item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeletePlantZone(PlantZone item)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Private methods
-        private bool handleDBError(Delegates.DatabaseArgs e)
+        private void saveSynonyms(List<LatinNameClass> synonyms, int creatureId)
         {
-            if (OnDatabaseError != null)
+            string updateSQL = "UPDATE `synonyms` SET `creaturesAndPlantsId`=@creaturesAndPlantsId,`scientificNameId`=@scientificNameId WHERE `creaturesAndPlantsId`=@creaturesAndPlantsId AND `scientificNameId`=@scientificNameId;";
+            string insertSQL = "INSERT INTO `synonyms` (`creaturesAndPlantsId`,`scientificNameId`) VALUES (@creaturesAndPlantsId,@scientificNameId);";
+
+            using (MySqlConnection conn = getAConnection())
             {
-                OnDatabaseError(this, e);
-                return true;
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(updateSQL, conn))
+                    {
+                        foreach (LatinNameClass lnc in synonyms)
+                        {
+                            try
+                            {
+                                LatinNameClass uplnc = this.CreateLatinName(lnc);
+                                lnc.ID = uplnc.ID;
+                            }
+                            catch (Exceptions.ItemAlreadyExists)
+                            {
+                                // It's already in the database, so we are good ;o)
+                            }
+                            cmd.Parameters.AddWithValue("@creaturesAndPlantsId", creatureId);
+                            cmd.Parameters.AddWithValue("@scientificNameId", lnc.ID);
+                            try
+                            {
+                                if (cmd.ExecuteNonQuery() == 0)
+                                {
+                                    cmd.CommandText = insertSQL;
+                                    cmd.Parameters.AddWithValue("@creaturesAndPlantsId", creatureId);
+                                    cmd.Parameters.AddWithValue("@scientificNameId", lnc.ID);
+                                    cmd.ExecuteNonQuery();
+                                }
+                            }
+                            catch (SqlException ex)
+                            {
+                                handleDBError(new Delegates.DatabaseArgs(ex));
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    handleDBError(new Delegates.DatabaseArgs("Connection not open"));
+                }
             }
-            else
-                return false;
         }
 
+        private void saveBookList(List<Book> bookList, int creatureId, BookListTypes bookListType)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void savePictures(PictureList Pictures, int creatureId)
+        {
+            string updateSQL = "UPDATE `picturelist` SET `creatureAndPlantsId`=@creatureAndPlantsId,`pictureId`=@pictureId WHERE `creatureAndPlantsId`=@creatureAndPlantsId AND `pictureId`=@creatureAndPlantsId;";
+            string insertSQL = "INSERT INTO `picturelist` (`creatureAndPlantsId`,`pictureId`) VALUES (@creatureAndPlantsId,@pictureId);";
+
+            using (MySqlConnection conn = getAConnection())
+            {
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(updateSQL, conn))
+                    {
+                        foreach (Picture pic in Pictures)
+                        {
+                            cmd.Parameters.AddWithValue("@creaturesAndPlantsId", creatureId);
+                            cmd.Parameters.AddWithValue("@pictureId", pic.ID);
+                            try
+                            {
+                                if (cmd.ExecuteNonQuery() == 0)
+                                {
+                                    cmd.CommandText = insertSQL;
+                                    cmd.Parameters.AddWithValue("@creaturesAndPlantsId", creatureId);
+                                    cmd.Parameters.AddWithValue("@pictureId", pic.ID);
+                                    cmd.ExecuteNonQuery();
+                                }
+                            }
+                            catch (SqlException ex)
+                            {
+                                handleDBError(new Delegates.DatabaseArgs(ex));
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    handleDBError(new Delegates.DatabaseArgs("Connection not open"));
+                }
+            }
+        }
+        #region Save lists
         private void setValues(MySqlCommand cmd, CreatureIdentification item)
         {
             if (item is CreatureIdentification)
@@ -736,24 +876,34 @@ namespace TDK.APaF.Database.MySQL
                 setValuesFromPlant(cmd, (PlantClass)item);
         }
 
-
-
         private void setValuesFromCreatureIdentification(MySqlCommand cmd, CreatureIdentification item)
         {
             cmd.Parameters.AddWithValue("creatuteType", (int)item.CreatureType);
             cmd.Parameters.AddWithValue("danishTradenames", item.Tradenames.Danish);
             cmd.Parameters.AddWithValue("englishTradenames", item.Tradenames.English);
             cmd.Parameters.AddWithValue("germanTradenames", item.Tradenames.German);
+            cmd.Parameters.AddWithValue("danishDescription", item.Description.Danish);
+            cmd.Parameters.AddWithValue("englishDescription", item.Description.English);
+            cmd.Parameters.AddWithValue("germanDescription", item.Description.German);
+
+            if (item.ScientificName.ID == 0)
+            {
+                this.CreateLatinName(item.ScientificName);
+            }
             cmd.Parameters.AddWithValue("scientificNameId", item.ScientificName.ID);
             //TODO: Handle foreign keys
-            //TODO: Handle item.Modifications
         }
 
         private void setValuesFromCreature(MySqlCommand cmd, Creatures item)
         {
             cmd.Parameters.AddWithValue("aqualogCode", item.AquaLogCode);
-            cmd.Parameters.AddWithValue("createdId", item.Created.ID);
+            cmd.Parameters.AddWithValue("createdDateTime", item.Created.DateTime);
+            cmd.Parameters.AddWithValue("createdUser", item.Created.User);
             cmd.Parameters.AddWithValue("dataSource", (int)item.DataSource);
+            if (item.Family.ID == 0)
+            {
+                this.CreateFamily(item.Family);
+            }
             cmd.Parameters.AddWithValue("familyId", item.Family.ID);
             cmd.Parameters.AddWithValue("minHardness", item.Hardness.MinValue);
             cmd.Parameters.AddWithValue("maxHardness", item.Hardness.MaxValue);
@@ -761,18 +911,25 @@ namespace TDK.APaF.Database.MySQL
             cmd.Parameters.AddWithValue("maxLight", (int)item.Light.MaxLight);
             cmd.Parameters.AddWithValue("minPh", item.PH.MinValue);
             cmd.Parameters.AddWithValue("maxPh", item.PH.MaxValue);
+            if (item.Region.ID == 0)
+            {
+                this.CreateRegion(item.Region);
+            }
             cmd.Parameters.AddWithValue("regionId", item.Region.ID);
             cmd.Parameters.AddWithValue("minTemperature", item.Temperature.MinValue);
             cmd.Parameters.AddWithValue("maxTemperature", item.Temperature.MaxValue);
+            if (item.Group.ID == 0)
+            {
+                this.CreateGroup(item.Group);
+            }
             cmd.Parameters.AddWithValue("groupTypeId", item.Group.ID);
             cmd.Parameters.AddWithValue("protected", item.Protected.ID);
             cmd.Parameters.AddWithValue("waterType", (int)item.WaterType);
 
-            //TODO: Handle lists
-            //item.Synonyms
-            //item.Pictures
-            //item.ReferenceBooks
-            //item.OtherLiterature
+            saveSynonyms(item.Synonyms, item.ID);
+            savePictures(item.Pictures, item.ID);
+            saveBookList(item.ReferenceBooks, item.ID, BookListTypes.ReferenceBook);
+            saveBookList(item.ReferenceBooks, item.ID, BookListTypes.OtherLiterature);
         }
 
         private void setValuesFromAnimal(MySqlCommand cmd, Animal item)
@@ -790,8 +947,16 @@ namespace TDK.APaF.Database.MySQL
             setValuesFromCreatureIdentification(cmd, item);
             setValuesFromCreature(cmd, item);
 
+            if (item.BottomType.ID == 0)
+            {
+                this.CreateBottom(item.BottomType);
+            }
             cmd.Parameters.AddWithValue("bottomTypeId", item.BottomType.ID);
             cmd.Parameters.AddWithValue("flowering", item.Flowering);
+            if (item.GrowthSpeed.ID == 0)
+            {
+                this.CreateGrowthSpeed(item.GrowthSpeed);
+            }
             cmd.Parameters.AddWithValue("growthSpeedId", item.GrowthSpeed.ID);
             cmd.Parameters.AddWithValue("hardy", ((item.Hardy) ? 1 : 0));
             cmd.Parameters.AddWithValue("minHeight", item.Height.MinValue);
@@ -799,6 +964,10 @@ namespace TDK.APaF.Database.MySQL
             cmd.Parameters.AddWithValue("minWidth", item.Width.MinValue);
             cmd.Parameters.AddWithValue("maxWidth", item.Width.MaxValue);
             cmd.Parameters.AddWithValue("waterDepth", item.WaterDepth);
+            if (item.Zone.ID == 0)
+            {
+                this.CreatePlantZone(item.Zone);
+            }
             cmd.Parameters.AddWithValue("zone", item.Zone.ID);
         }
 
@@ -833,6 +1002,23 @@ namespace TDK.APaF.Database.MySQL
             cmd.Parameters.AddWithValue("swimmingPositionId", item.SwimmingPosition.ID);
             cmd.Parameters.AddWithValue("tankWidth", item.TankWidth);
 
+        }
+
+        #endregion
+
+        #region Set Parameter Values
+
+        #endregion
+
+        private bool handleDBError(Delegates.DatabaseArgs e)
+        {
+            if (OnDatabaseError != null)
+            {
+                OnDatabaseError(this, e);
+                return true;
+            }
+            else
+                return false;
         }
 
         private MySqlConnection getAConnection()

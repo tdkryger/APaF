@@ -344,8 +344,22 @@ namespace TDK.APaF.Database
         #endregion
 
         #region PlantZone CRUD
-        //TODO: PlantZone CRUD
+        Model.PlantZone CreatePlantZone(Model.PlantZone item);
+        Model.PlantZone ReadPlantZone(int dbId);
+        List<Model.PlantZone> ReadPlantZone();
+        bool UpdatePlantZone(Model.PlantZone item);
+        bool DeletePlantZone(Model.PlantZone item);
         #endregion
+
+        #region Scientific Name CRUD
+        Model.LatinNameClass CreateLatinName(Model.LatinNameClass item);
+        Model.LatinNameClass ReadLatinName(int dbId);
+        List<Model.LatinNameClass> ReadLatinName();
+        List<Model.LatinNameClass> ReadLatinName(Model.CreatureIdentification creature);
+        bool UpdateLatinName(Model.LatinNameClass item);
+        bool DeleteLatinName(Model.LatinNameClass item);
+        #endregion
+
 
         #endregion
 

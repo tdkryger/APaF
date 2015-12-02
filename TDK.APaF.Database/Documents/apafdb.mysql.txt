@@ -40,6 +40,19 @@ create table latinName
 );
 
 DELIMITER //
+
+DROP TRIGGER IF EXISTS TT_INSERT_LATIN_NAME //
+CREATE TRIGGER TT_INSERT_LATIN_NAME BEFORE INSERT ON latinName 
+	FOR EACH ROW
+	BEGIN
+		IF NOT EXISTS (SELECT 1 FROM latinName e INNER JOIN INSERTED i ON i.genus=e.genus AND i.species=e.species) THEN
+			INSERT INTO latinName(genus,species) SELECT genus,species FROM INSERTED;
+		ELSE
+			SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'Latin name already in table. Row not inserted';
+		END IF;
+	END; 
+//
  
 DROP FUNCTION IF EXISTS F_GetLatinNameId //
 CREATE FUNCTION F_GetLatinNameId(inGenus varchar(512), inSpecies varchar(512)) RETURNS int(32)
@@ -419,7 +432,7 @@ CREATE TABLE creaturesAndPlants
     minWidth decimal(5,2),
     maxWidth decimal(5,2),
     waterDepth varchar(100),
-    zone int(32) unsigned,    
+    zoneId int(32) unsigned,    
     
 -- Animal
     minSize decimal(10,2),
@@ -615,4 +628,30 @@ create table pictureList
     foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
     
     primary key (creatureAndPlantsId, pictureId)
+);
+
+create table book
+(
+	isbn VARCHAR(25) NOT NULL,
+    authors VARCHAR(512),
+    title VARCHAR(512),
+    
+    primary key (isbn)
+);
+
+create table bookList
+(
+	creatureAndPlantsId int(32) unsigned not null,
+    isbn VARCHAR(25) NOT NULL,
+    listType TINYINT(5) NOT NULL DEFAULT 0  comment '0:reference, 1:other'
+);
+
+create table plantingZone
+(
+	id INT(32) unsigned not null auto_increment,
+    danish varchar(500),
+    english varchar(500),
+    german varchar(500),
+    
+	primary key(id)
 );

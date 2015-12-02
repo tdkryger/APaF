@@ -22,7 +22,7 @@ namespace TDK.APaF.Model
         /// <summary>
         /// Growth speed
         /// </summary>
-        public CodeTextClass GrowthSpeed { get; set; }
+        public GrowthSpeedClass GrowthSpeed { get; set; }
         /// <summary>
         /// Bottom type
         /// </summary>
