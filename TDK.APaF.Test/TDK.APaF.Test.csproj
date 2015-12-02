@@ -55,8 +55,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DatabaseUnitTest.cs" />
     <Compile Include="ModelUnitTest.cs" />
+    <Compile Include="MySQL\DatabaseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
