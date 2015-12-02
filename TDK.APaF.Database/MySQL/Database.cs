@@ -65,11 +65,11 @@ namespace TDK.APaF.Database.MySQL
             }
         }
 
-
-
         #endregion
 
         #region Public methods from IDatabase
+
+        #region Admin methods
         /// <summary>
         /// Undeletes a creature from the database. Only use in admin mode
         /// </summary>
@@ -81,17 +81,19 @@ namespace TDK.APaF.Database.MySQL
             {
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
-                    MySqlCommand cmd = new MySqlCommand(UNDELETE_CREATURE, conn);
-                    cmd.Parameters.AddWithValue("id", itemId);
-                    try
+                    using (MySqlCommand cmd = new MySqlCommand(UNDELETE_CREATURE, conn))
                     {
-                        cmd.ExecuteScalar();
-                        return true;
-                    }
-                    catch (SqlException ex)
-                    {
-                        handleDBError(new Delegates.DatabaseArgs(ex));
-                        return false;
+                        cmd.Parameters.AddWithValue("id", itemId);
+                        try
+                        {
+                            cmd.ExecuteScalar();
+                            return true;
+                        }
+                        catch (SqlException ex)
+                        {
+                            handleDBError(new Delegates.DatabaseArgs(ex));
+                            return false;
+                        }
                     }
                 }
                 else
@@ -111,6 +113,7 @@ namespace TDK.APaF.Database.MySQL
         {
             throw new NotImplementedException();
         }
+        #endregion
 
         /// <summary>
         /// Creates a Crustacean in the database
@@ -761,6 +764,25 @@ namespace TDK.APaF.Database.MySQL
             throw new NotImplementedException();
         }
 
+        public DateTimeInfoClass ReadDateTimeInfo(int dbId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<DateTimeInfoClass> ReadDateTimeInfo()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateDateTimeInfo(DateTimeInfoClass item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteDateTimeInfo(DateTimeInfoClass item)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region Private methods
@@ -1081,17 +1103,17 @@ namespace TDK.APaF.Database.MySQL
             {
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
-                    //TODO: Foreign keys and lists 
-
-                    MySqlCommand cmd = new MySqlCommand(INSERT_CREATURE, conn);
-                    setValues(cmd, item);
-                    try
+                    using (MySqlCommand cmd = new MySqlCommand(INSERT_CREATURE, conn))
                     {
-                        insertId = (int)cmd.ExecuteScalar();
-                    }
-                    catch (SqlException ex)
-                    {
-                        handleDBError(new Delegates.DatabaseArgs(ex));
+                        setValues(cmd, item);
+                        try
+                        {
+                            insertId = (int)cmd.ExecuteScalar();
+                        }
+                        catch (SqlException ex)
+                        {
+                            handleDBError(new Delegates.DatabaseArgs(ex));
+                        }
                     }
                 }
                 else
@@ -1108,17 +1130,19 @@ namespace TDK.APaF.Database.MySQL
             {
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
-                    MySqlCommand cmd = new MySqlCommand(DELETE_CREATURE, conn);
-                    cmd.Parameters.AddWithValue("id", item.ID);
-                    try
+                    using (MySqlCommand cmd = new MySqlCommand(DELETE_CREATURE, conn))
                     {
-                        cmd.ExecuteScalar();
-                        return true;
-                    }
-                    catch (SqlException ex)
-                    {
-                        handleDBError(new Delegates.DatabaseArgs(ex));
-                        return false;
+                        cmd.Parameters.AddWithValue("id", item.ID);
+                        try
+                        {
+                            cmd.ExecuteScalar();
+                            return true;
+                        }
+                        catch (SqlException ex)
+                        {
+                            handleDBError(new Delegates.DatabaseArgs(ex));
+                            return false;
+                        }
                     }
                 }
                 else
@@ -1136,17 +1160,19 @@ namespace TDK.APaF.Database.MySQL
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
                     doVersionControl(item);
-                    MySqlCommand cmd = new MySqlCommand(UPDATE_CREATURE, conn);
-                    setValues(cmd, item);
-                    try
+                    using (MySqlCommand cmd = new MySqlCommand(UPDATE_CREATURE, conn))
                     {
-                        cmd.ExecuteScalar();
-                        return true;
-                    }
-                    catch (SqlException ex)
-                    {
-                        handleDBError(new Delegates.DatabaseArgs(ex));
-                        return false;
+                        setValues(cmd, item);
+                        try
+                        {
+                            cmd.ExecuteScalar();
+                            return true;
+                        }
+                        catch (SqlException ex)
+                        {
+                            handleDBError(new Delegates.DatabaseArgs(ex));
+                            return false;
+                        }
                     }
                 }
                 else
@@ -1179,45 +1205,47 @@ namespace TDK.APaF.Database.MySQL
                     item = new Model.ReptileClass();
                     break;
             }
-            if (item != null)
+            if (item != null) // Could check if the creatureType is valid, instead of using 1 switch statement to create the object, and another to set properties
             {
                 using (MySqlConnection conn = getAConnection())
                 {
                     if (conn.State != System.Data.ConnectionState.Open)
                     {
-                        MySqlCommand cmd = new MySqlCommand(SELECT_CREATURE, conn);
-                        cmd.Parameters.AddWithValue("id", itemId);
-                        try
+                        using (MySqlCommand cmd = new MySqlCommand(SELECT_CREATURE, conn))
                         {
-                            using (MySqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.SingleRow))
+                            cmd.Parameters.AddWithValue("id", itemId);
+                            try
                             {
-                                if (reader.Read())
+                                using (MySqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.SingleRow))
                                 {
-                                    //TODO: Set commen fields
-                                    switch (creatureType)
+                                    if (reader.Read())
                                     {
-                                        case CreatureTypes.Crustacean:
-                                            //TODO: Set special Crustacean fields
-                                            break;
-                                        case CreatureTypes.Fish:
-                                            //TODO: Set special Crustacean fields
-                                            break;
-                                        case CreatureTypes.Gastropoda:
-                                            //TODO: Set special Crustacean fields
-                                            break;
-                                        case CreatureTypes.Plant:
-                                            //TODO: Set special Crustacean fields
-                                            break;
-                                        case CreatureTypes.Reptile:
-                                            //TODO: Set special Crustacean fields
-                                            break;
+                                        //TODO: Set commen fields
+                                        switch (creatureType)
+                                        {
+                                            case CreatureTypes.Crustacean:
+                                                //TODO: Set special Crustacean fields
+                                                break;
+                                            case CreatureTypes.Fish:
+                                                //TODO: Set special Crustacean fields
+                                                break;
+                                            case CreatureTypes.Gastropoda:
+                                                //TODO: Set special Crustacean fields
+                                                break;
+                                            case CreatureTypes.Plant:
+                                                //TODO: Set special Crustacean fields
+                                                break;
+                                            case CreatureTypes.Reptile:
+                                                //TODO: Set special Crustacean fields
+                                                break;
+                                        }
                                     }
                                 }
                             }
-                        }
-                        catch (SqlException ex)
-                        {
-                            handleDBError(new Delegates.DatabaseArgs(ex));
+                            catch (SqlException ex)
+                            {
+                                handleDBError(new Delegates.DatabaseArgs(ex));
+                            }
                         }
                     }
                     else
@@ -1263,6 +1291,13 @@ namespace TDK.APaF.Database.MySQL
                 }
             }
         }
+
+        public DateTimeInfoClass CreateDateTimeInfo(DateTimeInfoClass item)
+        {
+            throw new NotImplementedException();
+        }
+
+
 
         #endregion
     }

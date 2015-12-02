@@ -8,7 +8,8 @@ namespace TDK.APaF.Database
 {
 
     /// <summary>
-    /// Interface for database access
+    /// Interface for database access. 
+    /// It's a horrible huge interface. Splitting it into multiple interfaces would make it a lot easier to read
     /// </summary>
     public interface IDatabase
     {
@@ -340,7 +341,11 @@ namespace TDK.APaF.Database
         #endregion
 
         #region DateTimeInfo CRUD
-        //TODO: DateTimeInfo CRUD
+        Model.DateTimeInfoClass CreateDateTimeInfo(Model.DateTimeInfoClass item);
+        Model.DateTimeInfoClass ReadDateTimeInfo(int dbId);
+        List<Model.DateTimeInfoClass> ReadDateTimeInfo();
+        bool UpdateDateTimeInfo(Model.DateTimeInfoClass item);
+        bool DeleteDateTimeInfo(Model.DateTimeInfoClass item);
         #endregion
 
         #region PlantZone CRUD
@@ -363,7 +368,7 @@ namespace TDK.APaF.Database
 
         #endregion
 
-        #region Support Functions
+        #region Admin Functions
         /// <summary>
         /// Undeletes a creature. Admin only
         /// </summary>

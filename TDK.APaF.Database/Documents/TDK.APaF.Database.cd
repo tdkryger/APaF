@@ -1,57 +1,88 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="TDK.APaF.Database.MySQL.Database">
-    <Position X="4.75" Y="0.5" Width="3.75" />
+    <Position X="6" Y="0.5" Width="4.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="TDK.APaF.Database.MySQL.Database.BookListTypes" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MySQL\Database.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAQAAoRAAAQAAAAAIAAAgEAgEAAAAlAAIAIAAAAAAAA=</HashCode>
+      <HashCode>BTlpCYXJHNb5ZAKEKwYmhEgkkImAW3zTIULCAEAEAFQ=</HashCode>
       <FileName>MySQL\Database.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TDK.APaF.Database.SearchPatterns.BasicSearch">
-    <Position X="11.5" Y="0.5" Width="2.25" />
+    <Position X="12.25" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>SearchPatterns\BasicSearch.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TDK.APaF.Database.SearchPatterns.SearchCrustacean">
-    <Position X="11.5" Y="2.25" Width="1.5" />
+    <Position X="14.25" Y="3.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SearchPatterns\SearchCrustacean.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TDK.APaF.Database.Exceptions.CreatureNotFound">
-    <Position X="14.25" Y="0.5" Width="2.75" />
+    <Position X="17.25" Y="0.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Exceptions\CreatureNotFound.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TDK.APaF.Database.Exceptions.CreatureAlreadyExists">
-    <Position X="14.25" Y="2" Width="2.75" />
+    <Position X="17.25" Y="2" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Exceptions\CreatureAlreadyExists.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TDK.APaF.Database.Delegates.DatabaseArgs">
-    <Position X="14.25" Y="3.5" Width="2.25" />
+    <Position X="17" Y="8" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAIAAAAAA=</HashCode>
       <FileName>Delegates\DatabaseArgs.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="TDK.APaF.Database.IDatabase">
-    <Position X="0.5" Y="0.5" Width="3.5" />
+  <Class Name="TDK.APaF.Database.SearchPatterns.SearchSciName">
+    <Position X="11.25" Y="3.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAIQAAAQAAAAAIAAAAEAgEAAAAkAAIAAAAAAAAAA=</HashCode>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>SearchPatterns\SearchSciName.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Database.Exceptions.ItemAlreadyExists">
+    <Position X="17.25" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\ItemAlreadyExists.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TDK.APaF.Database.Exceptions.ItemNotFound">
+    <Position X="17.25" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\ItemNotFound.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TDK.APaF.Database.IDatabase">
+    <Position X="0.5" Y="0.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>BTkAAYXIFFTRRAKEK0YGgEAkkYmAW0yRIUDAAEAEAFQ=</HashCode>
       <FileName>IDatabase.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Delegate Name="DatabaseErrorEvent">
-    <Position X="14.25" Y="5.5" Width="1.75" />
+    <Position X="14.75" Y="8" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Delegates\Delegates.cs</FileName>
