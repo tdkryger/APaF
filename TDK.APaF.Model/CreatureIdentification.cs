@@ -29,10 +29,6 @@ namespace TDK.APaF.Model
         /// </summary>
         public LatinNameClass ScientificName { get; set; }
         /// <summary>
-        /// List of user modifications
-        /// </summary>
-        public List<VersionInfo> Modifications { get; set; }
-        /// <summary>
         /// Tradenames in multiple languages
         /// </summary>
         public TextClass Tradenames { get; set; }
