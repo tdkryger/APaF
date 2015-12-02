@@ -655,3 +655,60 @@ create table plantingZone
     
 	primary key(id)
 );
+
+create table behavior
+(
+  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(20),
+  `danishname` varchar(150),
+  `englishname` varchar(150),
+  `germanname` varchar(150),
+  
+  unique (code),
+  primary key (id)
+);
+
+create table behaviorList
+(
+	creatureAndPlantsId int(32) unsigned not null,
+    behaviorId int(32) unsigned not null,
+    
+    foreign key (behaviorId) references behavior (id),
+    foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
+    
+    primary key (creatureAndPlantsId, behaviorId)
+);
+
+create table decoration
+(
+  `id` int(32) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(20),
+  `danishname` varchar(150),
+  `englishname` varchar(150),
+  `germanname` varchar(150),
+  
+  unique (code),
+  primary key (id)
+);
+
+create table decorationList
+(
+	creatureAndPlantsId int(32) unsigned not null,
+    decorationId int(32) unsigned not null,
+    
+    foreign key (decorationId) references decoration (id),
+    foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
+    
+    primary key (creatureAndPlantsId, decorationId)
+);
+
+create table foodTypeList
+(
+	creatureAndPlantsId int(32) unsigned not null,
+    foodTypeId int(32) unsigned not null,
+    
+    foreign key (foodTypeId) references foodtype (id),
+    foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
+    
+    primary key (creatureAndPlantsId, foodTypeId)
+);

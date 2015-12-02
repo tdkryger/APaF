@@ -22,9 +22,7 @@ namespace TDK.APaF.Database.MySQL
         #endregion
 
         #region Consts
-        private const string DBConnectString = "Server={0};Database={1};Uid={2};Pwd={3};ConvertZeroDateTime=True;"
-            + "tablecache=true;DefaultTableCacheAge=30;UseCompression=True;Pooling=True;";
-        //private const string DBConnectString = "Server={0};Database={1};Uid={2};Pwd={3};";
+        private const string DBConnectString = "Server={0};Database={1};Uid={2};Pwd={3};ConvertZeroDateTime=True;tablecache=true;DefaultTableCacheAge=30;UseCompression=True;Pooling=True;";
         private const string DELETE_CREATURE = "UPDATE `creaturesandplants` SET deleted=1 WHERE id=@id";
         private const string UNDELETE_CREATURE = "UPDATE `creaturesandplants` SET deleted=0 WHERE id=@id";
         private const string UPDATE_CREATURE = "UPDATE `creaturesandplants` SET `creatuteType`=@creatuteType,`currentVersion`=@currentVersion,`danishTradenames`=@danishTradenames,`englishTradenames`=@englishTradenames,`germanTradenames`=@germanTradenames,`danishDescription`=@danishDescription,`englishDescription`=@englishDescription,`germanDescription`=@germanDescription,`scientificNameId`=@scientificNameId,`aqualogCode`=@aqualogCode,`createdId`=@createdId,`dataSource`=@dataSource,`familyId`=@familyId,`minHardness`=@minHardness,`maxHardness`=@maxHardness,`minLight`=@minLight,`maxLight`=@maxLight,`minPh`=@minPh,`maxPh`=@maxPh,`regionId`=@regionId,`minTemperature`=@minTemperature,`maxTemperature`=@maxTemperature,`groupTypeId`=@groupTypeId,`protected`=@protected,`waterType`=@waterType,`bottomTypeId`=@bottomTypeId,`flowering`=@flowering,`growthSpeedId`=@growthSpeedId,`hardy`=@hardy,`minHeight`=@minHeight,`maxHeight`=@maxHeight,`minWidth`=@minWidth,`maxWidth`=@maxWidth,`waterDepth`=@waterDepth,`zone`=@zone,`fishBaseId`=@fishBaseId,`minSize`=@minSize,`maxSize`=@maxSize,`swimmingPositionId`=@swimmingPositionId,`tankWidth`=@tankWidth WHERE `id`=@id;";
@@ -766,6 +764,8 @@ namespace TDK.APaF.Database.MySQL
         #endregion
 
         #region Private methods
+
+        #region Save lists
         private void saveSynonyms(List<LatinNameClass> synonyms, int creatureId)
         {
             string updateSQL = "UPDATE `synonyms` SET `creaturesAndPlantsId`=@creaturesAndPlantsId,`scientificNameId`=@scientificNameId WHERE `creaturesAndPlantsId`=@creaturesAndPlantsId AND `scientificNameId`=@scientificNameId;";
@@ -819,6 +819,11 @@ namespace TDK.APaF.Database.MySQL
             throw new NotImplementedException();
         }
 
+        private void saveBehaviorList(BehaviorList list, int creatureId)
+        {
+            throw new NotImplementedException();
+        }
+
         private void savePictures(PictureList Pictures, int creatureId)
         {
             string updateSQL = "UPDATE `picturelist` SET `creatureAndPlantsId`=@creatureAndPlantsId,`pictureId`=@pictureId WHERE `creatureAndPlantsId`=@creatureAndPlantsId AND `pictureId`=@creatureAndPlantsId;";
@@ -857,7 +862,19 @@ namespace TDK.APaF.Database.MySQL
                 }
             }
         }
-        #region Save lists
+
+        private void saveDecorationList(DecorationList list, int creatureId)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void saveFoodTypeList(FoodTypeList list, int creatureId)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region Set Parameter Values
         private void setValues(MySqlCommand cmd, CreatureIdentification item)
         {
             if (item is CreatureIdentification)
@@ -888,7 +905,7 @@ namespace TDK.APaF.Database.MySQL
 
             if (item.ScientificName.ID == 0)
             {
-                this.CreateLatinName(item.ScientificName);
+                item.ScientificName = this.CreateLatinName(item.ScientificName);
             }
             cmd.Parameters.AddWithValue("scientificNameId", item.ScientificName.ID);
             //TODO: Handle foreign keys
@@ -902,7 +919,7 @@ namespace TDK.APaF.Database.MySQL
             cmd.Parameters.AddWithValue("dataSource", (int)item.DataSource);
             if (item.Family.ID == 0)
             {
-                this.CreateFamily(item.Family);
+                item.Family =this.CreateFamily(item.Family);
             }
             cmd.Parameters.AddWithValue("familyId", item.Family.ID);
             cmd.Parameters.AddWithValue("minHardness", item.Hardness.MinValue);
@@ -913,14 +930,14 @@ namespace TDK.APaF.Database.MySQL
             cmd.Parameters.AddWithValue("maxPh", item.PH.MaxValue);
             if (item.Region.ID == 0)
             {
-                this.CreateRegion(item.Region);
+                item.Region = this.CreateRegion(item.Region);
             }
             cmd.Parameters.AddWithValue("regionId", item.Region.ID);
             cmd.Parameters.AddWithValue("minTemperature", item.Temperature.MinValue);
             cmd.Parameters.AddWithValue("maxTemperature", item.Temperature.MaxValue);
             if (item.Group.ID == 0)
             {
-                this.CreateGroup(item.Group);
+                item.Group = this.CreateGroup(item.Group);
             }
             cmd.Parameters.AddWithValue("groupTypeId", item.Group.ID);
             cmd.Parameters.AddWithValue("protected", item.Protected.ID);
@@ -936,10 +953,10 @@ namespace TDK.APaF.Database.MySQL
         {
             cmd.Parameters.AddWithValue("minSize", item.Size.MinValue);
             cmd.Parameters.AddWithValue("maxSize", item.Size.MaxValue);
-            //TODO: Lists
-            //item.Behavior
-            //item.Decorations
-            //item.FoodTypes
+
+            saveBehaviorList(item.Behavior, item.ID);
+            saveDecorationList(item.Decorations, item.ID);
+            saveFoodTypeList(item.FoodTypes, item.ID);
         }
 
         private void setValuesFromPlant(MySqlCommand cmd, PlantClass item)
@@ -949,13 +966,13 @@ namespace TDK.APaF.Database.MySQL
 
             if (item.BottomType.ID == 0)
             {
-                this.CreateBottom(item.BottomType);
+                item.BottomType = this.CreateBottom(item.BottomType);
             }
             cmd.Parameters.AddWithValue("bottomTypeId", item.BottomType.ID);
             cmd.Parameters.AddWithValue("flowering", item.Flowering);
             if (item.GrowthSpeed.ID == 0)
             {
-                this.CreateGrowthSpeed(item.GrowthSpeed);
+                item.GrowthSpeed = this.CreateGrowthSpeed(item.GrowthSpeed);
             }
             cmd.Parameters.AddWithValue("growthSpeedId", item.GrowthSpeed.ID);
             cmd.Parameters.AddWithValue("hardy", ((item.Hardy) ? 1 : 0));
@@ -966,7 +983,7 @@ namespace TDK.APaF.Database.MySQL
             cmd.Parameters.AddWithValue("waterDepth", item.WaterDepth);
             if (item.Zone.ID == 0)
             {
-                this.CreatePlantZone(item.Zone);
+                item.Zone = this.CreatePlantZone(item.Zone);
             }
             cmd.Parameters.AddWithValue("zone", item.Zone.ID);
         }
@@ -999,14 +1016,14 @@ namespace TDK.APaF.Database.MySQL
             setValuesFromAnimal(cmd, item);
 
             cmd.Parameters.AddWithValue("fishBaseId", item.FishBaseId);
+            if (item.SwimmingPosition.ID == 0)
+            {
+                item.SwimmingPosition = this.CreateSwimmingPosition(item.SwimmingPosition);
+            }
             cmd.Parameters.AddWithValue("swimmingPositionId", item.SwimmingPosition.ID);
             cmd.Parameters.AddWithValue("tankWidth", item.TankWidth);
 
         }
-
-        #endregion
-
-        #region Set Parameter Values
 
         #endregion
 

@@ -15,7 +15,7 @@ namespace TDK.APaF.Model
         /// <summary>
         /// Swimming position
         /// </summary>
-        public CodeTextClass SwimmingPosition { get; set; }
+        public SwimmingPositionClass SwimmingPosition { get; set; }
         /// <summary>
         /// Aprox. minimum tank width
         /// </summary>
