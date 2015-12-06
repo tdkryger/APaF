@@ -11,10 +11,15 @@ namespace TDK.APaF.Database.MySQL.Tests
     [TestClass()]
     public class DatabaseTests
     {
+        private TDK.APaF.Database.IDatabase getDBConnection()
+        {
+            return new TDK.APaF.Database.MySQL.Database(new TDK.APaF.Database.DatabaseConfig("localhost", "apaf2", "anuser", "mWZwbVCruMsh"));
+        }
+
         [TestMethod, TestCategory("Database"), Priority(0)]
         public void DatabaseTest()
         {
-            TDK.APaF.Database.MySQL.Database myDB = new TDK.APaF.Database.MySQL.Database(new TDK.APaF.Database.DatabaseConfig("localhost", "apaf2", "anuser", "mWZwbVCruMsh"));
+            TDK.APaF.Database.MySQL.Database myDB = (TDK.APaF.Database.MySQL.Database)getDBConnection();
 
             Assert.IsNotNull(myDB);
         }
