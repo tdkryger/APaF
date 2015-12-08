@@ -382,6 +382,7 @@ namespace TDK.APaF.Database
         /// </summary>
         /// <param name="itemId">The orginal database id of the item</param>
         /// <returns>A list</returns>
+        /// <exception cref="Exceptions.CreatureNotFound">Thrown if creature is not found</exception>
         List<Model.CreatureIdentification> GetOldVersion(int itemId);
         #endregion
     }

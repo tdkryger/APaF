@@ -38,13 +38,41 @@ namespace TDK.APaF.Database.MySQL.Tests
         [TestMethod, TestCategory("Database"), Priority(0)]
         public void UndeleteCreatureTest()
         {
-            Assert.Fail("Not Implemented");
+            bool okResult = false;
+            try
+            {
+                TDK.APaF.Database.MySQL.Database myDB = (TDK.APaF.Database.MySQL.Database)getDBConnection();
+                okResult = myDB.UndeleteCreature(1);
+            }
+            catch(TDK.APaF.Database.Exceptions.CreatureNotFound)
+            {
+                Assert.Inconclusive("Creature not found");
+            }
+            catch(Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+            Assert.IsTrue(okResult);
         }
 
         [TestMethod, TestCategory("Database"), Priority(0)]
         public void GetOldVersionTest()
         {
-            Assert.Fail("Not Implemented");
+            List<Model.CreatureIdentification> lst = null;
+            try
+            {
+                TDK.APaF.Database.MySQL.Database myDB = (TDK.APaF.Database.MySQL.Database)getDBConnection();
+                lst = myDB.GetOldVersion(1);
+            }
+            catch (TDK.APaF.Database.Exceptions.CreatureNotFound)
+            {
+                Assert.Inconclusive("Creature not found");
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+            Assert.IsNotNull(lst);
         }
 
         [TestMethod, TestCategory("Database"), Priority(0)]

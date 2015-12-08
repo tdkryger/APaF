@@ -109,6 +109,7 @@ namespace TDK.APaF.Database.MySQL
         /// </summary>
         /// <param name="itemId">The orginal database id of the item</param>
         /// <returns>A list</returns>
+        /// <exception cref="Exceptions.CreatureNotFound">Thrown if creature is not found</exception>
         public List<Model.CreatureIdentification> GetOldVersion(int itemId)
         {
             throw new NotImplementedException();
@@ -303,6 +304,12 @@ namespace TDK.APaF.Database.MySQL
             return item;
         }
 
+        /// <summary>
+        /// Read a Gastropoda
+        /// </summary>
+        /// <param name="id">The id of a Gastropoda</param>
+        /// <returns></returns>
+        /// <exception cref="Exceptions.CreatureNotFound">Thrown if Reptile not found</exception>
         public GastropodaClass ReadGastropoda(int id)
         {
             throw new NotImplementedException();
