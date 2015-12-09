@@ -118,3 +118,18 @@ public enum CreatureTypes
     /// </summary>
     Reptile = 5
 };
+
+/// <summary>
+/// Type of book list
+/// </summary>
+public enum BookListType
+{
+    /// <summary>
+    /// Reference book list
+    /// </summary>
+    Reference,
+    /// <summary>
+    /// Other literature
+    /// </summary>
+    Other
+};

@@ -226,6 +226,24 @@ namespace TDK.APaF.Database
 
         #region Support classes
 
+        #region Picture CRUD
+        Model.Picture CreatePicture(Model.Picture item);
+        Model.Picture ReadPicture(int dbId);
+        Model.PictureList ReadPicture();
+        Model.PictureList ReadPicture(Model.CreatureIdentification creature);
+        bool UpdatePicture(Model.Picture item);
+        bool DeletePicture(Model.Picture item);
+        #endregion
+
+        #region Protection CRUD
+        Model.ProtectionLevel CreateProtection(Model.ProtectionLevel item);
+        Model.ProtectionLevel ReadProtection(int dbId);
+        List<Model.ProtectionLevel> ReadProtection();
+        List<Model.ProtectionLevel> ReadProtection(Model.CreatureIdentification creature);
+        bool UpdateProtection(Model.ProtectionLevel item);
+        bool DeleteProtection(Model.ProtectionLevel item);
+        #endregion
+
         #region Behavior CRUD
         /// <summary>
         /// Create a behavior
@@ -245,7 +263,7 @@ namespace TDK.APaF.Database
         Model.Book CreateBook(Model.Book item);
         Model.Book ReadBook(int dbId);
         Model.Lists.BookList ReadBook();
-        Model.Lists.BookList ReadBook(Model.CreatureIdentification creature);
+        Model.Lists.BookList ReadBook(Model.CreatureIdentification creature, BookListType listType);
         bool UpdateBook(Model.Book item);
         bool DeleteBook(Model.Book item);
         #endregion

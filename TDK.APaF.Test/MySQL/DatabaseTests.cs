@@ -91,12 +91,8 @@ namespace TDK.APaF.Database.MySQL.Tests
             {
                 ID = -1,
                 AquaLogCode = "Test 1",
-                Created = new TDK.APaF.Model.DateTimeInfoClass()
-                {
-                    DateTime = DateTime.Now,
-                    ID = -1,
-                    User = "Thomas"
-                },
+                CreatedByUser = "Test user",
+                CreatedDateTime = DateTime.Now,
                 CurrentVersion = 1.0M,
                 DataSource = EnumDataSource.Aqualog,
 

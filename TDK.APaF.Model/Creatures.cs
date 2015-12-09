@@ -53,15 +53,19 @@ namespace TDK.APaF.Model
         /// <summary>
         /// List of pictures <see cref="Picture"/>
         /// </summary>
-        public PictureList Pictures { get; protected set; }
+        public PictureList Pictures { get; set; }
         /// <summary>
         /// Required water hardness. Null if not required/relevant
         /// </summary>
         public DecimalClass Hardness { get; set; }
         /// <summary>
-        /// Creation date of original version
+        /// Creation date of this version
         /// </summary>
-        public DateTimeInfoClass Created { get; set; }
+        public DateTime CreatedDateTime { get; set; }
+        /// <summary>
+        /// The user that created this version
+        /// </summary>
+        public string CreatedByUser { get; set; }
         /// <summary>
         /// TODO: What is the meaning of this?
         /// </summary>

@@ -17,10 +17,6 @@ namespace TDK.APaF.Database.MySQL
         private DatabaseConfig _config;
         #endregion
 
-        #region enums
-        private enum BookListTypes { ReferenceBook = 0, OtherLiterature = 1 };
-        #endregion
-
         #region Consts
         private const string DBConnectString = "Server={0};Database={1};Uid={2};Pwd={3};ConvertZeroDateTime=True;tablecache=true;DefaultTableCacheAge=30;UseCompression=True;Pooling=True;";
         private const string DELETE_CREATURE = "UPDATE `creaturesandplants` SET deleted=1 WHERE id=@id";
@@ -166,7 +162,94 @@ namespace TDK.APaF.Database.MySQL
         /// <returns>A list of Creatures. Empty list if no Creatures was found</returns>
         public List<Creatures> Read(BasicSearch search)
         {
-            throw new NotImplementedException();
+            List<Creatures> theList = new List<Creatures>();
+
+            using (MySqlConnection conn = getAConnection())
+            {
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(SELECT_CREATURE, conn))
+                    {
+                        cmd.CommandText = SELECT_CREATURE + search.GetWhereClause();
+                        try
+                        {
+                            using (MySqlDataReader reader = cmd.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    Creatures item = null;
+                                    CreatureTypes ct = (CreatureTypes)reader.GetInt32("creatuteType");
+                                    switch(ct)
+                                    {
+                                        case CreatureTypes.Crustacean:
+                                            item = new CrustaceanClass();
+
+                                            break;
+                                        case CreatureTypes.Fish:
+                                            item = new FishClass();
+                                            break;
+                                        case CreatureTypes.Gastropoda:
+                                            item = new GastropodaClass();
+                                            break;
+                                        case CreatureTypes.Plant:
+                                            item = new PlantClass();
+                                            break;
+                                        case CreatureTypes.Reptile:
+                                            item = new ReptileClass();
+                                            break;
+                                    }
+                                    if (item != null)
+                                    {
+                                        //CreatureIdentification
+                                        item.CurrentVersion = reader.GetDecimal("currentVersion");
+                                        item.Description.Danish = reader.GetString("danishDescription");
+                                        item.Description.English = reader.GetString("englishDescription");
+                                        item.Description.German = reader.GetString("germanDescription");
+                                        item.ID = reader.GetInt32("id");
+                                        item.ScientificName = this.ReadLatinName(reader.GetInt32("scientificNameId"));
+                                        item.Tradenames.Danish = reader.GetString("danishTradenames");
+                                        item.Tradenames.English = reader.GetString("englishTradenames");
+                                        item.Tradenames.German = reader.GetString("germanTradenames");
+                                        //Creatures
+                                        item.AquaLogCode = reader.GetString("aqualogCode");
+                                        item.CreatedByUser = reader.GetString("createdUser");
+                                        item.CreatedDateTime = reader.GetDateTime("createdDateTime");
+                                        item.DataSource = (EnumDataSource)reader.GetInt32("dataSource");
+                                        item.Family = this.ReadFamily(reader.GetInt32("familyId"));
+                                        item.Group = this.ReadGroup(reader.GetInt32("groupTypeId")); 
+                                        item.Hardness.MaxValue = reader.GetDecimal("maxHardness");
+                                        item.Hardness.MinValue = reader.GetDecimal("minHardness");
+                                        item.Light.MaxLight = (EnumLight)reader.GetInt32("maxLight");
+                                        item.Light.MinLight = (EnumLight)reader.GetInt32("minLight");
+                                        item.OtherLiterature = this.ReadBook(item, BookListType.Other);
+                                        item.PH.MaxValue = reader.GetDecimal("maxPh");
+                                        item.PH.MinValue = reader.GetDecimal("minPh");
+                                        item.Pictures = this.ReadPicture(item);
+                                        item.Protected = this.ReadProtection(reader.GetInt32("protected"));
+                                        item.ReferenceBooks = this.ReadBook(item, BookListType.Reference);
+                                        item.Region = this.ReadRegion(reader.GetInt32("regionId"));
+                                        //item.Synonyms = this.reads // Missing from IDatabase
+                                        if (item is Animal)
+                                        {
+                                            //
+                                        }
+                                        theList.Add(item);
+                                    }
+                                }
+                            }
+                        }
+                        catch (SqlException ex)
+                        {
+                            handleDBError(new Delegates.DatabaseArgs(ex));
+                        }
+                    }
+                }
+                else
+                {
+                    handleDBError(new Delegates.DatabaseArgs("Connection not open"));
+                }
+            }
+            return theList;
         }
         /// <summary>
         /// Reads a creature item from database
@@ -401,7 +484,7 @@ namespace TDK.APaF.Database.MySQL
             throw new NotImplementedException();
         }
 
-        public BookList ReadBook(CreatureIdentification creature)
+        public BookList ReadBook(CreatureIdentification creature, BookListType listType)
         {
             throw new NotImplementedException();
         }
@@ -790,6 +873,71 @@ namespace TDK.APaF.Database.MySQL
         {
             throw new NotImplementedException();
         }
+
+        public DateTimeInfoClass CreateDateTimeInfo(DateTimeInfoClass item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Picture CreatePicture(Picture item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Picture ReadPicture(int dbId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PictureList ReadPicture()
+        {
+            throw new NotImplementedException();
+        }
+
+        public PictureList ReadPicture(CreatureIdentification creature)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdatePicture(Picture item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeletePicture(Picture item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ProtectionLevel CreateProtection(ProtectionLevel item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ProtectionLevel ReadProtection(int dbId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ProtectionLevel> ReadProtection()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ProtectionLevel> ReadProtection(CreatureIdentification creature)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateProtection(ProtectionLevel item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteProtection(ProtectionLevel item)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region Private methods
@@ -843,7 +991,7 @@ namespace TDK.APaF.Database.MySQL
             }
         }
 
-        private void saveBookList(List<Book> bookList, int creatureId, BookListTypes bookListType)
+        private void saveBookList(List<Book> bookList, int creatureId, BookListType bookListType)
         {
             throw new NotImplementedException();
         }
@@ -943,8 +1091,8 @@ namespace TDK.APaF.Database.MySQL
         private void setValuesFromCreature(MySqlCommand cmd, Creatures item)
         {
             cmd.Parameters.AddWithValue("aqualogCode", item.AquaLogCode);
-            cmd.Parameters.AddWithValue("createdDateTime", item.Created.DateTime);
-            cmd.Parameters.AddWithValue("createdUser", item.Created.User);
+            cmd.Parameters.AddWithValue("createdDateTime", item.CreatedDateTime);
+            cmd.Parameters.AddWithValue("createdUser", item.CreatedByUser);
             cmd.Parameters.AddWithValue("dataSource", (int)item.DataSource);
             if (item.Family.ID == 0)
             {
@@ -964,18 +1112,19 @@ namespace TDK.APaF.Database.MySQL
             cmd.Parameters.AddWithValue("regionId", item.Region.ID);
             cmd.Parameters.AddWithValue("minTemperature", item.Temperature.MinValue);
             cmd.Parameters.AddWithValue("maxTemperature", item.Temperature.MaxValue);
-            if (item.Group.ID == 0)
-            {
-                item.Group = this.CreateGroup(item.Group);
-            }
-            cmd.Parameters.AddWithValue("groupTypeId", item.Group.ID);
+            // Not in the database
+            //if (item.Group.ID == 0)
+            //{
+            //    item.Group = this.CreateGroup(item.Group);
+            //}
+            //cmd.Parameters.AddWithValue("groupTypeId", item.Group.ID);
             cmd.Parameters.AddWithValue("protected", item.Protected.ID);
             cmd.Parameters.AddWithValue("waterType", (int)item.WaterType);
 
             saveSynonyms(item.Synonyms, item.ID);
             savePictures(item.Pictures, item.ID);
-            saveBookList(item.ReferenceBooks, item.ID, BookListTypes.ReferenceBook);
-            saveBookList(item.ReferenceBooks, item.ID, BookListTypes.OtherLiterature);
+            saveBookList(item.ReferenceBooks, item.ID, BookListType.Reference);
+            saveBookList(item.OtherLiterature, item.ID, BookListType.Other);
         }
 
         private void setValuesFromAnimal(MySqlCommand cmd, Animal item)
@@ -1298,13 +1447,6 @@ namespace TDK.APaF.Database.MySQL
                 }
             }
         }
-
-        public DateTimeInfoClass CreateDateTimeInfo(DateTimeInfoClass item)
-        {
-            throw new NotImplementedException();
-        }
-
-
 
         #endregion
     }
