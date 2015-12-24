@@ -15,28 +15,28 @@ INSERT INTO dbVersion (versionNumber) VALUES (2);
 CREATE TABLE dateTimeInfo
 (
 	id INT(32) unsigned not null auto_increment,
-    dateAndTime datetime not null,
-    user varchar(255),
-    
-    primary key (id)
+	dateAndTime datetime not null,
+	user varchar(255),
+	
+	primary key (id)
 );
 
 create table family
 (
 	id int(32) unsigned not null auto_increment,
-    family varchar(100) not null,
-    subFamilyId int(32) unsigned default null,
-    
-    primary key (id)
+	family varchar(100) not null,
+	subFamilyId int(32) unsigned default null,
+	
+	primary key (id)
 );
 
 create table latinName
 (
 	id INT(32) unsigned not null auto_increment,
-    genus varchar(512) not null,
-    species varchar(512) not null,
-    
-    primary key (id)
+	genus varchar(512) not null,
+	species varchar(512) not null,
+	
+	primary key (id)
 );
 
 DELIMITER //
@@ -59,7 +59,7 @@ CREATE FUNCTION F_GetLatinNameId(inGenus varchar(512), inSpecies varchar(512)) R
 BEGIN
   DECLARE idFound INT;
 
-    SELECT id INTO idFound FROM latinName WHERE genus=inGenus AND species=inSpecies;
+	SELECT id INTO idFound FROM latinName WHERE genus=inGenus AND species=inSpecies;
   RETURN idFound;
 END;//
 
@@ -68,13 +68,13 @@ create procedure P_GetLatinNameList(inGenus varchar(512), inSpecies varchar(512)
 BEGIN
 /* Returns a list of ID's from createTable where the latin name is in either name or synonyms 
 	
-    Unique string:
+	Unique string:
 		SELECT LEFT(UUID(), 8); -- Returns 8 random characters. 
 			See https://dev.mysql.com/doc/refman/5.7/en/miscellaneous-functions.html#function_uuid
-    
-    temporary tables:
+	
+	temporary tables:
 		On Disk:
-        http://stackoverflow.com/questions/5859391/create-a-temporary-table-in-a-select-statement-without-a-separate-create-table
+		http://stackoverflow.com/questions/5859391/create-a-temporary-table-in-a-select-statement-without-a-separate-create-table
 		In memory:
 		http://blog.cnizz.com/2010/11/24/mysql-temporary-tables-example-optimizing-applications-with-temp-tables/
 
@@ -89,22 +89,22 @@ DELIMITER ;
 CREATE TABLE region
 (
 	id INT(32) unsigned not null auto_increment,
-    danish varchar(255),
-    english varchar(255),
-    german varchar(255),
-    
-    primary key (id)
+	danish varchar(255),
+	english varchar(255),
+	german varchar(255),
+	
+	primary key (id)
 );
 
 create table subRegion
 (
 	parentId int(32) unsigned not null,
-    subId int(32) unsigned not null,
-    
-    foreign key (parentId) references region(id),
-    foreign key (subId) references region(id),
-    
-    primary key(parentId, subId)
+	subId int(32) unsigned not null,
+	
+	foreign key (parentId) references region(id),
+	foreign key (subId) references region(id),
+	
+	primary key(parentId, subId)
 );
 
 DELIMITER //
@@ -117,7 +117,7 @@ BEGIN
 
   DECLARE idFound INT;
 
-    SELECT id INTO idFound FROM latinName WHERE genus=inGenus AND species=inSpecies;
+	SELECT id INTO idFound FROM latinName WHERE genus=inGenus AND species=inSpecies;
   RETURN idFound;
   */
   return 0;
@@ -392,57 +392,57 @@ CREATE TABLE creaturesAndPlants
 -- CreatureIdentification
 	id INT(32) unsigned not null auto_increment,
 	deleted TINYINT(1) DEFAULT 0,
-    creatuteType int(11) not null default 0 comment '0:Unknown, 1:Fish, 2:Plants, 3:Shripms, 4:Snails, 5:Reptiles', 
+	creatuteType int(11) not null default 0 comment '0:Unknown, 1:Fish, 2:Plants, 3:Shripms, 4:Snails, 5:Reptiles', 
 	currentVersion decimal(5,2) not null default 0,
 	danishTradenames text,
-    englishTradenames text,
-    germanTradenames text,
+	englishTradenames text,
+	germanTradenames text,
 	danishDescription text,
-    englishDescription text,
-    germanDescription text,
+	englishDescription text,
+	germanDescription text,
 	scientificNameId int(32) unsigned not null,
 
 -- Creatures
-    aqualogCode varchar(20),
-    createdDateTime datetime not null,
-    createdUser VARCHAR(255) not null,
-    dataSource int(8) unsigned not null default 0,
-    familyId int(32) unsigned not null,
-    minHardness decimal(5,2) not null default 0,
-    maxHardness decimal(5,2) not null default 0,
-    minLight int(8) unsigned not null default 0,
-    maxLight int(8) unsigned not null default 0,
-    minPh decimal(5,2) not null default 0,
-    maxPh decimal(5,2) not null default 0,
-    regionId int(32) unsigned not null,
-    minTemperature decimal(5,2) not null default 0,
-    maxTemperature decimal(5,2) not null default 0,
-    groupTypeId int(32) unsigned not null,
-    protected INT(32) unsigned default 0,
-    waterType int(10) unsigned NOT NULL DEFAULT '0' COMMENT '0:Fish;1:Freshwater;2:Saltwater;3:Brackish',
+	aqualogCode varchar(20),
+	createdDateTime datetime not null,
+	createdUser VARCHAR(255) not null,
+	dataSource int(8) unsigned not null default 0,
+	familyId int(32) unsigned not null,
+	minHardness decimal(5,2) not null default 0,
+	maxHardness decimal(5,2) not null default 0,
+	minLight int(8) unsigned not null default 0,
+	maxLight int(8) unsigned not null default 0,
+	minPh decimal(5,2) not null default 0,
+	maxPh decimal(5,2) not null default 0,
+	regionId int(32) unsigned not null,
+	minTemperature decimal(5,2) not null default 0,
+	maxTemperature decimal(5,2) not null default 0,
+	groupTypeId int(32) unsigned not null,
+	protected INT(32) unsigned default 0,
+	waterType int(10) unsigned NOT NULL DEFAULT '0' COMMENT '0:Fish;1:Freshwater;2:Saltwater;3:Brackish',
 	
-    
+	
 -- Plants    	
 	bottomTypeId int(32) unsigned,
-    flowering varchar(75),
-    growthSpeedId int(32) unsigned,
-    hardy tinyint(1) unsigned not null default 0,
-    minHeight decimal(5,2),
-    maxHeight decimal(5,2),
-    minWidth decimal(5,2),
-    maxWidth decimal(5,2),
-    waterDepth varchar(100),
-    zoneId int(32) unsigned,    
-    
+	flowering varchar(75),
+	growthSpeedId int(32) unsigned,
+	hardy tinyint(1) unsigned not null default 0,
+	minHeight decimal(5,2),
+	maxHeight decimal(5,2),
+	minWidth decimal(5,2),
+	maxWidth decimal(5,2),
+	waterDepth varchar(100),
+	zoneId int(32) unsigned,    
+	
 -- Animal
-    minSize decimal(10,2),
-    maxSize decimal(10,2),
+	minSize decimal(10,2),
+	maxSize decimal(10,2),
 
 -- Fish    
-    fishBaseId varchar(30),
-    swimmingPositionId int(32) unsigned,
-    tankWidth varchar(200), 
-    
+	fishBaseId varchar(30),
+	swimmingPositionId int(32) unsigned,
+	tankWidth varchar(200), 
+	
 -- Crustacean
 
 -- Gastropda    
@@ -452,85 +452,85 @@ CREATE TABLE creaturesAndPlants
 -- Foreign Keys
 	foreign key (bottomTypeId) references bottomType(id),
 	foreign key (growthSpeedId) references growthSpeed(id),
-    foreign key (swimmingPositionId) references swimmingPosition(id),
-    foreign key (scientificNameId) references latinName(id),
-    foreign key (regionId) references region(id),
-    foreign key (familyId) references family(id),
-    foreign key (groupTypeId) references groupType(id),
-    
+	foreign key (swimmingPositionId) references swimmingPosition(id),
+	foreign key (scientificNameId) references latinName(id),
+	foreign key (regionId) references region(id),
+	foreign key (familyId) references family(id),
+	foreign key (groupTypeId) references groupType(id),
+	
 -- Indexes    
-    index idx_creaturesAndPlants_CreatureType (creatuteType) using HASH,
-    index idx_creaturesAndPlants_Region (regionId) using HASH,
-    index idx_creaturesAndPlants_Family (familyId) using HASH,
+	index idx_creaturesAndPlants_CreatureType (creatuteType) using HASH,
+	index idx_creaturesAndPlants_Region (regionId) using HASH,
+	index idx_creaturesAndPlants_Family (familyId) using HASH,
 	index idx_creaturesAndPlants_SciNameId (scientificNameId) using HASH,
-    
+	
 -- Primary key    
-    primary key(id)
+	primary key(id)
 );
 
 CREATE VIEW V_creaturesAndPlants AS 
 	SELECT * FROM creaturesAndPlants WHERE deleted=0;
-    
+	
 
 CREATE TABLE creaturesAndPlants_Versions
 (
 -- Version info
 	id INT(32) unsigned not null auto_increment,
-    
+	
 -- CreatureIdentification
 	orgId INT(32) unsigned not null,
 	deleted TINYINT(1) DEFAULT 0,
-    creatuteType int(11) not null default 0 comment '0:Unknown, 1:Fish, 2:Plants, 3:Shripms, 4:Snails, 5:Reptiles', 
+	creatuteType int(11) not null default 0 comment '0:Unknown, 1:Fish, 2:Plants, 3:Shripms, 4:Snails, 5:Reptiles', 
 	currentVersion decimal(5,2) not null default 0,
 	danishTradenames text,
-    englishTradenames text,
-    germanTradenames text,
+	englishTradenames text,
+	germanTradenames text,
 	danishDescription text,
-    englishDescription text,
-    germanDescription text,
+	englishDescription text,
+	germanDescription text,
 	scientificNameId int(32) unsigned not null,
 
 -- Creatures
-    aqualogCode varchar(20),
-    createdDateTime datetime not null,
-    createdUser VARCHAR(255) not null,
-    dataSource int(8) unsigned not null default 0,
-    familyId int(32) unsigned not null,
-    minHardness decimal(5,2) not null default 0,
-    maxHardness decimal(5,2) not null default 0,
-    minLight int(8) unsigned not null default 0,
-    maxLight int(8) unsigned not null default 0,
-    minPh decimal(5,2) not null default 0,
-    maxPh decimal(5,2) not null default 0,
-    regionId int(32) unsigned not null,
-    minTemperature decimal(5,2) not null default 0,
-    maxTemperature decimal(5,2) not null default 0,
-    groupTypeId int(32) unsigned not null,
-    protected INT(32) unsigned default 0,
-    waterType int(10) unsigned NOT NULL DEFAULT '0' COMMENT '0:Fish;1:Freshwater;2:Saltwater;3:Brackish',
+	aqualogCode varchar(20),
+	createdDateTime datetime not null,
+	createdUser VARCHAR(255) not null,
+	dataSource int(8) unsigned not null default 0,
+	familyId int(32) unsigned not null,
+	minHardness decimal(5,2) not null default 0,
+	maxHardness decimal(5,2) not null default 0,
+	minLight int(8) unsigned not null default 0,
+	maxLight int(8) unsigned not null default 0,
+	minPh decimal(5,2) not null default 0,
+	maxPh decimal(5,2) not null default 0,
+	regionId int(32) unsigned not null,
+	minTemperature decimal(5,2) not null default 0,
+	maxTemperature decimal(5,2) not null default 0,
+	groupTypeId int(32) unsigned not null,
+	protected INT(32) unsigned default 0,
+	waterType int(10) unsigned NOT NULL DEFAULT '0' COMMENT '0:Fish;1:Freshwater;2:Saltwater;3:Brackish',
 	
-    
+	
 -- Plants    	
 	bottomTypeId int(32) unsigned,
-    flowering varchar(75),
-    growthSpeedId int(32) unsigned,
-    hardy tinyint(1) unsigned not null default 0,
-    minHeight decimal(5,2),
-    maxHeight decimal(5,2),
-    minWidth decimal(5,2),
-    maxWidth decimal(5,2),
-    waterDepth varchar(100),
-    zone int(32) unsigned,    
-    
+	flowering varchar(75),
+	growthSpeedId int(32) unsigned,
+	hardy tinyint(1) unsigned not null default 0,
+	minHeight decimal(5,2),
+	maxHeight decimal(5,2),
+	minWidth decimal(5,2),
+	maxWidth decimal(5,2),
+	waterDepth varchar(100),
+	zone int(32) unsigned,    
+	
 -- Animal
-    minSize decimal(10,2),
-    maxSize decimal(10,2),
+	minSize decimal(10,2),
+	maxSize decimal(10,2),
 
 -- Fish    
-    fishBaseId varchar(30),
-    swimmingPositionId int(32) unsigned,
-    tankWidth varchar(200), 
-    
+	fishBaseId varchar(30),
+	swimmingPositionId int(32) unsigned,
+	tankWidth varchar(200), 
+	
 -- Crustacean
 
 -- Gastropda    
@@ -540,20 +540,20 @@ CREATE TABLE creaturesAndPlants_Versions
 -- Foreign Keys
 	foreign key (bottomTypeId) references bottomType(id),
 	foreign key (growthSpeedId) references growthSpeed(id),
-    foreign key (swimmingPositionId) references swimmingPosition(id),
-    foreign key (scientificNameId) references latinName(id),
-    foreign key (regionId) references region(id),
-    foreign key (familyId) references family(id),
-    foreign key (groupTypeId) references groupType(id),
-    
+	foreign key (swimmingPositionId) references swimmingPosition(id),
+	foreign key (scientificNameId) references latinName(id),
+	foreign key (regionId) references region(id),
+	foreign key (familyId) references family(id),
+	foreign key (groupTypeId) references groupType(id),
+	
 -- Indexes    
-    index idx_creaturesAndPlants_CreatureType (creatuteType) using HASH,
-    index idx_creaturesAndPlants_Region (regionId) using HASH,
-    index idx_creaturesAndPlants_Family (familyId) using HASH,
+	index idx_creaturesAndPlants_CreatureType (creatuteType) using HASH,
+	index idx_creaturesAndPlants_Region (regionId) using HASH,
+	index idx_creaturesAndPlants_Family (familyId) using HASH,
 	index idx_creaturesAndPlants_SciNameId (scientificNameId) using HASH,
-    
+	
 -- Primary key    
-    primary key(id)
+	primary key(id)
 );
 
 
@@ -563,58 +563,58 @@ DELIMITER //
 DROP TRIGGER IF EXISTS TT_creaturesAndPlants //
 CREATE TRIGGER TT_creaturesAndPlants AFTER INSERT ON creaturesAndPlants
 	FOR EACH ROW
-    BEGIN
+	BEGIN
 		
-    END;
+	END;
 //    
 
 
 DROP TRIGGER IF EXISTS TT_VERSIONCONTROL //
 CREATE TRIGGER TT_VERSIONCONTROL BEFORE UPDATE ON creaturesAndPlants
-    FOR EACH ROW
-    BEGIN
-    	-- 1) Make a copy of the old row from creaturesAndPlants
-        -- 2) if NEW.currentVersion = OLD.currentVersion, add 1 to NEW.currentVersion
-        -- 3) creaturesAndPlants_Versions.changeDateAndTime = now
+	FOR EACH ROW
+	BEGIN
+		-- 1) Make a copy of the old row from creaturesAndPlants
+		-- 2) if NEW.currentVersion = OLD.currentVersion, add 1 to NEW.currentVersion
+		-- 3) creaturesAndPlants_Versions.changeDateAndTime = now
 		-- 4) creaturesAndPlants_Versions.version = OLD.currentVersion
-        -- 5) creaturesAndPlants_Versions.user = NEW.?
-        IF NEW.ts <> OLD.ts THEN  
-            INSERT INTO bar (a, b) VALUES(NEW.a, NEW.b);
-        END IF;
-    END;
+		-- 5) creaturesAndPlants_Versions.user = NEW.?
+		IF NEW.ts <> OLD.ts THEN  
+			INSERT INTO bar (a, b) VALUES(NEW.a, NEW.b);
+		END IF;
+	END;
 //
 DELIMITER ;
 */
 create table synonyms
 (
 	creaturesAndPlantsId int(32) unsigned not null,
-    scientificNameId  int(32) unsigned not null,
-    
-    foreign key (creaturesAndPlantsId) references creaturesAndPlants(id),
-    foreign key (scientificNameId) references latinName(id),
-    primary key(creaturesAndPlantsId, scientificNameId)
+	scientificNameId  int(32) unsigned not null,
+	
+	foreign key (creaturesAndPlantsId) references creaturesAndPlants(id),
+	foreign key (scientificNameId) references latinName(id),
+	primary key(creaturesAndPlantsId, scientificNameId)
 );
 
 create table modifications
 (
 	creatureAndPlantsId int(32) unsigned not null,
-    dateTimeInfoId int(32) unsigned not null,
-    
-    foreign key (dateTimeInfoId) references dateTimeInfo (id),
-    foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
-    
-    primary key (creatureAndPlantsId, dateTimeInfoId)
+	dateTimeInfoId int(32) unsigned not null,
+	
+	foreign key (dateTimeInfoId) references dateTimeInfo (id),
+	foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
+	
+	primary key (creatureAndPlantsId, dateTimeInfoId)
 );
 
 create table picture
 (
 	id INT(32) unsigned not null auto_increment,
-    pictureData blob not null,
-    copyRightText varchar(500) not null default 'Public',
-    danish varchar(500),
-    english varchar(500),
-    german varchar(500),
-    
+	pictureData blob not null,
+	copyRightText varchar(500) not null default 'Public',
+	danish varchar(500),
+	english varchar(500),
+	german varchar(500),
+	
 	primary key(id)
 );
 
@@ -622,37 +622,37 @@ create table picture
 create table pictureList
 (
 	creatureAndPlantsId int(32) unsigned not null,
-    pictureId int(32) unsigned not null,
-    
-    foreign key (pictureId) references picture (id),
-    foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
-    
-    primary key (creatureAndPlantsId, pictureId)
+	pictureId int(32) unsigned not null,
+	
+	foreign key (pictureId) references picture (id),
+	foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
+	
+	primary key (creatureAndPlantsId, pictureId)
 );
 
 create table book
 (
 	isbn VARCHAR(25) NOT NULL,
-    authors VARCHAR(512),
-    title VARCHAR(512),
-    
-    primary key (isbn)
+	authors VARCHAR(512),
+	title VARCHAR(512),
+	
+	primary key (isbn)
 );
 
 create table bookList
 (
 	creatureAndPlantsId int(32) unsigned not null,
-    isbn VARCHAR(25) NOT NULL,
-    listType TINYINT(5) NOT NULL DEFAULT 0  comment '0:reference, 1:other'
+	isbn VARCHAR(25) NOT NULL,
+	listType TINYINT(5) NOT NULL DEFAULT 0  comment '0:reference, 1:other'
 );
 
 create table plantingZone
 (
 	id INT(32) unsigned not null auto_increment,
-    danish varchar(500),
-    english varchar(500),
-    german varchar(500),
-    
+	danish varchar(500),
+	english varchar(500),
+	german varchar(500),
+	
 	primary key(id)
 );
 
@@ -671,12 +671,12 @@ create table behavior
 create table behaviorList
 (
 	creatureAndPlantsId int(32) unsigned not null,
-    behaviorId int(32) unsigned not null,
-    
-    foreign key (behaviorId) references behavior (id),
-    foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
-    
-    primary key (creatureAndPlantsId, behaviorId)
+	behaviorId int(32) unsigned not null,
+	
+	foreign key (behaviorId) references behavior (id),
+	foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
+	
+	primary key (creatureAndPlantsId, behaviorId)
 );
 
 create table decoration
@@ -694,21 +694,21 @@ create table decoration
 create table decorationList
 (
 	creatureAndPlantsId int(32) unsigned not null,
-    decorationId int(32) unsigned not null,
-    
-    foreign key (decorationId) references decoration (id),
-    foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
-    
-    primary key (creatureAndPlantsId, decorationId)
+	decorationId int(32) unsigned not null,
+	
+	foreign key (decorationId) references decoration (id),
+	foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
+	
+	primary key (creatureAndPlantsId, decorationId)
 );
 
 create table foodTypeList
 (
 	creatureAndPlantsId int(32) unsigned not null,
-    foodTypeId int(32) unsigned not null,
-    
-    foreign key (foodTypeId) references foodtype (id),
-    foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
-    
-    primary key (creatureAndPlantsId, foodTypeId)
+	foodTypeId int(32) unsigned not null,
+	
+	foreign key (foodTypeId) references foodtype (id),
+	foreign key (creatureAndPlantsId) references creaturesAndPlants (id),
+	
+	primary key (creatureAndPlantsId, foodTypeId)
 );

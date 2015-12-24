@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APaF", "APaF\APaF.csproj", "{BDE009CC-FD80-4168-A2C6-085A13214B0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDK.APaF.Communication", "APaF\TDK.APaF.Communication.csproj", "{BDE009CC-FD80-4168-A2C6-085A13214B0B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDK.APaF.AqualogImport", "TDK.APaF.AqualogImport\TDK.APaF.AqualogImport.csproj", "{B9939274-7C2D-472C-A996-8A68E00C687A}"
 EndProject

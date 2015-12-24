@@ -18,21 +18,21 @@
   <Class Name="TDK.APaF.Model.CodeTextClass">
     <Position X="15.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAEgAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAAEgAAgAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>CodeTextClass.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TDK.APaF.Model.Creatures">
-    <Position X="0.5" Y="3" Width="2.5" />
+    <Position X="0.5" Y="5.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>EAQAAEAAoAAAAgAAAAFAAgAAAAAAAgQAAAAQAAAEBAI=</HashCode>
+      <HashCode>EAQAAEAAoAAAAgAAAAFAAgAAAAAAAoBAAAAQBAAEBAI=</HashCode>
       <FileName>Creatures.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TDK.APaF.Model.CrustaceanClass">
-    <Position X="4.5" Y="11.5" Width="1.5" />
+    <Position X="4" Y="13.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>CrustaceanClass.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -44,7 +44,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TDK.APaF.Model.DecimalClass">
-    <Position X="2.5" Y="12.75" Width="1.75" />
+    <Position X="22" Y="11.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAgEAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>DecimalClass.cs</FileName>
@@ -65,9 +65,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TDK.APaF.Model.FishClass">
-    <Position X="4.5" Y="5.25" Width="2.5" />
+    <Position X="4.25" Y="5.25" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAEAAACAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAEAAACAAAAAAAABAAAAAA=</HashCode>
       <FileName>FishClass.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -79,9 +79,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TDK.APaF.Model.GastropodaClass">
-    <Position X="4.5" Y="8" Width="1.75" />
+    <Position X="4.25" Y="8.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>GastropodaClass.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -146,9 +146,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TDK.APaF.Model.PlantClass">
-    <Position X="0.5" Y="8.25" Width="2.5" />
+    <Position X="0.5" Y="11.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>QAAAAABABAAAAAAAABAAAkAAAAAAAAAAAABAAQAAAAA=</HashCode>
+      <HashCode>QAAAAABABAAAAAAAABAAAkAAAAAAAAAAAABABQAAAAA=</HashCode>
       <FileName>PlantClass.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -160,9 +160,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TDK.APaF.Model.ReptileClass">
-    <Position X="4.5" Y="9.75" Width="1.5" />
+    <Position X="4.25" Y="10.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>ReptileClass.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -181,9 +181,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TDK.APaF.Model.Animal">
-    <Position X="4.5" Y="2.25" Width="2.25" />
+    <Position X="4.5" Y="0.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAACAAAAAAAABAAAAAAAAAAAAAAAEA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAAACAAAAAAAABAAAAAAAAAABAAAAEA=</HashCode>
       <FileName>Animal.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -232,7 +232,7 @@
   <Class Name="TDK.APaF.Model.CreatureIdentification">
     <Position X="0.5" Y="0.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgoABAAAAAAAAAAAQAAAgABAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAgoABAAAAAAAAAAAQAAAgAAAAABAAAAAA=</HashCode>
       <FileName>CreatureIdentification.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -265,7 +265,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TDK.APaF.Model.Book">
-    <Position X="0.5" Y="12.75" Width="1.5" />
+    <Position X="20.25" Y="12" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAEAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Book.cs</FileName>
